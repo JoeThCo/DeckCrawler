@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="DamageAction" load_steps=4 format=3 uid="uid://dyui3a2q02bkp"]
+
+[ext_resource type="Resource" uid="uid://bqtk1cplep66y" path="res://Deck/Card/Resources/Distance/1.tres" id="1_33w2u"]
+[ext_resource type="Texture2D" uid="uid://dw7wma2ibdpqo" path="res://UI/Art/Damage.png" id="2_15kch"]
+[ext_resource type="Script" uid="uid://bfpm4qeec2xxm" path="res://Action/damage_action.gd" id="3_702vp"]
+
+[resource]
+script = ExtResource("3_702vp")
+damage_amount = 4
+cost = 3
+distance = ExtResource("1_33w2u")
+description = "No Description"
+icon = ExtResource("2_15kch")
+metadata/_custom_type_script = "uid://bfpm4qeec2xxm"

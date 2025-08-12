@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="DistanceFrom" load_steps=2 format=3 uid="uid://bdsjqundm3xip"]
+
+[ext_resource type="Script" uid="uid://bhgu5f5liv658" path="res://Action/Distance/distance_from.gd" id="1_hgr4x"]
+
+[resource]
+script = ExtResource("1_hgr4x")
+distance_from = 3
+metadata/_custom_type_script = "uid://bhgu5f5liv658"

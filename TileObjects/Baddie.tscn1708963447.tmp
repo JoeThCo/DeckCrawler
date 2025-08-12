@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://d07gsio7goc1i"]
+
+[ext_resource type="PackedScene" uid="uid://d0278h0ls8o7s" path="res://TileObjects/Being/Being.tscn" id="1_3asbs"]
+[ext_resource type="Script" uid="uid://domwp5a1sm7a1" path="res://TileObjects/Being/baddie.gd" id="2_2t7b6"]
+[ext_resource type="Resource" uid="uid://lrjp1pnr313h" path="res://Deck/Card/Resources/Damage/Punch.tres" id="3_11idi"]
+
+[node name="Baddie" instance=ExtResource("1_3asbs")]
+script = ExtResource("2_2t7b6")
+damage_action = ExtResource("3_11idi")
+
+[node name="TileMapLayer" parent="." index="0"]
+modulate = Color(1, 0.314682, 0.330726, 1)
+tile_map_data = PackedByteArray(0, 0, 255, 255, 255, 255, 1, 0, 25, 0, 5, 0, 0, 0)
+
+[node name="Health" parent="." index="2"]
+current_health = 5

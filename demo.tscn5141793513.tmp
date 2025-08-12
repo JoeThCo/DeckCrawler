@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=4 uid="uid://6v1dw3try8yj"]
+
+[ext_resource type="TileSet" uid="uid://bkmbc46tqiseo" path="res://World/TileSet.tres" id="1_c6xj6"]
+[ext_resource type="Script" uid="uid://djss7sd3wkts3" path="res://World/world.gd" id="2_6bw2v"]
+
+[sub_resource type="GDScript" id="GDScript_m0rpm"]
+script/source = "extends Node2D
+
+
+@export var world: World
+"
+
+[node name="Demo" type="Node2D" node_paths=PackedStringArray("world")]
+script = SubResource("GDScript_m0rpm")
+world = NodePath("World")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-66, -25)
+zoom = Vector2(3, 3)
+
+[node name="World" type="TileMapLayer" parent="."]
+unique_name_in_owner = true
+texture_filter = 1
+position = Vector2(-16, -16)
+tile_map_data = PackedByteArray("AAD//wIAAQATAAIAAAAAAAIAAQATAAIAAAABAAIAAQATAAIAAAACAAIAAQAUAAIAAAD8/wIAAQASAAIAAAD9/wIAAQATAAIAAAD+/wIAAQATAAIAAAD8/wEAAQASAAEAAAD8/wAAAQASAAEAAAACAAEAAQAUAAEAAAACAAAAAQAUAAEAAAACAP//AQAUAAEAAAACAP7/AQAUAAEAAAACAPv/AQAUAAAAAAD8//v/AQASAAAAAAD9//v/AQATAAAAAAD+//v/AQATAAAAAAD///v/AQATAAAAAAAAAPv/AQATAAAAAAABAPv/AQATAAAAAAACAPz/AQAUAAEAAAACAP3/AQAUAAEAAAD8//z/AQASAAEAAAD7//3/AQATAAAAAAD6//3/AQATAAAAAAD5//3/AQATAAAAAAD4//3/AQATAAAAAAD7////AQATAAIAAAD6////AQATAAIAAAD5////AQATAAIAAAD4////AQATAAIAAAD3//z/AQAUAAEAAAD3//v/AQAUAAEAAAD3/wAAAQAUAAEAAAD3/wEAAQAUAAEAAAD3/wIAAQAUAAEAAAD2//r/AQATAAAAAAD1//r/AQATAAAAAAD0//v/AQASAAEAAAD0//z/AQASAAEAAAD0//3/AQASAAEAAAD0//7/AQASAAEAAAD0////AQASAAEAAAD0/wAAAQASAAEAAAD0/wEAAQASAAEAAAD0/wIAAQASAAEAAAD1/wMAAQATAAIAAAD2/wMAAQATAAIAAAD0/wMAAQASAAIAAAD3/wMAAQAUAAIAAAD0//r/AQASAAAAAAD3//r/AQAUAAAAAAA=")
+tile_set = ExtResource("1_c6xj6")
+script = ExtResource("2_6bw2v")
+
+[node name="Beings" type="Node2D" parent="."]
+unique_name_in_owner = true
