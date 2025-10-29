@@ -1,3 +1,2 @@
-res://TileObjects/Being/being.tscn
-res://UI/main_theme.tres
-res://World/TileSet.tres
+res://game.tscn
+res://game.gd

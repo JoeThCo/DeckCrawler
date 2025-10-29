@@ -1,3 +1,4 @@
+TileMapLayer
 Timer
 TextureRect
 Node2D
@@ -8,7 +9,5 @@ ProgressBar
 VBoxContainer
 HBoxContainer
 Label
-TileMapLayer
 Camera2D
 ColorRect
-Being
