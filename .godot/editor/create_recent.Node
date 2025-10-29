@@ -1,3 +1,4 @@
+Camera2D
 TileMapLayer
 Timer
 TextureRect
@@ -9,5 +10,4 @@ ProgressBar
 VBoxContainer
 HBoxContainer
 Label
-Camera2D
 ColorRect

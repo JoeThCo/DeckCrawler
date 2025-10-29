@@ -1,2 +1,5 @@
 res://game.tscn
-res://game.gd
+res://room_tile_set.tres
+res://room.gd
+res://Room/room_tile_set.tres
+res://Game/game.tscn

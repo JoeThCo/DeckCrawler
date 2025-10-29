@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dciamadf2kbt2"]
-
-[ext_resource type="Script" uid="uid://17qa8rybknca" path="res://game.gd" id="1_j5wjh"]
-
-[node name="Game" type="Node2D"]
-script = ExtResource("1_j5wjh")
-
-[node name="World" type="TileMapLayer" parent="."]
