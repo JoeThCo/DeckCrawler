@@ -3,3 +3,4 @@ res://room_tile_set.tres
 res://room.gd
 res://Room/room_tile_set.tres
 res://Game/game.tscn
+res://Game/game.gd

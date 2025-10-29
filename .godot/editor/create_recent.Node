@@ -1,8 +1,9 @@
+Node
+Node2D
 Camera2D
 TileMapLayer
 Timer
 TextureRect
-Node2D
 Button
 CanvasLayer
 Control
