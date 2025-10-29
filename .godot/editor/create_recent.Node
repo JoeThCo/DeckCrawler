@@ -1,5 +1,9 @@
-Node
+BaddieMovement
+PlayerMovement
+Sprite2D
 Node2D
+TileObject
+Node
 Camera2D
 TileMapLayer
 Timer
@@ -9,6 +13,3 @@ CanvasLayer
 Control
 ProgressBar
 VBoxContainer
-HBoxContainer
-Label
-ColorRect

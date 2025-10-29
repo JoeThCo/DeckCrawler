@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://cqq4klitv1gst"]
+
+[ext_resource type="PackedScene" uid="uid://bmt6fd6pf7m22" path="res://TileObject/tile_object.tscn" id="1_7mh7w"]
+[ext_resource type="Script" uid="uid://4l0h3ba54k4d" path="res://TileObject/Baddie/baddie.gd" id="2_4f4t7"]
+[ext_resource type="Script" uid="uid://8h8x55iukpac" path="res://TileObject/Baddie/baddie_movement.gd" id="3_17up5"]
+
+[node name="Baddie" node_paths=PackedStringArray("movement") instance=ExtResource("1_7mh7w")]
+script = ExtResource("2_4f4t7")
+movement = NodePath("BaddieMovement")
+
+[node name="Sprite2D" parent="." index="0"]
+self_modulate = Color(0.8677115, 0.18515867, 0.44820958, 1)
+
+[node name="BaddieMovement" type="Node2D" parent="." index="1"]
+script = ExtResource("3_17up5")
+metadata/_custom_type_script = "uid://8h8x55iukpac"

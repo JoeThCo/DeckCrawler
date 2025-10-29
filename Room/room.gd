@@ -1,3 +1,4 @@
+extends Node2D
 class_name Room
 
 
@@ -11,6 +12,14 @@ static func set_up(_tm) -> void:
 	_a_star_init()
 
 
+static func local_to_map(local_position: Vector2) -> Vector2i:
+	return tile_map.local_to_map(local_position)
+
+
+static func map_to_global(map_position: Vector2i) -> Vector2:
+	return tile_map.tile_set.tile_size * map_position
+
+
 static func _a_star_init() -> void:
 	astar.region = tile_map.get_used_rect()
 	astar.cell_size = tile_map.tile_set.tile_size
@@ -21,7 +30,7 @@ static func _a_star_init() -> void:
 		astar.set_point_solid(cell, true)
 
 
-static func get_path(from: Vector2i, to: Vector2i) -> PackedVector2Array:
+static func get_astar_path(from: Vector2i, to: Vector2i) -> PackedVector2Array:
 	return astar.get_point_path(from, to, true)
 
 
