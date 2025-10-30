@@ -1,4 +1,4 @@
-extends TileObject
+extends Friend
 class_name Player
 
 

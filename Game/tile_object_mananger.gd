@@ -45,3 +45,13 @@ static func spawn_tile_object(spawn_name: String, coords: Vector2i) -> TileObjec
 	new_tile_obj.global_position = Room.map_to_global(coords)
 	tile_objects.append(new_tile_obj)
 	return new_tile_obj
+
+
+static func get_tile_object_at_global_coords(global: Vector2) -> TileObject:
+	var search_grid_coords: Vector2i = Room.local_to_map(global)
+	print(search_grid_coords)
+	for current: TileObject in tile_objects:
+		print(current.grid_coords)
+		if current.grid_coords == search_grid_coords:
+			return current
+	return null

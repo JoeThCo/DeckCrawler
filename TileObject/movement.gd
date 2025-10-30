@@ -11,7 +11,7 @@ var tile_object: TileObject
 
 func set_up(_to: TileObject) -> void:
 	tile_object = _to
-	
+
 
 func move() -> void:
 	pass
