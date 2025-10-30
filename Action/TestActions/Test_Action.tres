@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Action" load_steps=4 format=3 uid="uid://dia0b2a2p2hdu"]
+
+[ext_resource type="Script" uid="uid://bagmktk5h2xfr" path="res://Action/action.gd" id="1_qy8r4"]
+[ext_resource type="Script" uid="uid://cr07jnioo06mt" path="res://Action/TargetType/self_target.gd" id="2_rya02"]
+
+[sub_resource type="Resource" id="Resource_v8x03"]
+script = ExtResource("2_rya02")
+metadata/_custom_type_script = "uid://cr07jnioo06mt"
+
+[resource]
+script = ExtResource("1_qy8r4")
+target = SubResource("Resource_v8x03")
+description = ""
+metadata/_custom_type_script = "uid://bagmktk5h2xfr"

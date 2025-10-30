@@ -1,3 +1,8 @@
+Label
+TextureRect
+VBoxContainer
+ColorRect
+Deck
 BaddieMovement
 PlayerMovement
 Sprite2D
@@ -7,9 +12,4 @@ Node
 Camera2D
 TileMapLayer
 Timer
-TextureRect
 Button
-CanvasLayer
-Control
-ProgressBar
-VBoxContainer

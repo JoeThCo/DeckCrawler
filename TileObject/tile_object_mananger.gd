@@ -22,7 +22,7 @@ static func set_up(_sp: Node2D) -> void:
 	player.movement.moved.connect(on_player_move)
 	
 	spawn_tile_object("Baddie", Vector2i.ONE * 2)
-	spawn_tile_object("Baddie", Vector2i.ONE * -4)
+	#spawn_tile_object("Baddie", Vector2i.ONE * -4)
 
 
 static func on_player_move() -> void:

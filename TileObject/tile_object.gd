@@ -3,6 +3,7 @@ class_name TileObject
 
 
 @export var movement: Movement
+@export var deck: Deck
 
 
 var tile_object_id: String:
@@ -17,6 +18,8 @@ var grid_coords: Vector2i:
 
 func _ready() -> void:
 	movement.set_up(self)
+	if deck != null:
+		deck.set_up()
 
 
 func move_tile_object_to(to: Vector2i) -> void:

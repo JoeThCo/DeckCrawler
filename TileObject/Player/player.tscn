@@ -1,13 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://onxpnt7kl0e3"]
+[gd_scene load_steps=5 format=3 uid="uid://onxpnt7kl0e3"]
 
 [ext_resource type="PackedScene" uid="uid://bmt6fd6pf7m22" path="res://TileObject/tile_object.tscn" id="1_dmdb4"]
 [ext_resource type="Script" uid="uid://ianmxwgtq0mo" path="res://TileObject/Player/player.gd" id="2_mx5ov"]
 [ext_resource type="Script" uid="uid://dubtlnw5rauvd" path="res://TileObject/Player/player_movement.gd" id="2_oww00"]
+[ext_resource type="Script" uid="uid://fh54m2s5fwnh" path="res://Deck/deck.gd" id="4_mx5ov"]
 
-[node name="Player" node_paths=PackedStringArray("movement") instance=ExtResource("1_dmdb4")]
+[node name="Player" node_paths=PackedStringArray("movement", "deck") instance=ExtResource("1_dmdb4")]
 script = ExtResource("2_mx5ov")
 movement = NodePath("PlayerMovement")
+deck = NodePath("Deck")
 
 [node name="PlayerMovement" type="Node2D" parent="." index="1"]
 script = ExtResource("2_oww00")
 metadata/_custom_type_script = "uid://dubtlnw5rauvd"
+
+[node name="Deck" type="Node" parent="." index="2"]
+script = ExtResource("4_mx5ov")
+metadata/_custom_type_script = "uid://fh54m2s5fwnh"

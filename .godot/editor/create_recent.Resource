@@ -1,3 +1,1 @@
-DamageAction
-DistanceFrom
-ShieldAction
+Action

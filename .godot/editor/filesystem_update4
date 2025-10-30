@@ -8,3 +8,19 @@ res://TileObject/Friend/friend.gd
 res://TileObject/Player/player.gd
 res://Game/tile_object_mananger.gd
 res://Game/game.gd
+res://Action/action.gd
+res://Action/target_type.gd
+res://Action/TargetType/Self.gd
+res://Action/TargetType/self_target.gd
+res://Action/TargetType/target.gd
+res://Action/TargetType/other_target.gd
+res://Deck/deck.gd
+res://helper.gd
+res://Action/TestActions/test.tres
+res://Action/TestActions/Test Action.tres
+res://TileObject/tile_object.tscn
+res://TileObject/Player/player.tscn
+res://TileObject/Baddie/baddie.tscn
+res://TileObject/tile_object_mananger.gd
+res://Action/action_display.tscn
+res://Action/action_display.gd
