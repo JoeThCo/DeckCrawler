@@ -24,3 +24,5 @@ res://TileObject/Baddie/baddie.tscn
 res://TileObject/tile_object_mananger.gd
 res://Action/action_display.tscn
 res://Action/action_display.gd
+res://TileObject/Player/hand_display.gd
+res://Deck/deck_display.gd

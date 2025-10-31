@@ -12,8 +12,17 @@ class_name Action
 @export var icon: Texture2D
 
 
+var owner_object: TileObject
+
+func set_up(_to: TileObject) -> void:
+	owner_object = _to
+
+
 func execute(_tile_object: TileObject) -> void:
-	push_error("Base Action.execute called, should be overridden")
+	if target is SelfTarget:
+		print("Self")
+	elif target is OtherTarget:
+		print("Other")
 
 
 func _to_string() -> String:

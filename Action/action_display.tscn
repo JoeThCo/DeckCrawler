@@ -17,35 +17,53 @@ offset_bottom = 100.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_u1u7s")
-name_label = NodePath("VBoxContainer/Name")
-cost_label = NodePath("VBoxContainer/Cost")
-target_label = NodePath("VBoxContainer/Target")
+name_label = NodePath("Offset/VBoxContainer/Name")
+cost_label = NodePath("Offset/VBoxContainer/Cost")
+target_label = NodePath("Offset/VBoxContainer/Target")
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="Offset" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(62, 100)
+mouse_filter = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="Background" type="ColorRect" parent="Offset"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
+[node name="VBoxContainer" type="VBoxContainer" parent="Offset"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
-[node name="Name" type="Label" parent="VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="Offset/VBoxContainer"]
 layout_mode = 2
+mouse_filter = 2
 
-[node name="Cost" type="Label" parent="VBoxContainer"]
+[node name="Name" type="Label" parent="Offset/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 
-[node name="Target" type="Label" parent="VBoxContainer"]
+[node name="Cost" type="Label" parent="Offset/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+
+[node name="Target" type="Label" parent="Offset/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

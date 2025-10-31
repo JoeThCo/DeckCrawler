@@ -19,7 +19,7 @@ var grid_coords: Vector2i:
 func _ready() -> void:
 	movement.set_up(self)
 	if deck != null:
-		deck.set_up()
+		deck.set_up(self)
 
 
 func move_tile_object_to(to: Vector2i) -> void:

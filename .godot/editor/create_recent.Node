@@ -1,3 +1,7 @@
+CenterContainer
+Control
+HBoxContainer
+CanvasLayer
 Label
 TextureRect
 VBoxContainer
@@ -9,7 +13,3 @@ Sprite2D
 Node2D
 TileObject
 Node
-Camera2D
-TileMapLayer
-Timer
-Button
