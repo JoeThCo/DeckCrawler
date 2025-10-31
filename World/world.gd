@@ -13,6 +13,7 @@ const ROOM_COUNT_MULTIPLIER := 3.0
 
 const HARD_TEN := 10 #FIXME Why is 10 needed for %
 
+
 # Room data
 static var rooms: Dictionary = {}  # cell_id -> room_data
 static var end_rooms: Array[int] = []
