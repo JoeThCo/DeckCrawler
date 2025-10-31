@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Deck Crawler"
+config/name="DeckCrawler"
 run/main_scene="uid://dciamadf2kbt2"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 
