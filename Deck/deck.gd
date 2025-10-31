@@ -7,7 +7,7 @@ signal action_removed(action: Action)
 signal action_played(action: Action)
 
 
-#move somewhere else
+#TODO move somewhere else
 var all_actions: Array[Action] = []
 
 var hand: Array[Action] = []
