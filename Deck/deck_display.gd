@@ -19,7 +19,7 @@ func action_added(action: Action) -> void:
 	action_display.set_up(action)
 	add_child(action_display)
 	action_displays.append(action_display)
-	action_display.action_selected.connect(action_selected)
+	action_display.action_played.connect(action_played)
 
 
 func action_removed(action: Action) -> void:
@@ -30,11 +30,10 @@ func action_removed(action: Action) -> void:
 
 
 func remove_action(action_display: ActionDisplay) -> void:
-	action_display.action_selected.disconnect(action_selected)
+	action_display.action_played.disconnect(action_played)
 	action_displays.erase(action_display)
 	action_display.queue_free()
 
 
-func action_selected(action: Action) -> void:
-	deck.remove_card(action)
-	pass
+func action_played(action: Action) -> void:
+	deck.play_action(action)

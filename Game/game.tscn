@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=4 uid="uid://dciamadf2kbt2"]
+[gd_scene load_steps=4 format=4 uid="uid://dciamadf2kbt2"]
 
 [ext_resource type="Script" uid="uid://17qa8rybknca" path="res://Game/game.gd" id="1_j5wjh"]
 [ext_resource type="TileSet" uid="uid://btfb8iimo6y6d" path="res://Room/room_tile_set.tres" id="2_e2o6t"]
+[ext_resource type="Script" uid="uid://g3eg4wpewwe6" path="res://TileObject/tile_object_mananger.gd" id="3_7raqb"]
 
 [node name="Game" type="Node2D" node_paths=PackedStringArray("room_tile_map_layer", "tile_object_spawn_parent")]
 script = ExtResource("1_j5wjh")
@@ -17,3 +18,4 @@ navigation_enabled = false
 zoom = Vector2(2, 2)
 
 [node name="TileObjectSpawnParent" type="Node2D" parent="."]
+script = ExtResource("3_7raqb")

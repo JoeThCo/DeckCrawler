@@ -2,6 +2,9 @@ extends Resource
 class_name Action
 
 
+signal action_complete
+
+
 @export_category("Values")
 @export var cost: int
 @export var target: Target
@@ -18,12 +21,22 @@ func set_up(_to: TileObject) -> void:
 	owner_object = _to
 
 
-func execute(_tile_object: TileObject) -> void:
+func execute() -> void:
 	if target is SelfTarget:
-		print("Self")
+		self_action()
 	elif target is OtherTarget:
-		print("Other")
+		var other: TileObject = await SignalBus.tile_object_selection
+		other_action(other)
+	action_complete.emit()
 
 
 func _to_string() -> String:
 	return "({0}, {1})".format([Helper.get_resource_name(self), cost])
+
+
+func self_action() -> void:
+	print("Self")
+
+
+func other_action(_other_tile_object: TileObject) -> void:
+	print("Other")

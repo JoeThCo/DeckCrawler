@@ -2,7 +2,7 @@ extends Control
 class_name ActionDisplay
 
 
-signal action_selected(action: Action)
+signal action_played(action: Action)
 
 
 @export_category("Labels")
@@ -34,4 +34,4 @@ func _on_mouse_exited() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.is_pressed() and is_mouse_over:
-		action_selected.emit(action)
+		action_played.emit(action)

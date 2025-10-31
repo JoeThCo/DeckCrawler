@@ -4,6 +4,7 @@ class_name Deck
 
 signal action_added(action: Action)
 signal action_removed(action: Action)
+signal action_played(action: Action)
 
 
 #move somewhere else
@@ -12,6 +13,7 @@ var all_actions: Array[Action] = []
 var hand: Array[Action] = []
 var owner_object: TileObject
 
+var waiting_for_selection: bool = false
 
 func set_up(_to: TileObject) -> void:
 	owner_object = _to
@@ -21,9 +23,10 @@ func set_up(_to: TileObject) -> void:
 	
 	
 func hand_init() -> void:
-	add_action("Test_Action")
-	add_action("Test_Action")
-	add_action("Test_Action")
+	add_action("Self_Action")
+	add_action("Self_Action")
+	add_action("Other_Action")
+	add_action("Other_Action")
 
 
 func add_action(action_name: String) -> void:
@@ -35,9 +38,17 @@ func add_action(action_name: String) -> void:
 	assert(action_name, " was not found!")
 
 
-func remove_card(action: Action) -> void:
+func remove_action(action: Action) -> void:
 	hand.erase(action)
 	action_removed.emit(action)
+
+
+func play_action(action: Action) -> void:
+	remove_action(action)
+	waiting_for_selection = true
+	await action.execute()
+	waiting_for_selection = false
+	action_played.emit(action)
 
 
 func print_hand() -> void:
