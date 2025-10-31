@@ -24,7 +24,7 @@ func _ready() -> void:
 
 func move_tile_object_to(to: Vector2i) -> void:
 	var path: PackedVector2Array = Room.get_astar_path(grid_coords, to)
-	if path.size() > 1:
+	if Room.is_valid_path(path):
 		var next_position: Vector2i = path[1]
 		Room.move_tiles(grid_coords, Room.local_to_map(next_position))
 		await movement_tween(next_position)

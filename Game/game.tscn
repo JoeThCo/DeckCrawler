@@ -1,21 +1,35 @@
-[gd_scene load_steps=4 format=4 uid="uid://dciamadf2kbt2"]
+[gd_scene load_steps=6 format=4 uid="uid://dciamadf2kbt2"]
 
 [ext_resource type="Script" uid="uid://17qa8rybknca" path="res://Game/game.gd" id="1_j5wjh"]
 [ext_resource type="TileSet" uid="uid://btfb8iimo6y6d" path="res://Room/room_tile_set.tres" id="2_e2o6t"]
 [ext_resource type="Script" uid="uid://g3eg4wpewwe6" path="res://TileObject/tile_object_mananger.gd" id="3_7raqb"]
+[ext_resource type="Script" uid="uid://djkx0mmghwxwd" path="res://Game/display.gd" id="3_jcm6v"]
+[ext_resource type="Script" uid="uid://bo1t4kluncdr4" path="res://Game/mouse_highlight.gd" id="4_fwxkx"]
 
-[node name="Game" type="Node2D" node_paths=PackedStringArray("room_tile_map_layer", "tile_object_spawn_parent")]
+[node name="Game" type="Node2D" node_paths=PackedStringArray("room", "display", "mouse_highlight", "tile_objects_parent")]
 script = ExtResource("1_j5wjh")
-room_tile_map_layer = NodePath("Room")
-tile_object_spawn_parent = NodePath("TileObjectSpawnParent")
+room = NodePath("Room")
+display = NodePath("Display")
+mouse_highlight = NodePath("MouseHighlight")
+tile_objects_parent = NodePath("TileObjectsParent")
 
 [node name="Room" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAD9//j/AAATAAAAAAD+//j/AAATAAAAAAD///j/AAATAAAAAAAAAPj/AAATAAAAAAABAPj/AAATAAAAAAACAPj/AAATAAAAAAADAPj/AAATAAAAAAAEAPj/AAATAAAAAAAFAPj/AAATAAAAAAAGAPj/AAATAAAAAAD8//j/AAATAAAAAAD7//j/AAATAAAAAAD6//j/AAATAAAAAAD5//j/AAATAAAAAAD4//j/AAASAAAAAAAHAPj/AAAUAAAAAAD4//n/AAASAAEAAAD4//r/AAASAAEAAAD4//v/AAASAAEAAAD4//z/AAASAAEAAAD4//3/AAASAAEAAAD4//7/AAASAAEAAAD4////AAASAAEAAAD4/wAAAAASAAEAAAD4/wEAAAASAAEAAAD4/wIAAAASAAEAAAD4/wMAAAASAAEAAAD4/wQAAAASAAEAAAD4/wUAAAASAAEAAAD4/wYAAAASAAEAAAD4/wcAAAASAAIAAAD5/wcAAAATAAIAAAD6/wcAAAATAAIAAAD7/wcAAAATAAIAAAD8/wcAAAATAAIAAAD9/wcAAAATAAIAAAD+/wcAAAATAAIAAAD//wcAAAATAAIAAAAAAAcAAAATAAIAAAABAAcAAAATAAIAAAACAAcAAAATAAIAAAADAAcAAAATAAIAAAAEAAcAAAATAAIAAAAFAAcAAAATAAIAAAAGAAcAAAATAAIAAAAHAAcAAAAUAAIAAAAHAAYAAAAUAAEAAAAHAAUAAAAUAAEAAAAHAAQAAAAUAAEAAAAHAAMAAAAUAAEAAAAHAAIAAAAUAAEAAAAHAAEAAAAUAAEAAAAHAAAAAAAUAAEAAAAHAP//AAAUAAEAAAAHAP7/AAAUAAEAAAAHAP3/AAAUAAEAAAAHAPz/AAAUAAEAAAAHAPv/AAAUAAEAAAAHAPr/AAAUAAEAAAAHAPn/AAAUAAEAAAA=")
 tile_set = ExtResource("2_e2o6t")
 navigation_enabled = false
 
+[node name="Display" type="TileMapLayer" parent="."]
+tile_set = ExtResource("2_e2o6t")
+navigation_enabled = false
+script = ExtResource("3_jcm6v")
+
+[node name="MouseHighlight" type="TileMapLayer" parent="."]
+tile_set = ExtResource("2_e2o6t")
+navigation_enabled = false
+script = ExtResource("4_fwxkx")
+
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
 
-[node name="TileObjectSpawnParent" type="Node2D" parent="."]
+[node name="TileObjectsParent" type="Node2D" parent="."]
 script = ExtResource("3_7raqb")

@@ -29,13 +29,23 @@ static func _a_star_init() -> void:
 	for cell: Vector2i in tile_map.get_used_cells():
 		astar.set_point_solid(cell, true)
 
-
+#FIXME something about this doesnt sit right, click on same tile returns 1
 static func get_astar_path(from: Vector2i, to: Vector2i) -> PackedVector2Array:
-	return astar.get_point_path(from, to, true)
+	if astar.is_in_bounds(to.x, to.y):
+		return astar.get_point_path(from, to, true)
+	return [from]
 
 
 static func get_distance(from: Vector2i, to: Vector2i) -> int:
 	return get_astar_path(from, to).size()
+
+
+static func is_valid_path(path: PackedVector2Array) -> bool:
+	return is_valid_distance(path.size())
+
+
+static func is_valid_distance(distance: int) -> bool:
+	return distance > 1
 
 
 static func get_reachable_cells(start_cell: Vector2i, max_distance: int) -> PackedVector2Array:

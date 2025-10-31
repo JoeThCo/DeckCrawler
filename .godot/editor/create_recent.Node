@@ -1,3 +1,4 @@
+TileMapLayer
 CenterContainer
 Control
 HBoxContainer
@@ -11,5 +12,3 @@ BaddieMovement
 PlayerMovement
 Sprite2D
 Node2D
-TileObject
-Node
