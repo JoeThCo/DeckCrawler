@@ -36,5 +36,4 @@ static func get_all_in_folder(path):
 
 
 static func get_resource_name(resource: Resource) -> String:
-	print(resource.resource_path.get_file())
 	return resource.resource_path.get_file().trim_suffix('.tres')

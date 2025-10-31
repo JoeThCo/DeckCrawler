@@ -27,7 +27,14 @@ func move_tile_object_to(to: Vector2i) -> void:
 	if path.size() > 1:
 		var next_position: Vector2i = path[1]
 		Room.move_tiles(grid_coords, Room.local_to_map(next_position))
-		global_position = path[1]
+		await movement_tween(next_position)
+		global_position = next_position
+		
+
+func movement_tween(next_pos: Vector2) -> void:
+	var tween: Tween = get_tree().create_tween()
+	tween.tween_property(self, "global_position", next_pos, 0.1)
+	await tween.finished
 
 
 func move_tile_object_direction(direction: Vector2i) -> void:

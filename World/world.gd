@@ -5,48 +5,66 @@ class_name World
 # Constants for grid dimensions and movement
 const GRID_WIDTH := 10
 const GRID_HEIGHT := 10
-const START_CELL := 35
 const DIRECTIONS := [10, -10, 1, -1]
+const MAX_ATTEMPTS = 250
+
+const BASE_ROOMS := 8
+const ROOM_COUNT_MULTIPLIER := 3.0
+
+const HARD_TEN := 10 #FIXME Why is 10 needed for %
 
 # Room data
 static var rooms: Dictionary = {}  # cell_id -> room_data
 static var end_rooms: Array[int] = []
 static var room_queue: Array[int] = []
 
+static var start_cell: int
+static var current_coords: Vector2i
 
-static func generate_world(level: int, max_attempts: int = 100) -> bool:
+
+static func set_up() -> void:
+	while true:
+		if generate_world(2):
+			break
+
+	current_coords = get_room_position(start_cell)
+	World.print_floorplan()
+	print(current_coords)
+
+
+static func generate_world(level: int) -> bool:
 	# Reset state
 	rooms.clear()
 	end_rooms.clear()
 	room_queue.clear()
+	start_cell = randi_range(0, GRID_WIDTH * GRID_HEIGHT)
 	
 	# Calculate number of rooms needed
 	var room_count := calculate_room_count(level)
 	
+	while true:
 	# Try to generate a valid floorplan (with retries)
-	for attempt in max_attempts:
-		if _generate_floorplan_attempt(room_count):
-			if _validate_floorplan(room_count):
-				return true
-		# Reset for next attempt
-		rooms.clear()
-		end_rooms.clear()
-		room_queue.clear()
-	
-	print("Failed to generate valid floorplan after ", max_attempts, " attempts")
+		for attempt in MAX_ATTEMPTS:
+			if _generate_floorplan_attempt(room_count):
+				if _validate_floorplan(room_count):
+					return true
+			# Reset for next attempt
+			rooms.clear()
+			end_rooms.clear()
+			room_queue.clear()
+			
+	print("Failed to generate valid floorplan after ", MAX_ATTEMPTS, " attempts")
 	return false
 
 
 static func calculate_room_count(level: int) -> int:
-	var base_rooms := 7 if randf() < 0.5 else 8  # random(2) + 5
-	var level_rooms := int(level * 2.6)
-	return base_rooms + level_rooms
+	return BASE_ROOMS + int(level * ROOM_COUNT_MULTIPLIER)
 
 
 static func _generate_floorplan_attempt(target_room_count: int) -> bool:
 	# Start with the starting room
-	rooms[START_CELL] = {"type": "start", "neighbors": []}
-	room_queue.append(START_CELL)
+	rooms[start_cell] = {"type": "start", "neighbors": []}
+	room_queue.append(start_cell)
 	
 	var rooms_added := 1
 	var needs_reseed := target_room_count > 16
@@ -106,15 +124,15 @@ static func _identify_dead_ends():
 	end_rooms.clear()
 	for cell in rooms:
 		# True dead ends have exactly one neighbor (they're leaves in the tree)
-		if cell != START_CELL and rooms[cell].neighbors.size() == 1:
+		if cell != start_cell and rooms[cell].neighbors.size() == 1:
 			end_rooms.append(cell)
 
 
 static func _is_valid_cell(cell: int) -> bool:
 	# Extract coordinates
-	var x := cell % 10
+	var x := cell % HARD_TEN
 	@warning_ignore("integer_division")
-	var y := cell / 10
+	var y := cell / HARD_TEN
 	
 	# Check bounds and exclude x=0 columns
 	return x >= 1 and x <= GRID_WIDTH and y >= 0 and y < GRID_HEIGHT
@@ -145,29 +163,25 @@ static func _validate_floorplan(room_count: int) -> bool:
 
 static func _is_adjacent_to_start(cell: int) -> bool:
 	for direction in DIRECTIONS:
-		if cell + direction == START_CELL:
+		if cell + direction == start_cell:
 			return true
 	return false
 
 
 # Utility functions to get information about the generated floorplan
-func get_rooms() -> Dictionary:
+static func get_rooms() -> Dictionary:
 	return rooms.duplicate(true)
 
 
-func get_end_rooms() -> Array[int]:
+static func get_end_rooms() -> Array[int]:
 	return end_rooms.duplicate()
 
 
-func get_start_room() -> int:
-	return START_CELL
-
-
-func get_room_position(cell: int) -> Vector2:
+static func get_room_position(cell: int) -> Vector2:
 	# Convert cell ID to actual coordinates
-	var x := cell % 10
+	var x := cell % HARD_TEN
 	@warning_ignore("integer_division")
-	var y := cell / 10
+	var y := cell / HARD_TEN
 	return Vector2(x, y)
 
 
@@ -179,7 +193,7 @@ static func print_floorplan():
 		for x in range(1, GRID_WIDTH + 1):  # Skip x=0 columns
 			var cell := y * 10 + x
 			if rooms.has(cell):
-				if cell == START_CELL:
+				if cell == start_cell:
 					row += "[S]"
 				elif end_rooms.has(cell):
 					row += "[E]"

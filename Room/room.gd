@@ -34,6 +34,10 @@ static func get_astar_path(from: Vector2i, to: Vector2i) -> PackedVector2Array:
 	return astar.get_point_path(from, to, true)
 
 
+static func get_distance(from: Vector2i, to: Vector2i) -> int:
+	return get_astar_path(from, to).size()
+
+
 static func get_reachable_cells(start_cell: Vector2i, max_distance: int) -> PackedVector2Array:
 	var reachable_cells := []
 	var visited := {}

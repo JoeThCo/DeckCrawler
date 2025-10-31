@@ -7,7 +7,6 @@ class_name Game
 
 
 func _ready() -> void:
-	World.generate_world(1, 250)
-	World.print_floorplan()
+	World.set_up()
 	Room.set_up(room_tile_map_layer)
 	TileObjectManager.set_up(tile_object_spawn_parent)
