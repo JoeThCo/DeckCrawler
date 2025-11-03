@@ -1,3 +1,5 @@
+BaddieMovement
+Health
 BaddieAI
 CanvasLayer
 Button
@@ -10,6 +12,3 @@ TextureRect
 ProgressBar
 TextureProgressBar
 HSplitContainer
-HSlider
-Health
-BaddieMovement

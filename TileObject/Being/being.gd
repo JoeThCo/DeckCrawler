@@ -6,6 +6,7 @@ class_name Being
 @export var health_bar: HealthBar
 
 
+#FIXME investigate why Being.tscn, Baddie.tscn and Player.tscn arent synced up on Being.tscn update
 func _ready() -> void:
 	super()
 	if deck != null:

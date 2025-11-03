@@ -22,14 +22,6 @@ metadata/_custom_type_script = "uid://b07q471xwsf10"
 [node name="Health" parent="." index="2"]
 health = 10
 
-[node name="HealthBar" parent="Offset" index="0"]
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_right = 50.0
-offset_bottom = 27.0
-grow_horizontal = 1
-grow_vertical = 1
-
 [node name="BaddieAI" type="Node" parent="." index="4"]
 script = ExtResource("4_hk8ok")
 metadata/_custom_type_script = "uid://dtgr2twpng1sf"

@@ -28,7 +28,7 @@ func execute() -> void:
 	if target is SelfTarget:
 		do_action(owner_object)
 	elif target is OtherTarget:
-		var other: TileObject = await SignalBus.tile_object_selection
+		var other: TileObject = await SignalBus.tile_object_selection #FIXME Can target yourself, others only not you
 		do_action(other)
 	action_complete.emit()
 

@@ -11,15 +11,11 @@ script = ExtResource("2_h20ov")
 metadata/_custom_type_script = "uid://n7b3t6dajop4"
 
 [node name="Offset" type="Control" parent="." index="2"]
-custom_minimum_size = Vector2(16, 0)
+custom_minimum_size = Vector2(0, 16)
 layout_mode = 3
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -30.0
-offset_bottom = -30.0
-grow_vertical = 2
+anchors_preset = 0
+offset_top = -32.0
+offset_bottom = -16.0
 
 [node name="HealthBar" parent="Offset" index="0" instance=ExtResource("3_2uxsb")]
-layout_mode = 0
-anchors_preset = 0
+layout_mode = 1
