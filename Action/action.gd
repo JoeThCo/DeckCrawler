@@ -11,8 +11,9 @@ signal action_complete
 
 
 @export_category("Meta Data")
+@export var action_name: String = "Action Name"
 @export_multiline var description: String = "No Description"
-@export var icon: Texture2D
+@export var icon: CompressedTexture2D
 
 
 var owner_object: TileObject
@@ -20,6 +21,7 @@ var owner_object: TileObject
 
 func set_up(_to: TileObject) -> void:
 	owner_object = _to
+	target.set_up(owner_object)
 
 
 func execute() -> void:

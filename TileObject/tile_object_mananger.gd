@@ -15,7 +15,7 @@ static var tile_objects: Array[TileObject] = []
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.is_pressed():
+	if event.is_action_pressed("selection"):
 		var to_at_coords: TileObject = TileObjectManager.get_tile_object_at_global_coords(get_global_mouse_position())
 		if to_at_coords != null:
 			SignalBus.emit_tile_object_selection(to_at_coords)

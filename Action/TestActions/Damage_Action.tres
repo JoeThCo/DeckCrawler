@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="DamageAction" load_steps=4 format=3 uid="uid://bnjum6plkjoo0"]
+[gd_resource type="Resource" script_class="DamageAction" load_steps=5 format=3 uid="uid://bnjum6plkjoo0"]
 
 [ext_resource type="Script" uid="uid://dkiixetjb5pd2" path="res://Action/damage_action.gd" id="1_exyly"]
+[ext_resource type="Texture2D" uid="uid://52u412wvj2u8" path="res://Art/Damage.png" id="1_t1sfq"]
 [ext_resource type="Script" uid="uid://dcfu8ma0iat0u" path="res://Action/TargetType/other_target.gd" id="2_qoyks"]
 
 [sub_resource type="Resource" id="Resource_t1sfq"]
@@ -11,4 +12,6 @@ metadata/_custom_type_script = "uid://dcfu8ma0iat0u"
 script = ExtResource("1_exyly")
 damage_amount = 4
 target = SubResource("Resource_t1sfq")
+action_name = "Damage"
+icon = ExtResource("1_t1sfq")
 metadata/_custom_type_script = "uid://dkiixetjb5pd2"

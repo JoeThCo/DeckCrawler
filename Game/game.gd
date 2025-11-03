@@ -10,12 +10,17 @@ class_name Game
 @export_category("Node2D")
 @export var tile_objects_parent: Node2D
 
+@export_category("Control")
+@export var all_menus: Control
+
+
 static var turn_count: int = 0
 
 func _ready() -> void:
 	World.set_up()
 	Room.set_up(room)
 	
+	MenuManager.set_up(all_menus)
 	Display.set_up(display)
 	MouseHighlight.set_up(mouse_highlight)
 	
@@ -26,3 +31,7 @@ func _ready() -> void:
 static func player_turn() -> void:
 	turn_count += 1
 	print("Turn #", turn_count)
+
+
+func _on_pause_button_button_down() -> void:
+	MenuManager.display_menu("Pause")

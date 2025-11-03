@@ -1,8 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://bamygbclpllto"]
+[gd_scene load_steps=3 format=3 uid="uid://bamygbclpllto"]
 
 [ext_resource type="Script" uid="uid://cv5s8e84w0n14" path="res://Action/action_display.gd" id="1_u1u7s"]
+[ext_resource type="Texture2D" uid="uid://c0eswmlyovjqe" path="res://Art/Skull.png" id="2_murfs"]
 
-[node name="ActionDisplay" type="Control" node_paths=PackedStringArray("name_label", "cost_label", "target_label")]
+[node name="ActionDisplay" type="Control" node_paths=PackedStringArray("control_offset", "icon_texture", "name_label", "cost_label", "target_label")]
 custom_minimum_size = Vector2(125, 200)
 layout_mode = 3
 anchors_preset = 8
@@ -17,6 +18,8 @@ offset_bottom = 100.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_u1u7s")
+control_offset = NodePath("Offset")
+icon_texture = NodePath("Offset/VBoxContainer/Image")
 name_label = NodePath("Offset/VBoxContainer/Name")
 cost_label = NodePath("Offset/VBoxContainer/Cost")
 target_label = NodePath("Offset/VBoxContainer/Target")
@@ -49,21 +52,34 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="TextureRect" type="TextureRect" parent="Offset/VBoxContainer"]
-layout_mode = 2
-mouse_filter = 2
-
 [node name="Name" type="Label" parent="Offset/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Image" type="TextureRect" parent="Offset/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("2_murfs")
+expand_mode = 5
+stretch_mode = 5
 
 [node name="Cost" type="Label" parent="Offset/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Cost"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Target" type="Label" parent="Offset/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Target"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
