@@ -83,6 +83,11 @@ static func spawn_tile_object(spawn_name: String, coords: Vector2i) -> TileObjec
 	return new_tile_obj
 
 
+static func delete_tile_object(tile_object: TileObject) -> void:
+	tile_objects.erase(tile_object)
+	tile_object.queue_free()
+
+
 static func get_tile_object_at_global_coords(global: Vector2) -> TileObject:
 	var search_grid_coords: Vector2i = Room.local_to_map(global)
 	for current: TileObject in tile_objects:
