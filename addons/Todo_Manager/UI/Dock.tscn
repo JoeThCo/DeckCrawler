@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://b6k0dtftankcx"]
 
-[ext_resource type="Script" uid="uid://csgl0vtsudgxh" path="res://addons/Todo_Manager/Dock.gd" id="1"]
-[ext_resource type="Script" uid="uid://bnyawhvwojm5g" path="res://addons/Todo_Manager/Project.gd" id="2"]
-[ext_resource type="Script" uid="uid://dp4hevwsquax6" path="res://addons/Todo_Manager/Current.gd" id="3"]
+[ext_resource type="Script" uid="uid://bop1nfujrpjwy" path="res://addons/Todo_Manager/Dock.gd" id="1"]
+[ext_resource type="Script" uid="uid://boptrdkvf78j8" path="res://addons/Todo_Manager/Project.gd" id="2"]
+[ext_resource type="Script" uid="uid://ceh8mluxpp0jk" path="res://addons/Todo_Manager/Current.gd" id="3"]
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_kqxcu"]
 
@@ -111,6 +111,8 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_right = -106.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Tree" type="Tree" parent="VBoxContainer/TabContainer/Current/Panel"]
 layout_mode = 1

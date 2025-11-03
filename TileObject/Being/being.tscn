@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://fqvvq2yrh73a"]
+
+[ext_resource type="PackedScene" uid="uid://bns25yjudb53f" path="res://TileObject/tile_object.tscn" id="1_b0sll"]
+
+[node name="Being" instance=ExtResource("1_b0sll")]

@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://bpi7bmyac41cx"]
+[gd_scene load_steps=2 format=3 uid="uid://bamygbclpllto"]
 
-[ext_resource type="Script" uid="uid://cjtm31pmcc1db" path="res://Action/action_display.gd" id="1_u1u7s"]
+[ext_resource type="Script" uid="uid://cv5s8e84w0n14" path="res://Action/action_display.gd" id="1_u1u7s"]
 
 [node name="ActionDisplay" type="Control" node_paths=PackedStringArray("name_label", "cost_label", "target_label")]
 custom_minimum_size = Vector2(125, 200)

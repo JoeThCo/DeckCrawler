@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=4 uid="uid://dciamadf2kbt2"]
 
-[ext_resource type="Script" uid="uid://17qa8rybknca" path="res://Game/game.gd" id="1_j5wjh"]
+[ext_resource type="Script" path="res://Game/game.gd" id="1_j5wjh"]
 [ext_resource type="TileSet" uid="uid://btfb8iimo6y6d" path="res://Room/room_tile_set.tres" id="2_e2o6t"]
-[ext_resource type="Script" uid="uid://g3eg4wpewwe6" path="res://TileObject/tile_object_mananger.gd" id="3_7raqb"]
-[ext_resource type="Script" uid="uid://djkx0mmghwxwd" path="res://Game/display.gd" id="3_jcm6v"]
-[ext_resource type="Script" uid="uid://bo1t4kluncdr4" path="res://Game/mouse_highlight.gd" id="4_fwxkx"]
+[ext_resource type="Script" uid="uid://bvaikll4y0qy1" path="res://TileObject/tile_object_mananger.gd" id="3_7raqb"]
+[ext_resource type="Script" uid="uid://ctaogvfk2urvd" path="res://Game/display.gd" id="3_jcm6v"]
+[ext_resource type="Script" uid="uid://bcro8vutmm0tp" path="res://Game/mouse_highlight.gd" id="4_fwxkx"]
 
 [node name="Game" type="Node2D" node_paths=PackedStringArray("room", "display", "mouse_highlight", "tile_objects_parent")]
 script = ExtResource("1_j5wjh")

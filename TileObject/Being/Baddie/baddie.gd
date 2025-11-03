@@ -1,4 +1,4 @@
-extends TileObject
+extends Being
 class_name Baddie
 
 
