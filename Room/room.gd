@@ -29,6 +29,7 @@ static func _a_star_init() -> void:
 	for cell: Vector2i in tile_map.get_used_cells():
 		astar.set_point_solid(cell, true)
 
+
 #FIXME something about this doesnt sit right, click on same tile returns 1
 static func get_astar_path(from: Vector2i, to: Vector2i) -> PackedVector2Array:
 	if astar.is_in_bounds(to.x, to.y):
