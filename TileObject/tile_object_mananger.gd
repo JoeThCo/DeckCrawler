@@ -2,14 +2,12 @@ extends Node2D
 class_name TileObjectManager
 
 
-
-
 static var spawn_parent: Node2D
 
 
 static var spawn_dict = {
-	"Player" : "res://TileObject/Being/Player/player.tscn",
-	"Baddie" : "res://TileObject/Being/Baddie/baddie.tscn"
+	"Player" : "res://TileObject/Being/Player/player_two.tscn",
+	"Baddie" : "res://TileObject/Being/Baddie/baddie_two.tscn"
 }
 
 static var player: Player

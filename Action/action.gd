@@ -23,10 +23,10 @@ func set_up(_to: TileObject) -> void:
 
 func execute() -> void:
 	if target is SelfTarget:
-		self_action()
+		do_action(owner_object)
 	elif target is OtherTarget:
 		var other: TileObject = await SignalBus.tile_object_selection
-		other_action(other)
+		do_action(other)
 	action_complete.emit()
 
 
@@ -34,9 +34,5 @@ func _to_string() -> String:
 	return "({0}, {1})".format([Helper.get_resource_name(self), cost])
 
 
-func self_action() -> void:
-	print("Self")
-
-
-func other_action(_other_tile_object: TileObject) -> void:
-	print("Other")
+func do_action(_tile_object: TileObject) -> void:
+	print("Action!")

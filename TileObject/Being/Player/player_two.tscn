@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://3lcxehaprq0y"]
+
+[ext_resource type="PackedScene" uid="uid://fqvvq2yrh73a" path="res://TileObject/Being/being.tscn" id="1_ule3t"]
+[ext_resource type="Script" uid="uid://cy71jjp5d2opr" path="res://Deck/deck.gd" id="2_2n236"]
+[ext_resource type="Script" uid="uid://bl61wfcf65amb" path="res://TileObject/Being/Player/player.gd" id="2_ww3vv"]
+[ext_resource type="Script" uid="uid://cklasyy7i12u4" path="res://TileObject/Being/Player/player_movement.gd" id="3_ww3vv"]
+[ext_resource type="Script" uid="uid://orjp73y7x1v1" path="res://Deck/deck_display.gd" id="4_eshuv"]
+
+[node name="Player" node_paths=PackedStringArray("deck_display", "health", "movement", "deck") instance=ExtResource("1_ule3t")]
+script = ExtResource("2_ww3vv")
+deck_display = NodePath("CanvasLayer/CenterContainer/HBoxContainer")
+health = NodePath("Health")
+movement = NodePath("PlayerMovement")
+deck = NodePath("Deck")
+
+[node name="Deck" type="Node" parent="." index="1"]
+script = ExtResource("2_2n236")
+metadata/_custom_type_script = "uid://cy71jjp5d2opr"
+
+[node name="PlayerMovement" type="Node2D" parent="." index="2"]
+script = ExtResource("3_ww3vv")
+metadata/_custom_type_script = "uid://cklasyy7i12u4"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="3"]
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer" index="0"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/CenterContainer" index="0"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+script = ExtResource("4_eshuv")
+
+[node name="Health" parent="." index="4"]
+health = 10

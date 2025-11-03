@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="HealAction" load_steps=4 format=3 uid="uid://db5hpsjyvc3cd"]
+
+[ext_resource type="Script" uid="uid://m7cn0dsgbhg1" path="res://Action/heal_action.gd" id="1_wqtai"]
+[ext_resource type="Script" uid="uid://dorihyi5ikloq" path="res://Action/TargetType/self_target.gd" id="2_dsch6"]
+
+[sub_resource type="Resource" id="Resource_eeyxt"]
+script = ExtResource("2_dsch6")
+metadata/_custom_type_script = "uid://dorihyi5ikloq"
+
+[resource]
+script = ExtResource("1_wqtai")
+target = SubResource("Resource_eeyxt")
+metadata/_custom_type_script = "uid://m7cn0dsgbhg1"

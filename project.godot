@@ -23,11 +23,6 @@ SignalBus="*res://SignalBus.gd"
 
 enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg")
 
-[gui]
-
-theme/custom="uid://bulxdobu4kdig"
-theme/custom_font="uid://dqiy32jhtene3"
-
 [input]
 
 up={
