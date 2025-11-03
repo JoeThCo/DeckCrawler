@@ -17,6 +17,7 @@ signal action_complete
 
 var owner_object: TileObject
 
+
 func set_up(_to: TileObject) -> void:
 	owner_object = _to
 

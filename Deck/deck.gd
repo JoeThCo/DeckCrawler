@@ -30,6 +30,7 @@ func hand_init() -> void:
 func add_action(action_name: String) -> void:
 	for action: Action in all_actions:
 		if Helper.get_resource_name(action) == action_name:
+			action.set_up(owner_object)
 			hand.append(action)
 			action_added.emit(action)
 			return

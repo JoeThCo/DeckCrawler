@@ -9,5 +9,6 @@ metadata/_custom_type_script = "uid://dcfu8ma0iat0u"
 
 [resource]
 script = ExtResource("1_exyly")
+damage_amount = 4
 target = SubResource("Resource_t1sfq")
 metadata/_custom_type_script = "uid://dkiixetjb5pd2"

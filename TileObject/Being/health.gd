@@ -1,8 +1,10 @@
 extends Node
 class_name Health
 
-signal health_changed
+
+signal health_changed()
 signal on_dead
+
 
 var is_dead: bool:
 	get: return health <= 0
@@ -14,6 +16,7 @@ var max_health: int
 
 func set_up() -> void:
 	max_health = health
+	health_changed.emit()
 
 
 func take_damage(action: DamageAction) -> void:

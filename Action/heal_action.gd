@@ -11,4 +11,5 @@ func set_up(_to: TileObject) -> void:
 
 func do_action(tile_object: TileObject) -> void:
 	if tile_object is Being:
+		print("Heal!")
 		tile_object.health.heal_health(self)
