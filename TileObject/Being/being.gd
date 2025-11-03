@@ -14,4 +14,4 @@ func _ready() -> void:
 
 
 func on_death() -> void:
-	TileObjectManager.delete_tile_object(self)
+	pass
