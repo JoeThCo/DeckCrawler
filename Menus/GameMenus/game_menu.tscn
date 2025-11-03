@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://rruso4wupd38"]
 
-[ext_resource type="Script" uid="uid://m7f12qe5mk72" path="res://Menus/game_menu.gd" id="1_guh5r"]
+[ext_resource type="Script" uid="uid://m7f12qe5mk72" path="res://Menus/GameMenus/game_menu.gd" id="1_guh5r"]
 [ext_resource type="Texture2D" uid="uid://rpokuas4mla7" path="res://Art/Home.png" id="1_pun1m"]
 
 [node name="Game" type="CanvasLayer"]

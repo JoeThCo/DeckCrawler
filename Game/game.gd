@@ -13,7 +13,7 @@ class_name Game
 @export_category("Control")
 @export var all_menus: Control
 
-
+static var is_playing: bool = true
 static var is_paused: bool = false
 static var turn_count: int = 0
 
@@ -26,6 +26,9 @@ func _ready() -> void:
 	MouseHighlight.set_up(mouse_highlight)
 	
 	TileObjectManager.set_up(tile_objects_parent)
+	
+	is_paused = false
+	is_playing = true
 	turn_count = 0
 
 
@@ -44,3 +47,7 @@ static func resume_game() -> void:
 	MenuManager.display_menu("Game")
 	is_paused = false
 	SignalBus.emit_game_resumed()
+
+
+static  func game_over() -> void:
+	MenuManager.display_menu("GameOver")

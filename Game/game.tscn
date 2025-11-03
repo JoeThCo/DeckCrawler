@@ -1,13 +1,15 @@
-[gd_scene load_steps=9 format=4 uid="uid://dciamadf2kbt2"]
+[gd_scene load_steps=11 format=4 uid="uid://dciamadf2kbt2"]
 
 [ext_resource type="Script" uid="uid://17qa8rybknca" path="res://Game/game.gd" id="1_j5wjh"]
 [ext_resource type="TileSet" uid="uid://btfb8iimo6y6d" path="res://Room/room_tile_set.tres" id="2_e2o6t"]
 [ext_resource type="Script" uid="uid://bvaikll4y0qy1" path="res://TileObject/tile_object_mananger.gd" id="3_7raqb"]
 [ext_resource type="Script" uid="uid://ctaogvfk2urvd" path="res://Game/display.gd" id="3_jcm6v"]
 [ext_resource type="Script" uid="uid://bcro8vutmm0tp" path="res://Game/mouse_highlight.gd" id="4_fwxkx"]
-[ext_resource type="Script" uid="uid://bi8w2o14ptuol" path="res://Menus/menu_manager.gd" id="6_oomkl"]
-[ext_resource type="PackedScene" uid="uid://rruso4wupd38" path="res://Menus/game_menu.tscn" id="7_buohc"]
-[ext_resource type="PackedScene" uid="uid://c2kofpiqat8me" path="res://Menus/pause_menu.tscn" id="8_kul4i"]
+[ext_resource type="Script" uid="uid://bi8w2o14ptuol" path="res://Menus/GameMenus/menu_manager.gd" id="6_oomkl"]
+[ext_resource type="PackedScene" uid="uid://rruso4wupd38" path="res://Menus/GameMenus/game_menu.tscn" id="7_buohc"]
+[ext_resource type="PackedScene" uid="uid://c2kofpiqat8me" path="res://Menus/GameMenus/pause_menu.tscn" id="8_kul4i"]
+[ext_resource type="PackedScene" uid="uid://bn244vwnx4bvl" path="res://Menus/GameMenus/temp_win.tscn" id="9_7gi1t"]
+[ext_resource type="PackedScene" uid="uid://jyws2qlkxyv1" path="res://Menus/GameMenus/game_over.tscn" id="9_kul4i"]
 
 [node name="Game" type="Node2D" node_paths=PackedStringArray("room", "display", "mouse_highlight", "tile_objects_parent", "all_menus")]
 script = ExtResource("1_j5wjh")
@@ -50,7 +52,10 @@ script = ExtResource("6_oomkl")
 [node name="Game" parent="MenuManager" instance=ExtResource("7_buohc")]
 
 [node name="Pause" parent="MenuManager" instance=ExtResource("8_kul4i")]
+visible = false
 
-[node name="TempWin" type="CanvasLayer" parent="MenuManager"]
+[node name="TempWin" parent="MenuManager" instance=ExtResource("9_7gi1t")]
+visible = false
 
-[node name="GameOver" type="CanvasLayer" parent="MenuManager"]
+[node name="GameOver" parent="MenuManager" instance=ExtResource("9_kul4i")]
+visible = false

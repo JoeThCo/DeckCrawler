@@ -14,3 +14,4 @@ func _ready() -> void:
 func on_death() -> void:
 	super()
 	print("Game Over!")
+	Game.game_over()

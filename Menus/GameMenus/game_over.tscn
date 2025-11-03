@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://jyws2qlkxyv1"]
+
+[ext_resource type="Script" uid="uid://lisgkrxpopae" path="res://Menus/GameMenus/game_over_menu.gd" id="1_ntcrg"]
+[ext_resource type="PackedScene" uid="uid://d26o6q6t80ghq" path="res://Menus/GameMenus/play_again.tscn" id="2_i0iaq"]
+
+[node name="GameOver" type="CanvasLayer"]
+script = ExtResource("1_ntcrg")
+
+[node name="Panel" type="Panel" parent="."]
+self_modulate = Color(1, 0, 0.24705882, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Panel"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 32
+text = "You Lose!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayAgain" parent="Panel" instance=ExtResource("2_i0iaq")]
+layout_mode = 1
+offset_left = -48.0
+offset_top = -33.0
+offset_right = 48.0
+offset_bottom = 33.0
+
+[connection signal="button_down" from="Panel/PlayAgain/PlayAgain" to="." method="_on_play_again_button_down"]
+[connection signal="button_down" from="Panel/PlayAgain/MainMenu" to="." method="_on_main_menu_button_down"]
+[connection signal="button_down" from="Panel/PlayAgain/Quit" to="." method="_on_quit_button_down"]
+
+[editable path="Panel/PlayAgain"]
