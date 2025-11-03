@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bns25yjudb53f" path="res://TileObject/tile_object.tscn" id="1_b0sll"]
 [ext_resource type="Script" uid="uid://n7b3t6dajop4" path="res://TileObject/Being/health.gd" id="2_h20ov"]
-[ext_resource type="Script" uid="uid://d12robm35c2s5" path="res://TileObject/Being/health_bar.gd" id="3_2uxsb"]
+[ext_resource type="PackedScene" uid="uid://cxel0qdn877b7" path="res://TileObject/Being/health_bar.tscn" id="3_2uxsb"]
 
 [node name="Being" instance=ExtResource("1_b0sll")]
 
@@ -20,27 +20,6 @@ offset_top = -30.0
 offset_bottom = -30.0
 grow_vertical = 2
 
-[node name="HealthBar" type="ProgressBar" parent="Offset" index="0" node_paths=PackedStringArray("health_label")]
-custom_minimum_size = Vector2(50, 25)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-max_value = 10.0
-step = 1.0
-show_percentage = false
-script = ExtResource("3_2uxsb")
-health_label = NodePath("HealthLabel")
-
-[node name="HealthLabel" type="Label" parent="Offset/HealthBar" index="0"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "0/10"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="HealthBar" parent="Offset" index="0" instance=ExtResource("3_2uxsb")]
+layout_mode = 0
+anchors_preset = 0

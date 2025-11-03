@@ -46,7 +46,7 @@ func _on_mouse_exited() -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.is_pressed() and is_mouse_over:
+	if event.is_action_pressed("selection") and is_mouse_over:
 		action_played.emit(action)
 
 

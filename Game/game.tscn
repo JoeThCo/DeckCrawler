@@ -15,7 +15,7 @@ room = NodePath("Room")
 display = NodePath("Display")
 mouse_highlight = NodePath("MouseHighlight")
 tile_objects_parent = NodePath("TileObjectsParent")
-all_menus = NodePath("Menu")
+all_menus = NodePath("MenuManager")
 
 [node name="Room" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAD9//j/AAATAAAAAAD+//j/AAATAAAAAAD///j/AAATAAAAAAAAAPj/AAATAAAAAAABAPj/AAATAAAAAAACAPj/AAATAAAAAAADAPj/AAATAAAAAAAEAPj/AAATAAAAAAAFAPj/AAATAAAAAAAGAPj/AAATAAAAAAD8//j/AAATAAAAAAD7//j/AAATAAAAAAD6//j/AAATAAAAAAD5//j/AAATAAAAAAD4//j/AAASAAAAAAAHAPj/AAAUAAAAAAD4//n/AAASAAEAAAD4//r/AAASAAEAAAD4//v/AAASAAEAAAD4//z/AAASAAEAAAD4//3/AAASAAEAAAD4//7/AAASAAEAAAD4////AAASAAEAAAD4/wAAAAASAAEAAAD4/wEAAAASAAEAAAD4/wIAAAASAAEAAAD4/wMAAAASAAEAAAD4/wQAAAASAAEAAAD4/wUAAAASAAEAAAD4/wYAAAASAAEAAAD4/wcAAAASAAIAAAD5/wcAAAATAAIAAAD6/wcAAAATAAIAAAD7/wcAAAATAAIAAAD8/wcAAAATAAIAAAD9/wcAAAATAAIAAAD+/wcAAAATAAIAAAD//wcAAAATAAIAAAAAAAcAAAATAAIAAAABAAcAAAATAAIAAAACAAcAAAATAAIAAAADAAcAAAATAAIAAAAEAAcAAAATAAIAAAAFAAcAAAATAAIAAAAGAAcAAAATAAIAAAAHAAcAAAAUAAIAAAAHAAYAAAAUAAEAAAAHAAUAAAAUAAEAAAAHAAQAAAAUAAEAAAAHAAMAAAAUAAEAAAAHAAIAAAAUAAEAAAAHAAEAAAAUAAEAAAAHAAAAAAAUAAEAAAAHAP//AAAUAAEAAAAHAP7/AAAUAAEAAAAHAP3/AAAUAAEAAAAHAPz/AAAUAAEAAAAHAPv/AAAUAAEAAAAHAPr/AAAUAAEAAAAHAPn/AAAUAAEAAAA=")
@@ -38,7 +38,7 @@ zoom = Vector2(2, 2)
 [node name="TileObjectsParent" type="Node2D" parent="."]
 script = ExtResource("3_7raqb")
 
-[node name="Menu" type="Control" parent="."]
+[node name="MenuManager" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -47,6 +47,10 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("6_oomkl")
 
-[node name="Game" parent="Menu" instance=ExtResource("7_buohc")]
+[node name="Game" parent="MenuManager" instance=ExtResource("7_buohc")]
 
-[node name="Pause" parent="Menu" instance=ExtResource("8_kul4i")]
+[node name="Pause" parent="MenuManager" instance=ExtResource("8_kul4i")]
+
+[node name="TempWin" type="CanvasLayer" parent="MenuManager"]
+
+[node name="GameOver" type="CanvasLayer" parent="MenuManager"]

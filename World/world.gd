@@ -38,7 +38,7 @@ static func generate_world(level: int) -> bool:
 	rooms.clear()
 	end_rooms.clear()
 	room_queue.clear()
-	start_cell = randi_range(0, GRID_WIDTH * GRID_HEIGHT)
+	start_cell = randi_range(0, (GRID_WIDTH * GRID_HEIGHT) - 1) #HACK figure this out
 	
 	# Calculate number of rooms needed
 	var room_count := calculate_room_count(level)
@@ -192,7 +192,7 @@ static func print_floorplan():
 	for y in range(GRID_HEIGHT):
 		var row := ""
 		for x in range(1, GRID_WIDTH + 1):  # Skip x=0 columns
-			var cell := y * 10 + x
+			var cell := y * HARD_TEN + x
 			if rooms.has(cell):
 				if cell == start_cell:
 					row += "[S]"

@@ -1,9 +1,10 @@
+BaddieAI
+CanvasLayer
 Button
 VBoxContainer
 Label
 Control
 Panel
-CanvasLayer
 MarginContainer
 TextureRect
 ProgressBar

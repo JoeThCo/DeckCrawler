@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://fqvvq2yrh73a" path="res://TileObject/Being/being.tscn" id="1_ule3t"]
 [ext_resource type="Script" uid="uid://cy71jjp5d2opr" path="res://Deck/deck.gd" id="2_2n236"]
-[ext_resource type="Script" uid="uid://bl61wfcf65amb" path="res://TileObject/Being/Player/player.gd" id="2_ww3vv"]
-[ext_resource type="Script" uid="uid://cklasyy7i12u4" path="res://TileObject/Being/Player/player_movement.gd" id="3_ww3vv"]
+[ext_resource type="Script" uid="uid://bl61wfcf65amb" path="res://TileObject/Being/Friend/Player/player.gd" id="2_ww3vv"]
+[ext_resource type="Script" uid="uid://cklasyy7i12u4" path="res://TileObject/Being/Friend/Player/player_movement.gd" id="3_ww3vv"]
 [ext_resource type="Script" uid="uid://orjp73y7x1v1" path="res://Deck/hand_display.gd" id="4_eshuv"]
 
 [node name="Player" node_paths=PackedStringArray("hand_display", "deck", "health", "health_bar", "movement") instance=ExtResource("1_ule3t")]
@@ -43,4 +43,10 @@ script = ExtResource("4_eshuv")
 health = 10
 
 [node name="HealthBar" parent="Offset" index="0"]
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 50.0
+offset_bottom = 27.0
+grow_horizontal = 1
+grow_vertical = 1
 mouse_filter = 2
