@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=4 uid="uid://dciamadf2kbt2"]
+[gd_scene load_steps=9 format=4 uid="uid://dciamadf2kbt2"]
 
 [ext_resource type="Script" uid="uid://17qa8rybknca" path="res://Game/game.gd" id="1_j5wjh"]
 [ext_resource type="TileSet" uid="uid://btfb8iimo6y6d" path="res://Room/room_tile_set.tres" id="2_e2o6t"]
 [ext_resource type="Script" uid="uid://bvaikll4y0qy1" path="res://TileObject/tile_object_mananger.gd" id="3_7raqb"]
 [ext_resource type="Script" uid="uid://ctaogvfk2urvd" path="res://Game/display.gd" id="3_jcm6v"]
 [ext_resource type="Script" uid="uid://bcro8vutmm0tp" path="res://Game/mouse_highlight.gd" id="4_fwxkx"]
-[ext_resource type="Script" uid="uid://bi8w2o14ptuol" path="res://Game/menu_manager.gd" id="6_oomkl"]
-[ext_resource type="Texture2D" uid="uid://rpokuas4mla7" path="res://Art/Home.png" id="6_qmv3x"]
+[ext_resource type="Script" uid="uid://bi8w2o14ptuol" path="res://Menus/menu_manager.gd" id="6_oomkl"]
+[ext_resource type="PackedScene" uid="uid://rruso4wupd38" path="res://Menus/game_menu.tscn" id="7_buohc"]
+[ext_resource type="PackedScene" uid="uid://c2kofpiqat8me" path="res://Menus/pause_menu.tscn" id="8_kul4i"]
 
 [node name="Game" type="Node2D" node_paths=PackedStringArray("room", "display", "mouse_highlight", "tile_objects_parent", "all_menus")]
 script = ExtResource("1_j5wjh")
@@ -46,37 +47,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("6_oomkl")
 
-[node name="Game" type="CanvasLayer" parent="Menu"]
+[node name="Game" parent="Menu" instance=ExtResource("7_buohc")]
 
-[node name="PauseButton" type="Button" parent="Menu/Game"]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -50.0
-offset_bottom = 50.0
-grow_horizontal = 0
-icon_alignment = 1
-
-[node name="MarginContainer" type="MarginContainer" parent="Menu/Game/PauseButton"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TextureRect" type="TextureRect" parent="Menu/Game/PauseButton/MarginContainer"]
-layout_mode = 2
-texture = ExtResource("6_qmv3x")
-expand_mode = 1
-
-[node name="Pause" type="CanvasLayer" parent="Menu"]
-
-[node name="Panel" type="Panel" parent="Menu/Pause"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[connection signal="button_down" from="Menu/Game/PauseButton" to="." method="_on_pause_button_button_down"]
+[node name="Pause" parent="Menu" instance=ExtResource("8_kul4i")]

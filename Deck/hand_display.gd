@@ -1,5 +1,5 @@
 extends HBoxContainer
-class_name DeckDisplay
+class_name HandDisplay
 
 
 var action_displays: Array[ActionDisplay] = []
@@ -11,6 +11,9 @@ func set_up(_d: Deck) -> void:
 	action_displays = []
 	deck.action_added.connect(action_added)
 	deck.action_removed.connect(action_removed)
+	
+	SignalBus.game_paused.connect(on_game_paused)
+	SignalBus.game_resumed.connect(on_game_resumed)
 
 
 func action_added(action: Action) -> void:
@@ -37,3 +40,12 @@ func remove_action(action_display: ActionDisplay) -> void:
 
 func action_played(action: Action) -> void:
 	deck.play_action(action)
+
+
+func on_game_paused() -> void:
+	visible = false
+
+
+func on_game_resumed() -> void:
+	visible = true
+	

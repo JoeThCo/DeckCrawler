@@ -1,14 +1,14 @@
+Button
+VBoxContainer
+Label
 Control
 Panel
 CanvasLayer
 MarginContainer
 TextureRect
-Button
-Label
 ProgressBar
 TextureProgressBar
 HSplitContainer
 HSlider
 Health
 BaddieMovement
-HBoxContainer

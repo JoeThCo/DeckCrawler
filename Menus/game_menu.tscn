@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://rruso4wupd38"]
+
+[ext_resource type="Script" uid="uid://m7f12qe5mk72" path="res://Menus/game_menu.gd" id="1_guh5r"]
+[ext_resource type="Texture2D" uid="uid://rpokuas4mla7" path="res://Art/Home.png" id="1_pun1m"]
+
+[node name="Game" type="CanvasLayer"]
+script = ExtResource("1_guh5r")
+
+[node name="PauseButton" type="Button" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -50.0
+offset_bottom = 50.0
+grow_horizontal = 0
+icon_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="PauseButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="PauseButton/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("1_pun1m")
+expand_mode = 1
+
+[connection signal="button_down" from="PauseButton" to="." method="_on_pause_button_button_down"]

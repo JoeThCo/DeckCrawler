@@ -17,7 +17,7 @@ signal action_played(action: Action)
 @export var cost_label: Label
 @export var target_label: Label
 
-const DO_TWEENS: bool = false
+const DO_TWEENS: bool = true
 
 var action: Action
 var is_mouse_over: bool = false
@@ -50,12 +50,14 @@ func _input(event: InputEvent) -> void:
 		action_played.emit(action)
 
 
-func to_mouse_exit() -> void:
-	var tween: Tween = get_tree().create_tween()
-	tween.tween_property(control_offset, "position", Vector2(0, 100), 0.1)
-
-
 func to_mouse_enter() -> void:
 	var tween: Tween = get_tree().create_tween()
-	tween.tween_property(control_offset, "position", Vector2.ZERO, 0.1)
+	tween.tween_property(control_offset, "position", Vector2(0, -100), 0.1)
+
+
+func to_mouse_exit() -> void:
+	var tween: Tween = get_tree().create_tween()
+	tween.tween_property(control_offset, "position", Vector2.ZERO, 0.1)	
+
+
 	

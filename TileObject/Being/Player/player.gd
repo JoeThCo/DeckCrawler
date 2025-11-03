@@ -2,12 +2,12 @@ extends Friend
 class_name Player
 
 
-@export var deck_display: DeckDisplay
+@export var hand_display: HandDisplay
 
 
 func _ready() -> void:
 	super()
-	deck_display.set_up(deck)
+	hand_display.set_up(deck)
 	deck.hand_init()
 
 

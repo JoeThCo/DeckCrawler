@@ -14,6 +14,7 @@ class_name Game
 @export var all_menus: Control
 
 
+static var is_paused: bool = false
 static var turn_count: int = 0
 
 func _ready() -> void:
@@ -33,5 +34,13 @@ static func player_turn() -> void:
 	print("Turn #", turn_count)
 
 
-func _on_pause_button_button_down() -> void:
+static func pause_game() -> void:
 	MenuManager.display_menu("Pause")
+	is_paused = true
+	SignalBus.emit_game_paused()
+
+
+static func resume_game() -> void:
+	MenuManager.display_menu("Game")
+	is_paused = false
+	SignalBus.emit_game_resumed()
