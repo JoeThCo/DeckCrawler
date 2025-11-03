@@ -10,6 +10,7 @@ metadata/_custom_type_script = "uid://dorihyi5ikloq"
 
 [resource]
 script = ExtResource("1_wqtai")
+heal_amount = 4
 target = SubResource("Resource_eeyxt")
 action_name = "Heal"
 icon = ExtResource("1_eeyxt")

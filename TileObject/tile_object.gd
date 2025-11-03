@@ -17,6 +17,7 @@ var grid_coords: Vector2i:
 
 func _ready() -> void:
 	movement.set_up(self)
+	Room.move_tiles(grid_coords, grid_coords)
 
 
 func move_tile_object_to(to: Vector2i) -> void:
