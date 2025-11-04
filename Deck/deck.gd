@@ -23,12 +23,12 @@ func set_up(_to: TileObject) -> void:
 	
 	
 func hand_init() -> void:
-	add_action("Heal_Action")
-	add_action("Heal_Action")
-	add_action("Damage_Action")
-	add_action("Damage_Action")
-	add_action("Damage_Action")
-	add_action("Damage_Action")
+	add_action("Heal_Other")
+	add_action("Heal_Self")
+	add_action("Bolt_Other")
+	add_action("Damage_Other")
+	add_action("Damage_Other")
+	add_action("Damage_Other")
 
 
 func add_action(action_name: String) -> void:

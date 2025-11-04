@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="DamageAction" load_steps=3 format=3 uid="uid://i77cappumake"]
+
+[ext_resource type="Texture2D" uid="uid://dcvcxnbw4el75" path="res://Art/bolt.png" id="1_hwulm"]
+[ext_resource type="Script" uid="uid://dkiixetjb5pd2" path="res://Action/damage_action.gd" id="2_h61pn"]
+
+[resource]
+script = ExtResource("2_h61pn")
+damage_amount = 5
+simple_target = 1
+action_name = "Bolt"
+icon = ExtResource("1_hwulm")
+particle_to_spawn = "bolt"
+metadata/_custom_type_script = "uid://dkiixetjb5pd2"

@@ -1,8 +1,7 @@
-[gd_resource type="Resource" script_class="HealAction" load_steps=6 format=3 uid="uid://db5hpsjyvc3cd"]
+[gd_resource type="Resource" script_class="HealAction" load_steps=5 format=3 uid="uid://db5hpsjyvc3cd"]
 
 [ext_resource type="Texture2D" uid="uid://plcfpxv3vt6u" path="res://Art/Health.png" id="1_eeyxt"]
 [ext_resource type="Script" uid="uid://m7cn0dsgbhg1" path="res://Action/heal_action.gd" id="1_wqtai"]
-[ext_resource type="PackedScene" uid="uid://erlfrxjj20ab" path="res://Action/Particles/healing.tscn" id="2_a5aix"]
 [ext_resource type="Script" uid="uid://dorihyi5ikloq" path="res://Action/TargetType/self_target.gd" id="2_dsch6"]
 
 [sub_resource type="Resource" id="Resource_eeyxt"]
@@ -15,5 +14,5 @@ heal_amount = 4
 target = SubResource("Resource_eeyxt")
 action_name = "Heal"
 icon = ExtResource("1_eeyxt")
-particles = ExtResource("2_a5aix")
+particle_to_spawn = "healing"
 metadata/_custom_type_script = "uid://m7cn0dsgbhg1"

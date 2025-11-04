@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cuqcolfhfeudw"]
+
+[ext_resource type="Texture2D" uid="uid://dcvcxnbw4el75" path="res://Art/bolt.png" id="1_gcjh2"]
+[ext_resource type="Script" uid="uid://c48fvuc8rhacx" path="res://Action/Particles/action_particles.gd" id="2_fg16y"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fsxsm"]
+particle_flag_align_y = true
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0, 0)
+scale_min = 0.099999994
+scale_max = 0.099999994
+color = Color(0.80804706, 0.7594155, 1.540184e-06, 1)
+
+[node name="Bolt" type="GPUParticles2D"]
+physics_interpolation_mode = 2
+amount = 1
+texture = ExtResource("1_gcjh2")
+lifetime = 10.0
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_fsxsm")
+script = ExtResource("2_fg16y")

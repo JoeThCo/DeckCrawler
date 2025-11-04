@@ -10,19 +10,14 @@
 [ext_resource type="PackedScene" uid="uid://c2kofpiqat8me" path="res://Menus/GameMenus/pause_menu.tscn" id="8_kul4i"]
 [ext_resource type="PackedScene" uid="uid://bn244vwnx4bvl" path="res://Menus/GameMenus/temp_win.tscn" id="9_7gi1t"]
 [ext_resource type="PackedScene" uid="uid://jyws2qlkxyv1" path="res://Menus/GameMenus/game_over.tscn" id="9_kul4i"]
+[ext_resource type="PackedScene" uid="uid://g2xe33coesfm" path="res://Action/Particles/path_particles.tscn" id="11_fsxsm"]
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7gi1t"]
-particle_flag_disable_z = true
-spread = 0.0
-initial_velocity_min = 100.0
-initial_velocity_max = 100.0
-gravity = Vector3(0, 0, 0)
-
-[node name="Game" type="Node2D" node_paths=PackedStringArray("room", "display", "mouse_highlight", "tile_objects_parent", "all_menus")]
+[node name="Game" type="Node2D" node_paths=PackedStringArray("room", "display", "mouse_highlight", "_game_root", "tile_objects_parent", "all_menus")]
 script = ExtResource("1_j5wjh")
 room = NodePath("Room")
 display = NodePath("Display")
 mouse_highlight = NodePath("MouseHighlight")
+_game_root = NodePath(".")
 tile_objects_parent = NodePath("TileObjectsParent")
 all_menus = NodePath("MenuManager")
 
@@ -67,5 +62,5 @@ visible = false
 [node name="GameOver" parent="MenuManager" instance=ExtResource("9_kul4i")]
 visible = false
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-process_material = SubResource("ParticleProcessMaterial_7gi1t")
+[node name="PathParticles" parent="." instance=ExtResource("11_fsxsm")]
+visible = false

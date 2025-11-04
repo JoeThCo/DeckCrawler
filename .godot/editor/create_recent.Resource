@@ -1,3 +1,3 @@
-HealAction
 DamageAction
+HealAction
 Action

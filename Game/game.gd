@@ -1,6 +1,7 @@
 extends Node2D
 class_name Game
 
+
 @export_category("TileMapLayers")
 @export var room: TileMapLayer
 @export var display: TileMapLayer
@@ -8,16 +9,22 @@ class_name Game
 
 
 @export_category("Node2D")
+@export var _game_root: Node2D
 @export var tile_objects_parent: Node2D
 
 @export_category("Control")
 @export var all_menus: Control
 
+static var game_root: Node2D
+
 static var is_playing: bool = true
 static var is_paused: bool = false
 static var turn_count: int = 0
 
+
 func _ready() -> void:
+	game_root = _game_root
+	
 	World.set_up()
 	Room.set_up(room)
 	
