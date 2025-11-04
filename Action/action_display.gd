@@ -58,6 +58,3 @@ func to_mouse_enter() -> void:
 func to_mouse_exit() -> void:
 	var tween: Tween = get_tree().create_tween()
 	tween.tween_property(control_offset, "position", Vector2.ZERO, 0.1)	
-
-
-	

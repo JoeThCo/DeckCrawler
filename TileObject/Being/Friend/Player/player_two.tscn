@@ -6,12 +6,13 @@
 [ext_resource type="Script" uid="uid://cklasyy7i12u4" path="res://TileObject/Being/Friend/Player/player_movement.gd" id="3_ww3vv"]
 [ext_resource type="Script" uid="uid://orjp73y7x1v1" path="res://Deck/hand_display.gd" id="4_eshuv"]
 
-[node name="Player" node_paths=PackedStringArray("hand_display", "deck", "health", "health_bar", "movement") instance=ExtResource("1_ule3t")]
+[node name="Player" node_paths=PackedStringArray("hand_display", "deck", "health", "health_bar", "center", "movement") instance=ExtResource("1_ule3t")]
 script = ExtResource("2_ww3vv")
 hand_display = NodePath("Hand/CenterContainer/HandDisplay")
 deck = NodePath("Deck")
 health = NodePath("Health")
 health_bar = NodePath("Offset/HealthBar")
+center = NodePath("Sprite2D/Center")
 movement = NodePath("PlayerMovement")
 
 [node name="Deck" type="Node" parent="." index="1"]

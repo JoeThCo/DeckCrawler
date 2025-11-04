@@ -1,7 +1,7 @@
 extends Node2D
 class_name TileObject
 
-
+@export var center: Node2D
 @export var movement: Movement
 
 

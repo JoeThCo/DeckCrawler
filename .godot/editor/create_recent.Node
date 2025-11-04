@@ -1,3 +1,6 @@
+Node2D
+GPUParticles2D
+CPUParticles2D
 Label
 VBoxContainer
 Panel
@@ -9,6 +12,3 @@ BaddieAI
 CanvasLayer
 Control
 MarginContainer
-TextureRect
-ProgressBar
-TextureProgressBar

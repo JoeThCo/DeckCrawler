@@ -24,6 +24,7 @@ func set_up(_to: TileObject) -> void:
 	
 func hand_init() -> void:
 	add_action("Heal_Action")
+	add_action("Heal_Action")
 	add_action("Damage_Action")
 	add_action("Damage_Action")
 	add_action("Damage_Action")

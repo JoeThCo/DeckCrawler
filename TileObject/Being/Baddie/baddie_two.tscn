@@ -5,11 +5,12 @@
 [ext_resource type="Script" uid="uid://b07q471xwsf10" path="res://TileObject/Being/Baddie/baddie_movement.gd" id="2_wlyio"]
 [ext_resource type="Script" uid="uid://dtgr2twpng1sf" path="res://TileObject/Being/Baddie/baddie_ai.gd" id="4_hk8ok"]
 
-[node name="Baddie" node_paths=PackedStringArray("ai", "health", "health_bar", "movement") instance=ExtResource("1_61b1n")]
+[node name="Baddie" node_paths=PackedStringArray("ai", "health", "health_bar", "center", "movement") instance=ExtResource("1_61b1n")]
 script = ExtResource("2_3ubas")
 ai = NodePath("BaddieAI")
 health = NodePath("Health")
 health_bar = NodePath("Offset/HealthBar")
+center = NodePath("Sprite2D/Center")
 movement = NodePath("BaddieMovement")
 
 [node name="Sprite2D" parent="." index="0"]

@@ -1,8 +1,9 @@
 extends TileObject
 class_name Being
 
-@export var deck: Deck
 
+@export_category("Nodes")
+@export var deck: Deck
 @export var ai: BeingAI
 
 @export_category("Health")
