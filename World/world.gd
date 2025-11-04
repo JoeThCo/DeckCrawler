@@ -30,7 +30,7 @@ static func set_up() -> void:
 
 	current_coords = get_room_position(start_cell)
 	World.print_floorplan()
-	print(current_coords)
+	#print(current_coords)
 
 
 static func generate_world(level: int) -> bool:

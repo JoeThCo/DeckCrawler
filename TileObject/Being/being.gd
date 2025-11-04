@@ -12,7 +12,7 @@ class_name Being
 
 
 #FIXME investigate why Being.tscn, Baddie.tscn and Player.tscn arent synced up on Being.tscn update
-func _ready() -> void:
+func set_up() -> void:
 	super()
 	if deck != null:
 		deck.set_up(self)
@@ -23,7 +23,7 @@ func _ready() -> void:
 	health.set_up()
 	health.on_dead.connect(on_death)
 	health_bar.set_up(health)
-
-
+	
+	
 func on_death() -> void:
 	pass

@@ -5,7 +5,7 @@ class_name Player
 @export var hand_display: HandDisplay
 
 
-func _ready() -> void:
+func set_up() -> void:
 	super()
 	hand_display.set_up(deck)
 	deck.hand_init()

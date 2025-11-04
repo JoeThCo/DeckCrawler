@@ -2,5 +2,5 @@ extends Being
 class_name Friend
 
 
-func _ready() -> void:
+func set_up() -> void:
 	super()

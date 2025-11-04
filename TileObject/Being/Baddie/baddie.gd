@@ -2,7 +2,7 @@ extends Being
 class_name Baddie
 
 
-func _ready() -> void:
+func set_up() -> void:
 	super()
 
 

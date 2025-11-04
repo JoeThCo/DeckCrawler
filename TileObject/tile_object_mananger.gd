@@ -7,7 +7,8 @@ static var spawn_parent: Node2D
 
 static var spawn_dict = {
 	"Player" : "res://TileObject/Being/Friend/Player/player_two.tscn",
-	"Baddie" : "res://TileObject/Being/Baddie/baddie_two.tscn"
+	"Baddie" : "res://TileObject/Being/Baddie/baddie_two.tscn",
+	"Door" : "res://TileObject/Static/door.tscn"
 }
 
 static var player: Player
@@ -30,7 +31,7 @@ static func set_up(_sp: Node2D) -> void:
 	player.deck.action_played.connect(on_player_action)
 	
 	spawn_tile_object("Baddie", Vector2i.ONE * 4)
-	#spawn_tile_object("Baddie", Vector2i.ONE * -4)
+	spawn_tile_object("Door", Vector2i.ONE * -4)
 
 
 static func on_player_move() -> void:
@@ -46,6 +47,9 @@ static func do_non_player_actions() -> void:
 	
 	for baddie: Baddie in _get_tile_objects(Baddie):
 		await baddie.ai.do_best_action()
+	
+	for current: StaticObject in _get_tile_objects(StaticObject):
+		await current.movement.update()
 
 
 static func _get_tile_objects(type: Script) -> Array[TileObject]:
@@ -66,21 +70,22 @@ static func _get_closest_tile_object(grid_coords: Vector2i, _tile_objects: Array
 			shortest_distance = current_distance
 			shortest_tile_object = current
 	return shortest_tile_object
-	
-	
+
+
 static func get_closest_baddie(grid_coords: Vector2i) -> Baddie:
 	return _get_closest_tile_object(grid_coords, _get_tile_objects(Baddie))
 
 
 static  func get_closest_friend(grid_coords: Vector2i) -> Friend:
 	return _get_closest_tile_object(grid_coords, _get_tile_objects(Friend))
-	
+
 
 static func spawn_tile_object(spawn_name: String, coords: Vector2i) -> TileObject:
 	var prefab: PackedScene = load(spawn_dict[spawn_name])
 	var new_tile_obj: TileObject = prefab.instantiate() as TileObject
 	spawn_parent.add_child(new_tile_obj)
 	new_tile_obj.global_position = Room.map_to_global(coords)
+	new_tile_obj.set_up()
 	tile_objects.append(new_tile_obj)
 	return new_tile_obj
 
