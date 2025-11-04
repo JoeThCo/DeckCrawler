@@ -45,7 +45,7 @@ static func do_non_player_actions() -> void:
 	Game.player_turn()
 	
 	for baddie: Baddie in _get_tile_objects(Baddie):
-		await baddie.movement.move(get_closest_friend(baddie.grid_coords).grid_coords)
+		await baddie.ai.do_best_action()
 
 
 static func _get_tile_objects(type: Script) -> Array[TileObject]:

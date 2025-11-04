@@ -8,6 +8,7 @@ signal moved
 
 var tile_object: TileObject
 
+
 var grid_coords: Vector2i:
 	get: return tile_object.grid_coords
 

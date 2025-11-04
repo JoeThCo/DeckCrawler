@@ -2,6 +2,10 @@ extends TileObject
 class_name Being
 
 @export var deck: Deck
+
+@export var ai: BeingAI
+
+@export_category("Health")
 @export var health: Health
 @export var health_bar: HealthBar
 
@@ -11,6 +15,9 @@ func _ready() -> void:
 	super()
 	if deck != null:
 		deck.set_up(self)
+		
+	if ai != null:
+		ai.set_up(self)
 	
 	health.set_up()
 	health.on_dead.connect(on_death)

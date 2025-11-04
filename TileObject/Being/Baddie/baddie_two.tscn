@@ -5,9 +5,9 @@
 [ext_resource type="Script" uid="uid://b07q471xwsf10" path="res://TileObject/Being/Baddie/baddie_movement.gd" id="2_wlyio"]
 [ext_resource type="Script" uid="uid://dtgr2twpng1sf" path="res://TileObject/Being/Baddie/baddie_ai.gd" id="4_hk8ok"]
 
-[node name="Baddie" node_paths=PackedStringArray("baddie_ai", "health", "health_bar", "movement") instance=ExtResource("1_61b1n")]
+[node name="Baddie" node_paths=PackedStringArray("ai", "health", "health_bar", "movement") instance=ExtResource("1_61b1n")]
 script = ExtResource("2_3ubas")
-baddie_ai = NodePath("BaddieAI")
+ai = NodePath("BaddieAI")
 health = NodePath("Health")
 health_bar = NodePath("Offset/HealthBar")
 movement = NodePath("BaddieMovement")
@@ -24,4 +24,5 @@ health = 10
 
 [node name="BaddieAI" type="Node" parent="." index="4"]
 script = ExtResource("4_hk8ok")
+action_mod = 2
 metadata/_custom_type_script = "uid://dtgr2twpng1sf"
