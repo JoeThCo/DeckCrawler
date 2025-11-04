@@ -5,13 +5,12 @@ class_name PathParticles
 @export var path: Path2D
 @export var path_follow: PathFollow2D
 
-var gpu_particles: GPUParticles2D
+var action_particles: ActionParticles
 
-
-func set_up(_gpu: GPUParticles2D) -> void:
-	gpu_particles = _gpu
-	path_follow.add_child(gpu_particles)
-	gpu_particles.restart()
+func set_up(_gpu: ActionParticles) -> void:
+	action_particles = _gpu
+	path_follow.add_child(action_particles)
+	action_particles.restart()
 
 
 func curve_set_up(from: TileObject, to: TileObject) -> void:
@@ -25,7 +24,7 @@ func curve_set_up(from: TileObject, to: TileObject) -> void:
 func tween_path_follow() -> void:
 	path_follow.progress_ratio = 0
 	var tween: Tween = get_tree().create_tween()
-	tween.tween_property(path_follow, "progress_ratio", 1.0, 1.0)
+	tween.tween_property(path_follow, "progress_ratio", 1.0, action_particles.total_time)
 	tween.set_trans(Tween.TRANS_LINEAR)
 	tween.set_ease(Tween.EASE_IN)
 	await tween.finished

@@ -16,7 +16,6 @@ color = Color(0.80804706, 0.7594155, 1.540184e-06, 1)
 physics_interpolation_mode = 2
 amount = 1
 texture = ExtResource("1_gcjh2")
-lifetime = 10.0
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_fsxsm")
 script = ExtResource("2_fg16y")

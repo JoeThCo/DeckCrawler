@@ -14,7 +14,6 @@ enum SimpleTarget
 	OTHER_CENTERED
 }
 @export var simple_target: SimpleTarget
-
 var target: Target
 
 
@@ -62,13 +61,13 @@ func _to_string() -> String:
 
 func do_action(_tile_object: TileObject) -> void:
 	print("Action!")
-	
-	
+
+
 func display_particles(from: TileObject, to: TileObject) -> void:
 	if particle_to_spawn.is_empty(): return
 	var particle: PackedScene = load("res://Action/Particles/SpawnableParticles/" + particle_to_spawn + ".tscn")
-	var particle_instance: GPUParticles2D = particle.instantiate() as GPUParticles2D
-	if particle_instance is GPUParticles2D:
+	var particle_instance: ActionParticles = particle.instantiate() as ActionParticles
+	if particle_instance is ActionParticles:
 		var path_particle_prefab: PackedScene = load("res://Action/Particles/path_particles.tscn")
 		var path_instance: PathParticles = path_particle_prefab.instantiate() as PathParticles
 		
