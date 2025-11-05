@@ -94,6 +94,6 @@ static func get_mouse_grid_coords(local_mouse_coords: Vector2) -> Vector2i:
 	return tile_map.local_to_map(local_mouse_coords - Vector2.ONE * tile_map.tile_set.tile_size.x) 
 
 
-static func move_tiles(from: Vector2i, to: Vector2i) -> void:
+static func move_tiles(from: Vector2i, to: Vector2i, has_collision: bool = true) -> void:
 	astar.set_point_solid(from, false)
-	astar.set_point_solid(to, true)
+	astar.set_point_solid(to, has_collision)

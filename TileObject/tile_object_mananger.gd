@@ -35,11 +35,11 @@ static func set_up(_sp: Node2D) -> void:
 
 
 static func on_player_move() -> void:
-	do_non_player_actions()
+	await do_non_player_actions()
 
 
 static func on_player_action(_action: Action) -> void:
-	do_non_player_actions()
+	await do_non_player_actions()
 
 
 static func do_non_player_actions() -> void:
@@ -49,7 +49,8 @@ static func do_non_player_actions() -> void:
 		await baddie.ai.do_best_action()
 	
 	for current: StaticObject in _get_tile_objects(StaticObject):
-		await current.movement.update()
+		if current.movement is StaticMovement:
+			current.movement.update()
 
 
 static func _get_tile_objects(type: Script) -> Array[TileObject]:
@@ -99,5 +100,13 @@ static func get_tile_object_at_global_coords(global: Vector2) -> TileObject:
 	var search_grid_coords: Vector2i = Room.local_to_map(global)
 	for current: TileObject in tile_objects:
 		if current.grid_coords == search_grid_coords:
+			return current
+	return null
+
+
+static func try_and_get_overlapping_tile_object(tile_object: TileObject) -> TileObject:
+	for current in tile_objects:
+		if current == tile_object: continue
+		if current.grid_coords == tile_object.grid_coords:
 			return current
 	return null

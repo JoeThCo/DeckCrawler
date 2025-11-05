@@ -3,7 +3,6 @@ class_name Movement
 
 
 #TODO Do we need the movement class? Player move with mouse, baddie/friend with AI. Seems like a wrapper
-@warning_ignore("unused_signal")
 signal moved
 
 
@@ -20,3 +19,4 @@ func set_up(_to: TileObject) -> void:
 
 func move(coords: Vector2i) -> void:
 	await tile_object.move_tile_object_to(coords)
+	moved.emit()

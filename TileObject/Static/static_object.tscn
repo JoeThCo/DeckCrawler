@@ -8,6 +8,7 @@
 script = ExtResource("2_o80go")
 center = NodePath("Sprite2D/Center")
 movement = NodePath("StaticMovement")
+has_collision = false
 
 [node name="Sprite2D" parent="." index="0"]
 z_index = -1
