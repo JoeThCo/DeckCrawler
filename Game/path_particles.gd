@@ -13,7 +13,7 @@ func set_up(_gpu: ActionParticles) -> void:
 	action_particles.restart()
 
 
-func curve_set_up(from: TileObject, to: TileObject) -> void:
+func curve_set_up(from: TileObjectComponent, to: TileObjectComponent) -> void:
 	path.curve.clear_points()
 	path.curve.add_point(from.center.global_position)
 	path.curve.add_point(to.center.global_position)

@@ -1,0 +1,2 @@
+extends TileObjectComponent
+class_name PlayerThree

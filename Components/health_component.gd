@@ -1,5 +1,5 @@
 extends Node
-class_name Health
+class_name HealthComponent
 
 
 signal health_changed()

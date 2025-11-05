@@ -4,6 +4,7 @@ class_name ActionDisplay
 
 signal action_played(action: Action)
 
+
 @export_category("Nodes")
 @export var control_offset: Control
 

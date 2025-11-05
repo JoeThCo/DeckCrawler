@@ -1,13 +1,13 @@
 extends Node
 
 
-signal tile_object_selection(tile_object: TileObject)
+signal tile_object_selection(tile_object: TileObjectComponent)
 
 signal game_paused
 signal game_resumed
 
 
-func emit_tile_object_selection(tile_object: TileObject) -> void:
+func emit_tile_object_selection(tile_object: TileObjectComponent) -> void:
 	tile_object_selection.emit(tile_object)
 
 

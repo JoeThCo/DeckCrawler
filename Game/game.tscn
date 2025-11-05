@@ -1,16 +1,15 @@
-[gd_scene load_steps=12 format=4 uid="uid://dciamadf2kbt2"]
+[gd_scene load_steps=11 format=4 uid="uid://dciamadf2kbt2"]
 
 [ext_resource type="Script" uid="uid://17qa8rybknca" path="res://Game/game.gd" id="1_j5wjh"]
 [ext_resource type="TileSet" uid="uid://btfb8iimo6y6d" path="res://Room/room_tile_set.tres" id="2_e2o6t"]
-[ext_resource type="Script" uid="uid://bvaikll4y0qy1" path="res://TileObject/tile_object_mananger.gd" id="3_7raqb"]
 [ext_resource type="Script" uid="uid://ctaogvfk2urvd" path="res://Game/display.gd" id="3_jcm6v"]
 [ext_resource type="Script" uid="uid://bcro8vutmm0tp" path="res://Game/mouse_highlight.gd" id="4_fwxkx"]
+[ext_resource type="Script" uid="uid://bvaikll4y0qy1" path="res://TileObjects/tile_object_mananger.gd" id="5_7gi1t"]
 [ext_resource type="Script" uid="uid://bi8w2o14ptuol" path="res://Menus/GameMenus/menu_manager.gd" id="6_oomkl"]
 [ext_resource type="PackedScene" uid="uid://rruso4wupd38" path="res://Menus/GameMenus/game_menu.tscn" id="7_buohc"]
 [ext_resource type="PackedScene" uid="uid://c2kofpiqat8me" path="res://Menus/GameMenus/pause_menu.tscn" id="8_kul4i"]
 [ext_resource type="PackedScene" uid="uid://bn244vwnx4bvl" path="res://Menus/GameMenus/temp_win.tscn" id="9_7gi1t"]
 [ext_resource type="PackedScene" uid="uid://jyws2qlkxyv1" path="res://Menus/GameMenus/game_over.tscn" id="9_kul4i"]
-[ext_resource type="PackedScene" uid="uid://g2xe33coesfm" path="res://Action/Particles/path_particles.tscn" id="11_fsxsm"]
 
 [node name="Game" type="Node2D" node_paths=PackedStringArray("room", "display", "mouse_highlight", "_game_root", "tile_objects_parent", "all_menus")]
 script = ExtResource("1_j5wjh")
@@ -40,7 +39,7 @@ script = ExtResource("4_fwxkx")
 zoom = Vector2(2, 2)
 
 [node name="TileObjectsParent" type="Node2D" parent="."]
-script = ExtResource("3_7raqb")
+script = ExtResource("5_7gi1t")
 
 [node name="MenuManager" type="Control" parent="."]
 layout_mode = 3
@@ -60,7 +59,4 @@ visible = false
 visible = false
 
 [node name="GameOver" parent="MenuManager" instance=ExtResource("9_kul4i")]
-visible = false
-
-[node name="PathParticles" parent="." instance=ExtResource("11_fsxsm")]
 visible = false

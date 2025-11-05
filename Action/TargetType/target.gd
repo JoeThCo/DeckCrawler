@@ -3,10 +3,10 @@ class_name Target
 
 
 var target_name: String
-var owner: TileObject
+var owner: TileObjectComponent
 
 
-func set_up(tile_object: TileObject) -> void:
+func set_up(tile_object: TileObjectComponent) -> void:
 	owner = tile_object
 
 

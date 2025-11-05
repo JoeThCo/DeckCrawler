@@ -5,11 +5,10 @@ class_name DamageAction
 @export var damage_amount: int
 
 
-func set_up(_to: TileObject) -> void:
+func set_up(_to: TileObjectComponent) -> void:
 	super(_to)
 
 
-func do_action(tile_object: TileObject) -> void:
-	if tile_object is Being:
-		print("Damage!")
-		tile_object.health.take_damage(self)
+func do_action(tile_object: TileObjectComponent) -> void:
+	print("Damage!")
+	tile_object.health.take_damage(self)
