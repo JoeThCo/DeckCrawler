@@ -56,5 +56,5 @@ static func resume_game() -> void:
 	SignalBus.emit_game_resumed()
 
 
-static  func game_over() -> void:
+static func game_over() -> void:
 	MenuManager.display_menu("GameOver")

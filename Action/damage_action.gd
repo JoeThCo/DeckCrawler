@@ -11,4 +11,4 @@ func set_up(_to: TileObjectComponent) -> void:
 
 func do_action(tile_object: TileObjectComponent) -> void:
 	print("Damage!")
-	tile_object.health.take_damage(self)
+	tile_object.health_component.take_damage(self)

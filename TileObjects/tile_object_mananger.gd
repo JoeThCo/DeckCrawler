@@ -6,8 +6,8 @@ static var spawn_parent: Node2D
 
 
 static var spawn_dict = {
-	"Player" : "res://TileObjects/player_three.tscn",
-	"Baddie" : "res://TileObjects/baddie_three.tscn",
+	"Player" : "res://TileObjects/player.tscn",
+	"Baddie" : "res://TileObjects/baddie.tscn",
 	"Door" : "res://TileObject/Static/door.tscn"
 }
 

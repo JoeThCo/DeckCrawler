@@ -1,3 +1,6 @@
+Control
+Label
+ProgressBar
 HandDisplay
 CenterContainer
 CanvasLayer
@@ -9,7 +12,3 @@ TeamComponent
 HealthComponent
 Sprite2D
 PlayerControlsComponent
-Node2D
-StaticMovement
-GPUParticles2D
-PathFollow2D

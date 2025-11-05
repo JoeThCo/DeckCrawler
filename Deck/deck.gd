@@ -6,7 +6,10 @@ signal action_added(action: Action)
 signal action_removed(action: Action)
 signal action_played(action: Action)
 
+
 @export var tile_object: TileObjectComponent
+@export var hand_display: HandDisplay
+
 
 #TODO move somewhere else
 var all_actions: Array[Action] = []
@@ -14,11 +17,15 @@ var hand: Array[Action] = []
 
 var waiting_for_selection: bool = false
 
+
 func _ready() -> void:
 	hand = []
 	all_actions.append_array(Helper.get_all_in_folder("res://Action/TestActions/"))
-	print_hand()
+	
+	if hand_display != null:
+		hand_display.set_up(self)
 	hand_init()
+	print_hand()
 
 
 func hand_init() -> void:

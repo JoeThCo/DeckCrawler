@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://c3sv6rhi6accc"]
 
 [ext_resource type="Script" uid="uid://n7b3t6dajop4" path="res://Components/health_component.gd" id="1_qatdj"]
-[ext_resource type="Script" uid="uid://oaij66q0svih" path="res://TileObjects/baddie_three.gd" id="1_r856x"]
+[ext_resource type="Script" uid="uid://oaij66q0svih" path="res://TileObjects/baddie.gd" id="1_r856x"]
 [ext_resource type="Script" uid="uid://bhh7v05qnluna" path="res://Components/team_component.gd" id="2_r856x"]
 [ext_resource type="Script" uid="uid://bu83mmuls6yp6" path="res://Components/movement_component.gd" id="3_7x0fv"]
 [ext_resource type="Script" uid="uid://ckg2pktmm6nmm" path="res://Components/baddie_ai_component.gd" id="4_sktma"]
@@ -9,9 +9,10 @@
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_xe0by"]
 size = Vector2(16, 16)
 
-[node name="BaddieThree" type="Node2D" node_paths=PackedStringArray("baddie_ai", "movement_component", "team_component")]
+[node name="BaddieThree" type="Node2D" node_paths=PackedStringArray("baddie_ai", "health_component", "movement_component", "team_component")]
 script = ExtResource("1_r856x")
 baddie_ai = NodePath("BaddieAIComponent")
+health_component = NodePath("HealthComponent")
 movement_component = NodePath("MovementComponent")
 team_component = NodePath("TeamComponent")
 

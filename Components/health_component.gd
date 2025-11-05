@@ -13,8 +13,7 @@ var is_dead: bool:
 @export var health: int
 var max_health: int
 
-
-func set_up() -> void:
+func _ready() -> void:
 	max_health = health
 	health_changed.emit()
 
