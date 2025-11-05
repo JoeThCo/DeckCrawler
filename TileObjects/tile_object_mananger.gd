@@ -15,19 +15,12 @@ static var player: PlayerThree
 static var all_spawned_tile_objects: Array[TileObjectComponent] = []
 
 
-#func _unhandled_input(event: InputEvent) -> void:
-	#if event.is_action_pressed("selection"):
-		#var to_at_coords: TileObject = TileObjectManager.get_tile_object_at_global_coords(get_global_mouse_position())
-		#if to_at_coords != null:
-			#SignalBus.emit_tile_object_selection(to_at_coords)
-
-
 static func set_up(_sp: Node2D) -> void:
 	spawn_parent = _sp
 	all_spawned_tile_objects = []
 	
 	player = spawn_tile_object("Player", Vector2i.ZERO)
-	player.movement_component.moved.connect(on_player_move)
+	player.movement.moved.connect(on_player_move)
 	#player.deck.action_played.connect(on_player_action)
 	
 	spawn_tile_object("Baddie", Vector2i.ONE * 4)
@@ -63,7 +56,7 @@ static func _get_closest_tile_object_component(grid_coords: Vector2i, _tile_obje
 	var shortest_distance: int = 999 #TODO int.Max equal?
 	var shortest_tile_object: TileObjectComponent = null
 	for current: TileObjectComponent in _tile_objects:
-		var current_distance: int = Room.get_distance(grid_coords, current.movement_component.grid_coords)
+		var current_distance: int = Room.get_distance(grid_coords, current.movement.grid_coords)
 		if current_distance < shortest_distance:
 			shortest_distance = current_distance
 			shortest_tile_object = current
@@ -74,7 +67,7 @@ static func _get_all_on_team(wanted_team: TeamComponent.Team) -> Array[TileObjec
 	var output: Array[TileObjectComponent] = []
 	var wanted_int: int = int(wanted_team)
 	for current: TileObjectComponent in all_spawned_tile_objects:
-		if current.team_component.team & wanted_int:
+		if current.team.team & wanted_int:
 			output.append(current)
 	return output
 	
@@ -97,12 +90,12 @@ static func delete_tile_object(tile_object: TileObjectComponent) -> void:
 	tile_object.queue_free()
 
 
-#static func get_tile_object_at_global_coords(global: Vector2) -> TileObject:
-	#var search_grid_coords: Vector2i = Room.local_to_map(global)
-	#for current: TileObject in tile_objects:
-		#if current.grid_coords == search_grid_coords:
-			#return current
-	#return null
+static func get_tile_object_at_global_coords(global: Vector2) -> TileObjectComponent:
+	var search_grid_coords: Vector2i = Room.local_to_map(global)
+	for current: TileObjectComponent in all_spawned_tile_objects:
+		if current.movement.grid_coords == search_grid_coords:
+			return current
+	return null
 #
 #
 #static func try_and_get_overlapping_tile_object(tile_object: TileObject) -> TileObject:

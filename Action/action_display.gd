@@ -8,10 +8,8 @@ signal action_played(action: Action)
 @export_category("Nodes")
 @export var control_offset: Control
 
-
 @export_category("Textures")
 @export var icon_texture: TextureRect
-
 
 @export_category("Labels")
 @export var name_label: Label
@@ -31,7 +29,7 @@ func set_up(_a: Action) -> void:
 		icon_texture.texture = action.icon
 	name_label.text = action.action_name
 	cost_label.text = "Cost: " + str(action.cost)
-	target_label.text = action.target.target_name
+	#target_label.text = action.target.target_name
 
 
 func _on_mouse_entered() -> void:

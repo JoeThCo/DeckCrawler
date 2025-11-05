@@ -15,10 +15,10 @@ func set_up(_gpu: ActionParticles) -> void:
 
 func curve_set_up(from: TileObjectComponent, to: TileObjectComponent) -> void:
 	path.curve.clear_points()
-	path.curve.add_point(from.center.global_position)
-	path.curve.add_point(to.center.global_position)
+	path.curve.add_point(from.global_position)
+	path.curve.add_point(to.global_position)
 	if path.curve.get_baked_length() <= 0:
-		path.curve.set_point_position(1, to.center.global_position + Vector2.ONE * 0.001)
+		path.curve.set_point_position(1, to.global_position + Vector2.ONE * 0.001)
 	
 
 func tween_path_follow() -> void:

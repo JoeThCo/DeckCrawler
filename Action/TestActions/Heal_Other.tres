@@ -6,8 +6,8 @@
 [resource]
 script = ExtResource("2_hi3du")
 heal_amount = 4
-simple_target = 2
 action_name = "Heal"
 icon = ExtResource("1_yfuea")
 particle_to_spawn = "healing"
+selection = 1
 metadata/_custom_type_script = "uid://m7cn0dsgbhg1"

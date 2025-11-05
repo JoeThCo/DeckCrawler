@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="DamageAction" load_steps=3 format=3 uid="uid://ch7dticuixe28"]
+
+[ext_resource type="Texture2D" uid="uid://52u412wvj2u8" path="res://Art/Damage.png" id="1_tntlb"]
+[ext_resource type="Script" uid="uid://dkiixetjb5pd2" path="res://Action/damage_action.gd" id="2_ei5wf"]
+
+[resource]
+script = ExtResource("2_ei5wf")
+damage_amount = 4
+action_name = "Damage Self"
+icon = ExtResource("1_tntlb")
+particle_to_spawn = "sword"
+metadata/_custom_type_script = "uid://dkiixetjb5pd2"

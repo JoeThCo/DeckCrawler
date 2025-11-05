@@ -32,6 +32,7 @@ func hand_init() -> void:
 	add_action("Heal_Other")
 	add_action("Heal_Self")
 	add_action("Bolt_Other")
+	add_action("Damage_Self")
 	add_action("Damage_Other")
 	add_action("Damage_Other")
 	add_action("Damage_Other")

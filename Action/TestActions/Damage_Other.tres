@@ -6,8 +6,8 @@
 [resource]
 script = ExtResource("1_exyly")
 damage_amount = 4
-simple_target = 1
 action_name = "Damage"
 icon = ExtResource("1_t1sfq")
 particle_to_spawn = "sword"
+selection = 1
 metadata/_custom_type_script = "uid://dkiixetjb5pd2"
