@@ -12,5 +12,9 @@ func can_do_action() -> bool:
 
 func do_best_action() -> void:
 	if not can_do_action(): return
-	var closest_ally: TileObjectComponent = TileObjectManager.get_closest_on_team(movement.grid_coords, TeamComponent.Team.ALLY)
-	await movement.move(closest_ally.movement.grid_coords)
+	var best_ally: TileObjectComponent = get_best_tile_object()
+	await movement.move(best_ally.movement.grid_coords)
+
+
+func get_best_tile_object() -> TileObjectComponent:
+	return TileObjectManager.get_closest_on_team(movement.grid_coords, TeamComponent.Team.ALLY)

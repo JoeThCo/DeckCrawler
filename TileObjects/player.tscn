@@ -5,19 +5,20 @@
 [ext_resource type="Script" uid="uid://n7b3t6dajop4" path="res://Components/health_component.gd" id="3_ggg8h"]
 [ext_resource type="Script" uid="uid://bhh7v05qnluna" path="res://Components/team_component.gd" id="4_laux1"]
 [ext_resource type="Script" uid="uid://dgmrbc8k0s6ax" path="res://Components/player_controls_component.gd" id="5_r1hj6"]
+[ext_resource type="Script" uid="uid://4demsh0trrm2" path="res://Components/player_selection.gd" id="6_ggg8h"]
 [ext_resource type="Script" uid="uid://cy71jjp5d2opr" path="res://Deck/deck.gd" id="6_qic5a"]
 [ext_resource type="Script" uid="uid://orjp73y7x1v1" path="res://Deck/hand_display.gd" id="7_xpkma"]
-[ext_resource type="Script" uid="uid://dkk0w3mel3pol" path="res://Components/selection_component.gd" id="9_ggg8h"]
 [ext_resource type="PackedScene" uid="uid://d2vmn0718sbga" path="res://Components/health_bar.tscn" id="9_laux1"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_8b1bd"]
 size = Vector2(16, 16)
 
-[node name="PlayerThree" type="Node2D" node_paths=PackedStringArray("health", "movement", "team")]
+[node name="PlayerThree" type="Node2D" node_paths=PackedStringArray("health", "movement", "team", "selection")]
 script = ExtResource("1_40tdi")
 health = NodePath("HealthComponent")
 movement = NodePath("MovementComponent")
 team = NodePath("TeamComponent")
+selection = NodePath("PlayerSelectionComponent")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("PlaceholderTexture2D_8b1bd")
@@ -43,13 +44,13 @@ metadata/_custom_type_script = "uid://bhh7v05qnluna"
 
 [node name="PlayerControlsComponent" type="Node2D" parent="." node_paths=PackedStringArray("selection", "movement")]
 script = ExtResource("5_r1hj6")
-selection = NodePath("../SelectionComponent")
+selection = NodePath("../PlayerSelectionComponent")
 movement = NodePath("../MovementComponent")
 metadata/_custom_type_script = "uid://dgmrbc8k0s6ax"
 
-[node name="SelectionComponent" type="Node2D" parent="."]
-script = ExtResource("9_ggg8h")
-metadata/_custom_type_script = "uid://dkk0w3mel3pol"
+[node name="PlayerSelectionComponent" type="Node2D" parent="."]
+script = ExtResource("6_ggg8h")
+metadata/_custom_type_script = "uid://4demsh0trrm2"
 
 [node name="Deck" type="Node" parent="." node_paths=PackedStringArray("tile_object", "hand_display")]
 script = ExtResource("6_qic5a")
@@ -109,3 +110,5 @@ offset_right = 37.5
 offset_bottom = 13.5
 mouse_filter = 2
 health = NodePath("../../../HealthComponent")
+
+[connection signal="on_dead" from="HealthComponent" to="." method="_on_health_component_on_dead"]

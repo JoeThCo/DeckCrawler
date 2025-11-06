@@ -15,8 +15,6 @@ signal action_played(action: Action)
 var all_actions: Array[Action] = []
 var hand: Array[Action] = []
 
-var waiting_for_selection: bool = false
-
 
 func _ready() -> void:
 	hand = []
@@ -54,10 +52,10 @@ func remove_action(action: Action) -> void:
 
 
 func play_action(action: Action) -> void:
+	tile_object.selection.selection_start.emit(action)
+	var other_tile_object: TileObjectComponent = await tile_object.selection.selection_complete
 	remove_action(action)
-	waiting_for_selection = true
-	await action.execute()
-	waiting_for_selection = false
+	await action.execute(other_tile_object)
 	action_played.emit(action)
 
 

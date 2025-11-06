@@ -26,12 +26,10 @@ func set_up(_to: TileObjectComponent) -> void:
 	owner_object = _to
 
 
-func execute() -> void:
+func execute(other_tile_object: TileObjectComponent) -> void:
 	if selection == SelectionComponent.Selection.SELF:
 		do_action(owner_object)
 	elif selection == SelectionComponent.Selection.OTHER:
-		SignalBus.emit_selection_init(self)
-		var other_tile_object: TileObjectComponent = await SignalBus.tile_object_selection 
 		await display_particles(owner_object, other_tile_object)
 		do_action(other_tile_object)
 	action_complete.emit()

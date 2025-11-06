@@ -1,3 +1,5 @@
+PlayerSelectionComponent
+BaddieSelectionComponent
 SelectionComponent
 Control
 Label
@@ -11,5 +13,3 @@ BaddieAIComponent
 MovementComponent
 TeamComponent
 HealthComponent
-Sprite2D
-PlayerControlsComponent

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c3sv6rhi6accc"]
+[gd_scene load_steps=9 format=3 uid="uid://c3sv6rhi6accc"]
 
 [ext_resource type="Script" uid="uid://n7b3t6dajop4" path="res://Components/health_component.gd" id="1_qatdj"]
 [ext_resource type="Script" uid="uid://oaij66q0svih" path="res://TileObjects/baddie.gd" id="1_r856x"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://bu83mmuls6yp6" path="res://Components/movement_component.gd" id="3_7x0fv"]
 [ext_resource type="Script" uid="uid://ckg2pktmm6nmm" path="res://Components/baddie_ai_component.gd" id="4_sktma"]
 [ext_resource type="PackedScene" uid="uid://d2vmn0718sbga" path="res://Components/health_bar.tscn" id="6_idsic"]
+[ext_resource type="Script" uid="uid://dnhv27rllalte" path="res://Components/baddie_selection_component.gd" id="7_txvjt"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_xe0by"]
 size = Vector2(16, 16)
@@ -43,6 +44,11 @@ movement = NodePath("../MovementComponent")
 action_mod = 2
 metadata/_custom_type_script = "uid://ckg2pktmm6nmm"
 
+[node name="BaddieSelectionComponent" type="Node2D" parent="." node_paths=PackedStringArray("baddie_ai")]
+script = ExtResource("7_txvjt")
+baddie_ai = NodePath("../BaddieAIComponent")
+metadata/_custom_type_script = "uid://dnhv27rllalte"
+
 [node name="LocalUI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 8
@@ -77,3 +83,5 @@ offset_right = 37.5
 offset_bottom = 13.5
 mouse_filter = 2
 health = NodePath("../../../HealthComponent")
+
+[connection signal="on_dead" from="HealthComponent" to="." method="_on_health_component_on_dead"]

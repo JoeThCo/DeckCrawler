@@ -5,3 +5,4 @@ class_name TileObjectComponent
 @export var health: HealthComponent
 @export var movement: MovementComponent
 @export var team: TeamComponent
+@export var selection: SelectionComponent
