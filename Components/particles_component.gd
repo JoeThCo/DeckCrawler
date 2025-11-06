@@ -6,12 +6,30 @@ class_name ParticlesComponent
 
 
 @export_category("Particles")
-@export var damage_particles: GPUParticles2D
+@export var damage: GPUParticles2D
+@export var healing: GPUParticles2D
+
 
 
 func _ready() -> void:
 	health.damaged.connect(damaged)
-	
+	health.healed.connect(healed)
+	health.on_dead.connect(dead)
+
 
 func damaged() -> void:
-	damage_particles.restart()
+	damage.restart()
+
+
+func dead() -> void:
+	damage.get_parent().remove_child(damage)
+	Game.game_root.add_child(damage)
+	damage.global_position = damage.get_parent().global_position #FIXME spawn at position
+	damage.restart()
+	
+	await damage.finished
+	damage.queue_free()
+
+
+func healed() -> void:
+	healing.restart()

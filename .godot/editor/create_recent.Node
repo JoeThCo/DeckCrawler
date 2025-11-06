@@ -1,4 +1,5 @@
 ParticlesComponent
+Node2D
 GPUParticles2D
 PlayerSelectionComponent
 BaddieSelectionComponent
@@ -11,4 +12,3 @@ CenterContainer
 CanvasLayer
 Deck
 GridCoordsComponent
-BaddieAIComponent

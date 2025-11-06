@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://c3sv6rhi6accc"]
+[gd_scene load_steps=10 format=3 uid="uid://c3sv6rhi6accc"]
 
 [ext_resource type="Script" uid="uid://n7b3t6dajop4" path="res://Components/health.gd" id="1_qatdj"]
 [ext_resource type="Script" uid="uid://oaij66q0svih" path="res://TileObjects/baddie.gd" id="1_r856x"]
+[ext_resource type="PackedScene" uid="uid://dcxi8aofcw138" path="res://Components/particles_component.tscn" id="2_lvvty"]
 [ext_resource type="Script" uid="uid://bhh7v05qnluna" path="res://Components/team_component.gd" id="2_r856x"]
 [ext_resource type="Script" uid="uid://bu83mmuls6yp6" path="res://Components/movement.gd" id="3_7x0fv"]
 [ext_resource type="Script" uid="uid://ckg2pktmm6nmm" path="res://Components/baddie_ai.gd" id="4_sktma"]
@@ -23,6 +24,12 @@ selection = NodePath("BaddieSelectionComponent")
 self_modulate = Color(0.7127472, 0.4084219, 0, 1)
 texture = SubResource("PlaceholderTexture2D_xe0by")
 centered = false
+
+[node name="Center" type="Node2D" parent="Sprite2D"]
+position = Vector2(8, 8)
+
+[node name="ParticlesComponent" parent="Sprite2D/Center" node_paths=PackedStringArray("health") instance=ExtResource("2_lvvty")]
+health = NodePath("../../../HealthComponent")
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("1_qatdj")

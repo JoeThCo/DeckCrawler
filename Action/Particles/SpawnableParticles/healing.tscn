@@ -19,6 +19,7 @@ physics_interpolation_mode = 2
 emitting = false
 texture = ExtResource("1_sn48q")
 lifetime = 0.5
+one_shot = true
 process_material = SubResource("ParticleProcessMaterial_fsxsm")
 script = ExtResource("2_t23f7")
 total_time = 1.0
