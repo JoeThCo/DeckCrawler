@@ -7,30 +7,37 @@ class_name PlayerSelectionComponent
 
 func _ready() -> void:
 	selection_start.connect(on_selection_start)
+	selection_cancel.connect(on_selection_cancel)
 	selection_complete.connect(on_selection_complete)
 
 
 func on_selection_start(action_display: ActionDisplay) -> void:
-	print("Selection Start")
+	#print("Selection Start")
+	is_selecting = true
 	selected_action_display = action_display
 	if selected_action_display.action.selection == Selection.SELF:
 		selection_complete.emit(selected_action_display.tile_object)
 
 
+func on_selection_cancel(_action_display: ActionDisplay) -> void:
+	is_selecting = false
+
+
 func on_selection_complete(selected_tile_object: TileObjectComponent) -> void:
 	await deck.play_action(selected_action_display, selected_tile_object)
+	is_selecting = false
 
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("selection"):
-		print("Selection Mouse Down")
+		#print("Selection Mouse Down")
 		var temp_to: TileObjectComponent = TileObjectManager.get_tile_object_at_global_coords(get_global_mouse_position())
 		if temp_to != null:
 			selection_complete.emit(temp_to)
 			selected_action_display = null
 
 	if event.is_action_pressed("cancel"):
-		print("Cancel Mouse Down")
-		print(selected_action_display == null)
+		#print("Cancel Mouse Down")
+		#print(selected_action_display == null)
 		selection_cancel.emit(selected_action_display)
 		selected_action_display = null

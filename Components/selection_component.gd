@@ -19,9 +19,5 @@ enum Selection
 	OTHER
 }
 
-var is_selecting: bool:
-	get:
-		return selected_action_display != null
-
-
+var is_selecting: bool = false
 var selected_action_display: ActionDisplay = null
