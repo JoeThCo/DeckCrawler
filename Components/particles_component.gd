@@ -22,9 +22,10 @@ func damaged() -> void:
 
 
 func dead() -> void:
-	damage.get_parent().remove_child(damage)
+	var parent:Node2D = damage.get_parent()
+	parent.remove_child(damage)
 	Game.game_root.add_child(damage)
-	damage.global_position = damage.get_parent().global_position #FIXME spawn at position
+	damage.global_position = parent.global_position #FIXME spawn at position
 	damage.restart()
 	
 	await damage.finished

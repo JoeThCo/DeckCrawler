@@ -10,14 +10,14 @@ signal action_complete
 
 
 @export_category("Meta Data")
-@export var action_name: String = "Action Name"
-@export_multiline var description: String = "No Description"
+@export var action_name: String = ""
+@export_multiline var description: String = "N/A"
 @export var icon: CompressedTexture2D
 @export var particle_to_spawn: String
 
 @export_category("Types")
 @export var selection: SelectionComponent.Selection
-@export var team: TeamComponent.Team
+#@export var team: TeamComponent.Team
 
 
 var owner_object: TileObjectComponent

@@ -15,6 +15,8 @@ signal action_played(action: Action)
 @export var name_label: Label
 @export var cost_label: Label
 @export var target_label: Label
+@export var description_label: Label
+
 
 const DO_TWEENS: bool = true
 
@@ -28,8 +30,9 @@ func set_up(_a: Action) -> void:
 	if action.icon != null:
 		icon_texture.texture = action.icon
 	name_label.text = action.action_name
-	cost_label.text = "Cost: " + str(action.cost)
+	cost_label.text = str(action.cost)
 	target_label.text = Helper.enum_to_proper_string(SelectionComponent.Selection.keys()[action.selection])  
+	description_label.text = action.description
 
 
 func _on_mouse_entered() -> void:
