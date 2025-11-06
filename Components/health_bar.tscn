@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://d2vmn0718sbga"]
 
-[ext_resource type="Script" uid="uid://dtxiqbsntq5ql" path="res://Components/health_bar_component.gd" id="1_wixop"]
+[ext_resource type="Script" uid="uid://dtxiqbsntq5ql" path="res://Components/health_bar.gd" id="1_wixop"]
 
 [node name="ProgressBar" type="ProgressBar" node_paths=PackedStringArray("health_label")]
 custom_minimum_size = Vector2(75, 0)

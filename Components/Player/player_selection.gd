@@ -2,8 +2,6 @@ extends SelectionComponent
 class_name PlayerSelectionComponent
 
 
-
-
 func _unhandled_input(event: InputEvent) -> void:
 	if selection_action != null:
 		if selection_action.selection == Selection.SELF:

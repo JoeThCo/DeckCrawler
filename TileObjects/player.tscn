@@ -1,11 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://0qmp0h786iwm"]
+[gd_scene load_steps=12 format=3 uid="uid://0qmp0h786iwm"]
 
 [ext_resource type="Script" uid="uid://biohw8s55yt5y" path="res://TileObjects/player.gd" id="1_40tdi"]
-[ext_resource type="Script" uid="uid://bu83mmuls6yp6" path="res://Components/movement_component.gd" id="2_qxeio"]
-[ext_resource type="Script" uid="uid://n7b3t6dajop4" path="res://Components/health_component.gd" id="3_ggg8h"]
+[ext_resource type="PackedScene" uid="uid://dcxi8aofcw138" path="res://Components/particles_component.tscn" id="2_laux1"]
+[ext_resource type="Script" uid="uid://bu83mmuls6yp6" path="res://Components/movement.gd" id="2_qxeio"]
+[ext_resource type="Script" uid="uid://n7b3t6dajop4" path="res://Components/health.gd" id="3_ggg8h"]
 [ext_resource type="Script" uid="uid://bhh7v05qnluna" path="res://Components/team_component.gd" id="4_laux1"]
-[ext_resource type="Script" uid="uid://dgmrbc8k0s6ax" path="res://Components/player_controls_component.gd" id="5_r1hj6"]
-[ext_resource type="Script" uid="uid://4demsh0trrm2" path="res://Components/player_selection.gd" id="6_ggg8h"]
+[ext_resource type="Script" uid="uid://dgmrbc8k0s6ax" path="res://Components/Player/player_controls.gd" id="5_r1hj6"]
+[ext_resource type="Script" uid="uid://4demsh0trrm2" path="res://Components/Player/player_selection.gd" id="6_ggg8h"]
 [ext_resource type="Script" uid="uid://cy71jjp5d2opr" path="res://Deck/deck.gd" id="6_qic5a"]
 [ext_resource type="Script" uid="uid://orjp73y7x1v1" path="res://Deck/hand_display.gd" id="7_xpkma"]
 [ext_resource type="PackedScene" uid="uid://d2vmn0718sbga" path="res://Components/health_bar.tscn" id="9_laux1"]
@@ -26,6 +27,9 @@ centered = false
 
 [node name="Center" type="Node2D" parent="Sprite2D"]
 position = Vector2(8, 8)
+
+[node name="ParticlesComponent" parent="Sprite2D/Center" node_paths=PackedStringArray("health") instance=ExtResource("2_laux1")]
+health = NodePath("../../../HealthComponent")
 
 [node name="MovementComponent" type="Node2D" parent="." node_paths=PackedStringArray("base_node")]
 script = ExtResource("2_qxeio")

@@ -1,3 +1,5 @@
+ParticlesComponent
+GPUParticles2D
 PlayerSelectionComponent
 BaddieSelectionComponent
 SelectionComponent
@@ -10,6 +12,3 @@ CanvasLayer
 Deck
 GridCoordsComponent
 BaddieAIComponent
-MovementComponent
-TeamComponent
-HealthComponent
