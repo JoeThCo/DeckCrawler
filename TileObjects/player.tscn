@@ -48,8 +48,9 @@ selection = NodePath("../PlayerSelectionComponent")
 movement = NodePath("../MovementComponent")
 metadata/_custom_type_script = "uid://dgmrbc8k0s6ax"
 
-[node name="PlayerSelectionComponent" type="Node2D" parent="."]
+[node name="PlayerSelectionComponent" type="Node2D" parent="." node_paths=PackedStringArray("tile_object")]
 script = ExtResource("6_ggg8h")
+tile_object = NodePath("..")
 metadata/_custom_type_script = "uid://4demsh0trrm2"
 
 [node name="Deck" type="Node" parent="." node_paths=PackedStringArray("tile_object", "hand_display")]

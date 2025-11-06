@@ -5,7 +5,9 @@ class_name PathParticles
 @export var path: Path2D
 @export var path_follow: PathFollow2D
 
+
 var action_particles: ActionParticles
+
 
 func set_up(_gpu: ActionParticles) -> void:
 	action_particles = _gpu

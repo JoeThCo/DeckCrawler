@@ -2,7 +2,15 @@ extends SelectionComponent
 class_name PlayerSelectionComponent
 
 
+
+
 func _unhandled_input(event: InputEvent) -> void:
+	if selection_action != null:
+		if selection_action.selection == Selection.SELF:
+			selection_complete.emit(tile_object)
+			await selection_action.action_complete
+			selection_action = null
+
 	if event.is_action_pressed("selection"):
 		var temp_selection: TileObjectComponent = TileObjectManager.get_tile_object_at_global_coords(get_global_mouse_position())
 		if temp_selection != null:

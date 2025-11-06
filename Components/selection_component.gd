@@ -2,8 +2,13 @@ extends Node2D
 class_name SelectionComponent
 
 
+@export var tile_object: TileObjectComponent
+
+
 signal selection_start(action: Action)
+@warning_ignore("unused_signal")
 signal selection_complete(tile_object: TileObjectComponent)
+@warning_ignore("unused_signal")
 signal selection_cancel
 
 

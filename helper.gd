@@ -37,3 +37,7 @@ static func get_all_in_folder(path):
 
 static func get_resource_name(resource: Resource) -> String:
 	return resource.resource_path.get_file().trim_suffix('.tres')
+
+
+static func enum_to_proper_string(enum_string: String) -> String:
+	return enum_string.to_lower().capitalize()

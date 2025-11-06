@@ -11,12 +11,13 @@
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_xe0by"]
 size = Vector2(16, 16)
 
-[node name="BaddieThree" type="Node2D" node_paths=PackedStringArray("baddie_ai", "health", "movement", "team")]
+[node name="BaddieThree" type="Node2D" node_paths=PackedStringArray("baddie_ai", "health", "movement", "team", "selection")]
 script = ExtResource("1_r856x")
 baddie_ai = NodePath("BaddieAIComponent")
 health = NodePath("HealthComponent")
 movement = NodePath("MovementComponent")
 team = NodePath("TeamComponent")
+selection = NodePath("BaddieSelectionComponent")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 self_modulate = Color(0.7127472, 0.4084219, 0, 1)
@@ -44,9 +45,10 @@ movement = NodePath("../MovementComponent")
 action_mod = 2
 metadata/_custom_type_script = "uid://ckg2pktmm6nmm"
 
-[node name="BaddieSelectionComponent" type="Node2D" parent="." node_paths=PackedStringArray("baddie_ai")]
+[node name="BaddieSelectionComponent" type="Node2D" parent="." node_paths=PackedStringArray("baddie_ai", "tile_object")]
 script = ExtResource("7_txvjt")
 baddie_ai = NodePath("../BaddieAIComponent")
+tile_object = NodePath("..")
 metadata/_custom_type_script = "uid://dnhv27rllalte"
 
 [node name="LocalUI" type="Control" parent="."]

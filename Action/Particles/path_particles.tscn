@@ -21,5 +21,4 @@ rotation = 0.74065197
 loop = false
 
 [node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D"]
-visible = false
 texture = SubResource("PlaceholderTexture2D_8iokr")

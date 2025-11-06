@@ -29,7 +29,7 @@ func set_up(_a: Action) -> void:
 		icon_texture.texture = action.icon
 	name_label.text = action.action_name
 	cost_label.text = "Cost: " + str(action.cost)
-	#target_label.text = action.target.target_name
+	target_label.text = Helper.enum_to_proper_string(SelectionComponent.Selection.keys()[action.selection])  
 
 
 func _on_mouse_entered() -> void:
