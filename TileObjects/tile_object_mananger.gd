@@ -22,6 +22,7 @@ static func set_up(_sp: Node2D) -> void:
 	player = spawn_tile_object("Player", Vector2i.ZERO)
 	player.movement.moved.connect(on_player_move)
 	#player.deck.action_played.connect(on_player_action)
+	#TODO do non player actions when action is played
 	
 	spawn_tile_object("Baddie", Vector2i.ONE * 4)
 	#spawn_tile_object("Door", Vector2i.ONE * -4)

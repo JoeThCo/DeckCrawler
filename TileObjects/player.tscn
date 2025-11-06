@@ -12,8 +12,9 @@
 [ext_resource type="Script" uid="uid://orjp73y7x1v1" path="res://Deck/hand_display.gd" id="7_xpkma"]
 [ext_resource type="PackedScene" uid="uid://d2vmn0718sbga" path="res://Components/Health/health_bar.tscn" id="9_laux1"]
 
-[node name="PlayerThree" type="Node2D" node_paths=PackedStringArray("health", "movement", "team", "selection")]
+[node name="PlayerThree" type="Node2D" node_paths=PackedStringArray("deck", "health", "movement", "team", "selection")]
 script = ExtResource("1_40tdi")
+deck = NodePath("CanvasLayer/Deck")
 health = NodePath("HealthComponent")
 movement = NodePath("MovementComponent")
 team = NodePath("TeamComponent")

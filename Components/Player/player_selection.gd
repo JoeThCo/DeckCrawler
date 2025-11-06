@@ -5,6 +5,10 @@ class_name PlayerSelectionComponent
 @export var deck: Deck
 
 
+#FIXME select multiple cards
+#FIXME Do multiple (just self?) actions at once
+
+
 func _ready() -> void:
 	selection_start.connect(on_selection_start)
 	selection_cancel.connect(on_selection_cancel)

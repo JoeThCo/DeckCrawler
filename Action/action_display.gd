@@ -39,13 +39,13 @@ func set_up(_a: Action, _to: TileObjectComponent) -> void:
 
 
 func selection_start(action_display: ActionDisplay) -> void:
-	if action_display != self: return
+	if action_display != self: return #FIXME remove this?
 	selected_texture.visible = true
 	#print("Card Border ON")
 	
 
 func selection_cancel(action_display: ActionDisplay) -> void:
-	if action_display != self: return
+	if action_display != self: return #FIXME remove this?
 	selected_texture.visible = false
 	#print("Card Border OFF")
 
