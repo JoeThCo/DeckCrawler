@@ -2,26 +2,35 @@ extends SelectionComponent
 class_name PlayerSelectionComponent
 
 
+@export var deck: Deck
+
+
+func _ready() -> void:
+	selection_start.connect(on_selection_start)
+	selection_complete.connect(on_selection_complete)
+
+
+func on_selection_start(action_display: ActionDisplay) -> void:
+	print("Selection Start")
+	selected_action_display = action_display
+	if selected_action_display.action.selection == Selection.SELF:
+		selection_complete.emit(selected_action_display.tile_object)
+
+
+func on_selection_complete(selected_tile_object: TileObjectComponent) -> void:
+	await deck.play_action(selected_action_display, selected_tile_object)
+
+
 func _unhandled_input(event: InputEvent) -> void:
-	if selection_action != null:
-		if selection_action.selection == Selection.SELF:
-			selection_complete.emit(tile_object)
-			await selection_action.action_complete
-			selection_action = null
-
 	if event.is_action_pressed("selection"):
-		var temp_selection: TileObjectComponent = TileObjectManager.get_tile_object_at_global_coords(get_global_mouse_position())
-		if temp_selection != null:
-			selection_complete.emit(temp_selection)
-			await selection_action.action_complete
-			selection_action = null
-	
-	if event.is_action_pressed("cancel"):
-		selection_action = null
-		selection_cancel.emit()
+		print("Selection Mouse Down")
+		var temp_to: TileObjectComponent = TileObjectManager.get_tile_object_at_global_coords(get_global_mouse_position())
+		if temp_to != null:
+			selection_complete.emit(temp_to)
+			selected_action_display = null
 
-# Left Click on a card
-# Left Click with mouse
-# Start Selection
-# If there is a TileObject at mouse and meets conditions for play, play action: End selection
-# Right Click: End Selection
+	if event.is_action_pressed("cancel"):
+		print("Cancel Mouse Down")
+		print(selected_action_display == null)
+		selection_cancel.emit(selected_action_display)
+		selected_action_display = null

@@ -17,7 +17,6 @@ signal action_complete
 
 @export_category("Types")
 @export var selection: SelectionComponent.Selection
-#@export var team: TeamComponent.Team
 
 
 var owner_object: TileObjectComponent
@@ -34,10 +33,6 @@ func execute(other_tile_object: TileObjectComponent) -> void:
 		await display_particles(owner_object, other_tile_object)
 		do_action(other_tile_object)
 	action_complete.emit()
-
-
-func _to_string() -> String:
-	return "({0}, {1})".format([Helper.get_resource_name(self), cost])
 
 
 func do_action(_tile_object: TileObjectComponent) -> void:
@@ -57,3 +52,7 @@ func display_particles(from: TileObjectComponent, to: TileObjectComponent) -> vo
 		path_instance.position = Vector2.ZERO
 		path_instance.curve_set_up(from, to)
 		await path_instance.tween_path_follow()
+
+
+func _to_string() -> String:
+	return "({0}, {1})".format([Helper.get_resource_name(self), cost])

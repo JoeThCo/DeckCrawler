@@ -2,14 +2,14 @@ extends Control
 class_name ActionDisplay
 
 
-signal action_played(action: Action)
-
-
 @export_category("Nodes")
 @export var control_offset: Control
 
+
 @export_category("Textures")
 @export var icon_texture: TextureRect
+@export var selected_texture: TextureRect
+
 
 @export_category("Labels")
 @export var name_label: Label
@@ -18,14 +18,17 @@ signal action_played(action: Action)
 @export var description_label: Label
 
 
-const DO_TWEENS: bool = true
-
+var tile_object: TileObjectComponent
 var action: Action
 var is_mouse_over: bool = false
 
 
-func set_up(_a: Action) -> void:
+func set_up(_a: Action, _to: TileObjectComponent) -> void:
 	action = _a
+	tile_object = _to
+	
+	_to.selection.selection_start.connect(selection_start)
+	_to.selection.selection_cancel.connect(selection_cancel)
 	
 	if action.icon != null:
 		icon_texture.texture = action.icon
@@ -35,21 +38,31 @@ func set_up(_a: Action) -> void:
 	description_label.text = action.description
 
 
+func selection_start(action_display: ActionDisplay) -> void:
+	if action_display != self: return
+	selected_texture.visible = true
+	print("Card Border ON")
+	
+
+func selection_cancel(action_display: ActionDisplay) -> void:
+	if action_display != self: return
+	selected_texture.visible = false
+	print("Card Border OFF")
+
+
 func _on_mouse_entered() -> void:
 	is_mouse_over = true
-	if not DO_TWEENS: return
 	to_mouse_enter()
-	
+
 
 func _on_mouse_exited() -> void:
 	is_mouse_over = false
-	if not DO_TWEENS: return
 	to_mouse_exit()
 
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("selection") and is_mouse_over:
-		action_played.emit(action)
+		tile_object.selection.selection_start.emit(self)
 
 
 func to_mouse_enter() -> void:
@@ -59,4 +72,4 @@ func to_mouse_enter() -> void:
 
 func to_mouse_exit() -> void:
 	var tween: Tween = get_tree().create_tween()
-	tween.tween_property(control_offset, "position", Vector2.ZERO, 0.1)	
+	tween.tween_property(control_offset, "position", Vector2.ZERO, 0.1)

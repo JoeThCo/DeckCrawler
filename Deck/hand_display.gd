@@ -2,6 +2,9 @@ extends HBoxContainer
 class_name HandDisplay
 
 
+@export var tile_object: TileObjectComponent
+
+
 var action_displays: Array[ActionDisplay] = []
 var deck: Deck
 
@@ -25,23 +28,12 @@ func on_game_resumed() -> void:
 	visible = true
 
 
-func remove_action(action_display: ActionDisplay) -> void:
-	action_display.action_played.disconnect(action_played)
-	action_displays.erase(action_display)
-	action_display.queue_free()
-
-
 func action_added(action: Action) -> void:
 	var display_prefab: PackedScene = load("res://Action/action_display.tscn")
 	var action_display: ActionDisplay = display_prefab.instantiate() as ActionDisplay
-	action_display.set_up(action)
+	action_display.set_up(action, tile_object)
 	add_child(action_display)
 	action_displays.append(action_display)
-	action_display.action_played.connect(action_played)
-
-
-func action_played(action: Action) -> void:
-	deck.play_action(action)
 
 
 func action_removed(action: Action) -> void:
@@ -49,3 +41,8 @@ func action_removed(action: Action) -> void:
 		if current.action == action:
 			remove_action(current)
 			return
+
+
+func remove_action(action_display: ActionDisplay) -> void:
+	action_displays.erase(action_display)
+	action_display.queue_free()

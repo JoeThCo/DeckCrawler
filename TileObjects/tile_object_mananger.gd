@@ -40,7 +40,6 @@ static func do_non_player_actions() -> void:
 	
 	for baddie: TileObjectComponent in _get_tile_objects(BaddieThree):
 		await baddie.baddie_ai.do_best_action()
-	
 
 
 static func _get_tile_objects(type: Script) -> Array:

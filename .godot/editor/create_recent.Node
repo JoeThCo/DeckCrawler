@@ -1,5 +1,6 @@
-CenterContainer
 TextureRect
+Sprite2D
+CenterContainer
 ParticlesComponent
 Node2D
 GPUParticles2D
@@ -11,4 +12,3 @@ Label
 ProgressBar
 HandDisplay
 CanvasLayer
-Deck

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://biohw8s55yt5y" path="res://TileObjects/player.gd" id="1_40tdi"]
 [ext_resource type="PackedScene" uid="uid://dcxi8aofcw138" path="res://Components/particles_component.tscn" id="2_laux1"]
 [ext_resource type="Script" uid="uid://bu83mmuls6yp6" path="res://Components/movement.gd" id="2_qxeio"]
+[ext_resource type="Texture2D" uid="uid://dreafome0aldj" path="res://Art/Player.png" id="2_r1hj6"]
 [ext_resource type="Script" uid="uid://n7b3t6dajop4" path="res://Components/health.gd" id="3_ggg8h"]
 [ext_resource type="Script" uid="uid://bhh7v05qnluna" path="res://Components/team_component.gd" id="4_laux1"]
 [ext_resource type="Script" uid="uid://dgmrbc8k0s6ax" path="res://Components/Player/player_controls.gd" id="5_r1hj6"]
@@ -10,9 +11,6 @@
 [ext_resource type="Script" uid="uid://cy71jjp5d2opr" path="res://Deck/deck.gd" id="6_qic5a"]
 [ext_resource type="Script" uid="uid://orjp73y7x1v1" path="res://Deck/hand_display.gd" id="7_xpkma"]
 [ext_resource type="PackedScene" uid="uid://d2vmn0718sbga" path="res://Components/health_bar.tscn" id="9_laux1"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_8b1bd"]
-size = Vector2(16, 16)
 
 [node name="PlayerThree" type="Node2D" node_paths=PackedStringArray("health", "movement", "team", "selection")]
 script = ExtResource("1_40tdi")
@@ -22,7 +20,9 @@ team = NodePath("TeamComponent")
 selection = NodePath("PlayerSelectionComponent")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("PlaceholderTexture2D_8b1bd")
+self_modulate = Color(0.43634516, 0.86127543, 0.99999994, 1)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("2_r1hj6")
 centered = false
 
 [node name="Center" type="Node2D" parent="Sprite2D"]
@@ -52,20 +52,15 @@ selection = NodePath("../PlayerSelectionComponent")
 movement = NodePath("../MovementComponent")
 metadata/_custom_type_script = "uid://dgmrbc8k0s6ax"
 
-[node name="PlayerSelectionComponent" type="Node2D" parent="." node_paths=PackedStringArray("tile_object")]
+[node name="PlayerSelectionComponent" type="Node2D" parent="." node_paths=PackedStringArray("deck", "tile_object")]
 script = ExtResource("6_ggg8h")
+deck = NodePath("../CanvasLayer/Deck")
 tile_object = NodePath("..")
 metadata/_custom_type_script = "uid://4demsh0trrm2"
 
-[node name="Deck" type="Node" parent="." node_paths=PackedStringArray("tile_object", "hand_display")]
-script = ExtResource("6_qic5a")
-tile_object = NodePath("..")
-hand_display = NodePath("../CanvasLayer/CenterContainer/HandDisplay")
-metadata/_custom_type_script = "uid://cy71jjp5d2opr"
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+[node name="Deck" type="CenterContainer" parent="CanvasLayer" node_paths=PackedStringArray("tile_object", "hand_display")]
 custom_minimum_size = Vector2(0, 200)
 anchors_preset = 12
 anchor_top = 1.0
@@ -75,10 +70,14 @@ offset_top = -100.0
 offset_bottom = 100.0
 grow_horizontal = 2
 grow_vertical = 0
+script = ExtResource("6_qic5a")
+tile_object = NodePath("../..")
+hand_display = NodePath("HandDisplay")
 
-[node name="HandDisplay" type="HBoxContainer" parent="CanvasLayer/CenterContainer"]
+[node name="HandDisplay" type="HBoxContainer" parent="CanvasLayer/Deck" node_paths=PackedStringArray("tile_object")]
 layout_mode = 2
 script = ExtResource("7_xpkma")
+tile_object = NodePath("../../..")
 metadata/_custom_type_script = "uid://orjp73y7x1v1"
 
 [node name="LocalUI" type="Control" parent="."]

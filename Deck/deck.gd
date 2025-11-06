@@ -1,10 +1,9 @@
-extends Node
+extends Control
 class_name Deck
 
 
 signal action_added(action: Action)
 signal action_removed(action: Action)
-signal action_played(action: Action)
 
 
 @export var tile_object: TileObjectComponent
@@ -51,12 +50,10 @@ func remove_action(action: Action) -> void:
 	action_removed.emit(action)
 
 
-func play_action(action: Action) -> void:
-	tile_object.selection.selection_start.emit(action)
-	var other_tile_object: TileObjectComponent = await tile_object.selection.selection_complete
+func play_action(action_display: ActionDisplay, other_tile_object: TileObjectComponent) -> void:
+	var action: Action = action_display.action
 	remove_action(action)
-	await action.execute(other_tile_object)
-	action_played.emit(action)
+	await action_display.action.execute(other_tile_object)
 
 
 func print_hand() -> void:

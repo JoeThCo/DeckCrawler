@@ -5,11 +5,12 @@ class_name SelectionComponent
 @export var tile_object: TileObjectComponent
 
 
-signal selection_start(action: Action)
+@warning_ignore("unused_signal")
+signal selection_start(action_display: ActionDisplay)
 @warning_ignore("unused_signal")
 signal selection_complete(tile_object: TileObjectComponent)
 @warning_ignore("unused_signal")
-signal selection_cancel
+signal selection_cancel(action_display: ActionDisplay)
 
 
 enum Selection
@@ -20,15 +21,7 @@ enum Selection
 
 var is_selecting: bool:
 	get:
-		return selection_action != null
+		return selected_action_display != null
 
 
-var selection_action: Action = null
-
-
-func _ready() -> void:
-	selection_start.connect(on_selection_start)
-
-
-func on_selection_start(action: Action) -> void:
-	selection_action = action
+var selected_action_display: ActionDisplay = null

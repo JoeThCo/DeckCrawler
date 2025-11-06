@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://rruso4wupd38"]
 
 [ext_resource type="Script" uid="uid://m7f12qe5mk72" path="res://Menus/GameMenus/game_menu.gd" id="1_guh5r"]
-[ext_resource type="Texture2D" uid="uid://rpokuas4mla7" path="res://Art/Home.png" id="1_pun1m"]
+[ext_resource type="Texture2D" uid="uid://blwr6jqqjfe4u" path="res://Art/Pause.png" id="2_vhwlc"]
 
 [node name="Game" type="CanvasLayer"]
 script = ExtResource("1_guh5r")
@@ -24,8 +24,9 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="PauseButton/MarginContainer"]
+self_modulate = Color(0.73300546, 0.7330054, 0.7330054, 1)
 layout_mode = 2
-texture = ExtResource("1_pun1m")
+texture = ExtResource("2_vhwlc")
 expand_mode = 1
 
 [connection signal="button_down" from="PauseButton" to="." method="_on_pause_button_button_down"]
