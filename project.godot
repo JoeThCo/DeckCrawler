@@ -15,10 +15,6 @@ config/version="v6"
 run/main_scene="uid://citnug7hnblye"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 
-[autoload]
-
-SignalBus="*res://SignalBus.gd"
-
 [gui]
 
 theme/custom="uid://bulxdobu4kdig"
