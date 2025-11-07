@@ -16,9 +16,10 @@ func _ready() -> void:
 
 
 func on_selection_start(action_display: ActionDisplay) -> void:
-	print("Selection Start")
+	#print("Selection Start")
 	if selected_action_display != null and selected_action_display != action_display:
 		selected_action_display.un_selected()
+		
 		
 	is_selecting = true
 	selected_action_display = action_display
@@ -26,14 +27,15 @@ func on_selection_start(action_display: ActionDisplay) -> void:
 
 
 func on_selection_cancel(_action_display: ActionDisplay) -> void:
-	print("Selection Cancel")
+	SFXManager.play_one_shot_sfx("ActionCancel")
 	selected_action_display.un_selected()
 	is_selecting = false
 
 
 func on_selection_complete(selected_tile_object: TileObjectComponent) -> void:
-	print("Selection Complete")
+	#print("Selection Complete")
 	selected_action_display.un_selected() #HACK not sure why I have to do this
+	SFXManager.play_one_shot_sfx("ActionPlayed")
 	await deck.play_action(selected_action_display, selected_tile_object)
 	is_selecting = false
 

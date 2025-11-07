@@ -31,24 +31,26 @@ func set_up(_a: Action, _to: TileObjectComponent) -> void:
 	action = _a
 	tile_object = _to
 	
-	if action.icon != null:
-		icon_texture.texture = action.icon
+	icon_texture.texture = action.icon
+	icon_texture.self_modulate = action.particle_color
 	name_label.text = action.action_name
 	cost_label.text = str(action.cost)
 	description_label.text = action.description
 
 
 func selected() -> void:
-	print("Card Border ON")
+	#print("Card Border ON")
+	SFXManager.play_one_shot_sfx("ActionSelect")
 	selected_texture.visible = true
 	
 
 func un_selected() -> void:
-	print("Card Border OFF")
+	#print("Card Border OFF")
 	selected_texture.visible = false
 
 
 func _on_mouse_entered() -> void:
+	SFXManager.play_one_shot_sfx("ActionMouseOver")
 	is_mouse_over = true
 	z_index = 1
 	to_mouse_enter()

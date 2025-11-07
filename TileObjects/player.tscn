@@ -143,5 +143,3 @@ offset_right = 37.5
 offset_bottom = 13.5
 mouse_filter = 2
 health = NodePath("../../../HealthComponent")
-
-[connection signal="on_dead" from="HealthComponent" to="." method="_on_health_component_on_dead"]

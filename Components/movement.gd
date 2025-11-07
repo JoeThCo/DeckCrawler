@@ -16,6 +16,7 @@ func _ready() -> void:
 
 
 func move(coords: Vector2i) -> void:
+	SFXManager.play_one_shot_sfx("Move")
 	await _move_tile_object_to(coords)
 	moved.emit()
 

@@ -8,3 +8,7 @@ func _on_resume_button_down() -> void:
 
 func _on_quit_button_down() -> void:
 	get_tree().change_scene_to_file("res://Menus/MainMenu/main_menu.tscn")
+
+
+func _on_restart_button_down() -> void:
+	get_tree().change_scene_to_file("res://Game/game.tscn")

@@ -1,3 +1,7 @@
+HSeparator
+Button
+Node2D
+AudioStreamPlayer2D      - Matches the "sfx" keyword.
 CenterContainer
 Sprite2D
 TextureRect
@@ -5,10 +9,7 @@ Label
 HBoxContainer
 VBoxContainer
 ParticlesComponent
-Node2D
 GPUParticles2D
 PlayerSelectionComponent
 BaddieSelectionComponent
 SelectionComponent
-Control
-ProgressBar

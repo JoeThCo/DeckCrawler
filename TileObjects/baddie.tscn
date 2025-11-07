@@ -32,7 +32,6 @@ health = NodePath("../../../HealthComponent")
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("1_qatdj")
-health = 10
 metadata/_custom_type_script = "uid://n7b3t6dajop4"
 
 [node name="TeamComponent" type="Node" parent="."]
@@ -91,5 +90,3 @@ offset_right = 37.5
 offset_bottom = 13.5
 mouse_filter = 2
 health = NodePath("../../../HealthComponent")
-
-[connection signal="on_dead" from="HealthComponent" to="." method="_on_health_component_on_dead"]
