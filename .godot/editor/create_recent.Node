@@ -1,3 +1,5 @@
+AudioStreamPlayer
+Node
 HSeparator
 Button
 Node2D
@@ -11,5 +13,3 @@ VBoxContainer
 ParticlesComponent
 GPUParticles2D
 PlayerSelectionComponent
-BaddieSelectionComponent
-SelectionComponent
