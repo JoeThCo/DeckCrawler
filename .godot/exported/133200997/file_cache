@@ -4,14 +4,14 @@ res://addons/Todo_Manager/UI/Dock.tscn::fb7616e5e9ec4ddd8ec1012b956865cd::176237
 res://addons/Todo_Manager/UI/FlatToggleButton.tres::314173f3a9e8b77e98ff3d27d8be9337::1762371758::res://.godot/exported/133200997/export-5a4fe3ab66b7b507e000e083d808b511-FlatToggleButton.res
 res://addons/Todo_Manager/UI/PatternEdit.tscn::88cac38ce4f7299d4c9949f2215a2113::1762371757::res://.godot/exported/133200997/export-dbfa29e3cfa38d6c64c2d9dcc9860d31-PatternEdit.scn
 res://addons/Todo_Manager/UI/ToggleButton.tscn::84726df08b1dddc6b6d642692616264e::1762371757::res://.godot/exported/133200997/export-4d3e64d31ae61462354413e0062b3234-ToggleButton.scn
-res://Game/game.tscn::6431c68178da48cf1c1695589345db1d::1762545673::res://.godot/exported/133200997/export-8f3dd55d8784d9346a9c65607a93bf7b-game.scn
+res://Game/game.tscn::77a736369e5fc580af233c2b0569bdaf::1762552645::res://.godot/exported/133200997/export-8f3dd55d8784d9346a9c65607a93bf7b-game.scn
 res://Room/room_tile_set.tres::5bd9b22e4fa984a739892e01c23a02ab::1762544244::res://.godot/exported/133200997/export-80a1d17fdc0857b437bde41b42247866-room_tile_set.res
-res://Menus/MainMenu/main_menu.tscn::8cda79f3eecdbf2f021707e91298c850::1762545980::res://.godot/exported/133200997/export-13ee5b60027b055d7de92315688b4270-main_menu.scn
+res://Menus/MainMenu/main_menu.tscn::5638419f39c366b7380280a110fc2c4c::1762547176::res://.godot/exported/133200997/export-13ee5b60027b055d7de92315688b4270-main_menu.scn
 res://World/TileSet.tres::ad569a91baa0b616dba447c00c5d012e::1762371758::res://.godot/exported/133200997/export-5a76e3bd0f872b7a03a867d18b49d4bf-TileSet.res
 res://Action/Particles/path_particles.tscn::b0edaf7d37ca3335fef0d853bd54d754::1762540491::res://.godot/exported/133200997/export-57f1b5518d2f0b3fc76d6e6adcfcafc9-path_particles.scn
-res://Menus/GameMenus/game_menu.tscn::0e1e3b5819ef377c92c650c5b759d5ae::1762452413::res://.godot/exported/133200997/export-5534c407d6ae7fa51858c2070e849fbc-game_menu.scn
+res://Menus/GameMenus/game_menu.tscn::626f29a0e26f6e16bb1707769b5f3360::1762547283::res://.godot/exported/133200997/export-5534c407d6ae7fa51858c2070e849fbc-game_menu.scn
 res://Menus/GameMenus/game_over.tscn::d14c677b3c4938cee586b1a2d05c342e::1762460241::res://.godot/exported/133200997/export-d8e797766d3f576a4655e0707e923ed7-game_over.scn
-res://Menus/GameMenus/pause_menu.tscn::ab3d1fcf093e5e0571a902f54eca0e40::1762545443::res://.godot/exported/133200997/export-265d333d702ce4251a0ee4c7d78a11f5-pause_menu.scn
+res://Menus/GameMenus/pause_menu.tscn::76886d103534b2711fce079cdd8f1d9d::1762552643::res://.godot/exported/133200997/export-265d333d702ce4251a0ee4c7d78a11f5-pause_menu.scn
 res://Menus/GameMenus/play_again.tscn::9a0e9c57a1797ba1e397251b452e45d4::1762371757::res://.godot/exported/133200997/export-62a3d195ec70956800d4ae3e2b87e0f4-play_again.scn
 res://Menus/GameMenus/temp_win.tscn::fd00473d432f58ceeb05c1a43fb6721c::1762459066::res://.godot/exported/133200997/export-ac9a94c000cc7e104e31927b78695bc7-temp_win.scn
 res://TileObjects/baddie.tscn::08bcc68a3c82c7223525b32fa8c4a58a::1762544824::res://.godot/exported/133200997/export-fc7902126ad2cb6b0a2caa81147939b0-baddie.scn
@@ -25,4 +25,7 @@ res://Action/TestActions/Fireball.tres::bdb133b3154cb6cc9993a5a140bb36e4::176254
 res://Action/TestActions/Fists.tres::7c18d389bb2e4f038c9d0339ef80e221::1762541893::res://.godot/exported/133200997/export-13617db4adccccfb0d57b860d9d88a38-Fists.res
 res://Action/TestActions/Heal.tres::2ce33f9624f27e3c0800ce4686931d6b::1762541858::res://.godot/exported/133200997/export-314d0b34c266ff13a95a4b92df70ebe5-Heal.res
 res://Audio/one_shot_sfx.tscn::deeea203919f4057e1721817fc0c6bc0::1762544284::res://.godot/exported/133200997/export-efbbd632c961923756a6ee79c6550198-one_shot_sfx.scn
-res://Audio/music_manager.tscn::3d993bfdd9d059b7378bbbb4fe670438::1762545769::res://.godot/exported/133200997/export-58d13fb419b00562871f36a59dcbf1b0-music_manager.scn
+res://Audio/music_manager.tscn::b86b7302928349ee0a46a59a70cbff15::1762552083::res://.godot/exported/133200997/export-58d13fb419b00562871f36a59dcbf1b0-music_manager.scn
+res://Menus/GameMenus/settings_game_menu.tscn::53f0091a97c8fb117d5fa5554306f5e3::1762552798::res://.godot/exported/133200997/export-f03d2c9744296ae86d2d21b037d33c03-settings_game_menu.scn
+res://Menus/Settings/settings.tscn::1d5cf6ab2254ac09e7094c00435b71e0::1762552590::res://.godot/exported/133200997/export-68f76525b34a298921eccb7b3e5ef304-settings.scn
+res://Menus/Settings/setting_slider.tscn::dd5eae05b513a6b03afcf615a221625d::1762550949::res://.godot/exported/133200997/export-7140487707c51e85e735b13d9e569d74-setting_slider.scn
