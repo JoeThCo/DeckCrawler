@@ -30,8 +30,7 @@ func hand_init() -> void:
 	add_action("Heal")
 	add_action("Heal")
 	add_action("Bolt")
-	add_action("Damage")
-	add_action("Damage")
+	add_action("Fireball")
 	add_action("Damage")
 	add_action("Damage")
 
@@ -52,11 +51,10 @@ func remove_action(action: Action) -> void:
 
 
 func play_action(action_display: ActionDisplay, other_tile_object: TileObjectComponent) -> void:
-	var temp_ad: ActionDisplay = action_display
+	#action_display.visible = false #HACK Check for side effects
+	await action_display.action.execute(other_tile_object)
 	remove_action(action_display.action)
-	await temp_ad.action.execute(other_tile_object)
-	print(temp_ad == null)
-	action_played.emit(temp_ad)
+	action_played.emit(action_display)
 
 
 func print_hand() -> void:

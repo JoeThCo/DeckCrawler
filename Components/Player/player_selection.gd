@@ -17,7 +17,7 @@ func _ready() -> void:
 
 func on_selection_start(action_display: ActionDisplay) -> void:
 	print("Selection Start")
-	if selected_action_display != null:
+	if selected_action_display != null and selected_action_display != action_display:
 		selected_action_display.un_selected()
 		
 	is_selecting = true
@@ -26,11 +26,14 @@ func on_selection_start(action_display: ActionDisplay) -> void:
 
 
 func on_selection_cancel(_action_display: ActionDisplay) -> void:
+	print("Selection Cancel")
 	selected_action_display.un_selected()
 	is_selecting = false
 
 
 func on_selection_complete(selected_tile_object: TileObjectComponent) -> void:
+	print("Selection Complete")
+	selected_action_display.un_selected() #HACK not sure why I have to do this
 	await deck.play_action(selected_action_display, selected_tile_object)
 	is_selecting = false
 
@@ -43,6 +46,8 @@ func _unhandled_input(event: InputEvent) -> void:
 			selection_complete.emit(temp_to)
 			selected_action_display = null
 
+
+func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("cancel"):
 		#print("Cancel Mouse Down")
 		if selected_action_display != null:

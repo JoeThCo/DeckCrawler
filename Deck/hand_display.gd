@@ -37,6 +37,7 @@ func action_added(action: Action) -> void:
 
 
 func action_removed(action: Action) -> void:
+	print("Hand Action Removed")
 	for current: ActionDisplay in action_displays:
 		if current.action == action:
 			remove_action(current)
@@ -44,5 +45,6 @@ func action_removed(action: Action) -> void:
 
 
 func remove_action(action_display: ActionDisplay) -> void:
+	print("Hand Remove Action")
 	action_displays.erase(action_display)
 	action_display.queue_free()
