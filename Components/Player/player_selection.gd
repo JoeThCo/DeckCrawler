@@ -16,14 +16,17 @@ func _ready() -> void:
 
 
 func on_selection_start(action_display: ActionDisplay) -> void:
-	#print("Selection Start")
+	print("Selection Start")
+	if selected_action_display != null:
+		selected_action_display.un_selected()
+		
 	is_selecting = true
 	selected_action_display = action_display
-	if selected_action_display.action.selection == Selection.SELF:
-		selection_complete.emit(selected_action_display.tile_object)
+	selected_action_display.selected()
 
 
 func on_selection_cancel(_action_display: ActionDisplay) -> void:
+	selected_action_display.un_selected()
 	is_selecting = false
 
 
@@ -42,6 +45,6 @@ func _unhandled_input(event: InputEvent) -> void:
 
 	if event.is_action_pressed("cancel"):
 		#print("Cancel Mouse Down")
-		#print(selected_action_display == null)
-		selection_cancel.emit(selected_action_display)
-		selected_action_display = null
+		if selected_action_display != null:
+			selection_cancel.emit(selected_action_display)
+			selected_action_display = null

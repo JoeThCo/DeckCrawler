@@ -102,6 +102,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Target" type="Label" parent="Offset/Background"]
+visible = false
 custom_minimum_size = Vector2(85, 25)
 layout_mode = 0
 offset_left = 20.5

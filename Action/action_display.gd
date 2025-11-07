@@ -2,6 +2,10 @@ extends Control
 class_name ActionDisplay
 
 
+@export_category("Values")
+@export var card_lerp_time: float = 0.15
+
+
 @export_category("Nodes")
 @export var control_offset: Control
 
@@ -27,27 +31,21 @@ func set_up(_a: Action, _to: TileObjectComponent) -> void:
 	action = _a
 	tile_object = _to
 	
-	_to.selection.selection_start.connect(selection_start)
-	_to.selection.selection_cancel.connect(selection_cancel)
-	
 	if action.icon != null:
 		icon_texture.texture = action.icon
 	name_label.text = action.action_name
 	cost_label.text = str(action.cost)
-	target_label.text = Helper.enum_to_proper_string(SelectionComponent.Selection.keys()[action.selection])  
 	description_label.text = action.description
 
 
-func selection_start(action_display: ActionDisplay) -> void:
-	if action_display != self: return #FIXME remove this?
+func selected() -> void:
+	print("Card Border ON")
 	selected_texture.visible = true
-	#print("Card Border ON")
 	
 
-func selection_cancel(action_display: ActionDisplay) -> void:
-	if action_display != self: return #FIXME remove this?
+func un_selected() -> void:
+	print("Card Border OFF")
 	selected_texture.visible = false
-	#print("Card Border OFF")
 
 
 func _on_mouse_entered() -> void:
@@ -67,9 +65,9 @@ func _input(event: InputEvent) -> void:
 
 func to_mouse_enter() -> void:
 	var tween: Tween = get_tree().create_tween()
-	tween.tween_property(control_offset, "position", Vector2(0, -100), 0.1)
+	tween.tween_property(control_offset, "position", Vector2(0, -125), card_lerp_time)
 
 
 func to_mouse_exit() -> void:
 	var tween: Tween = get_tree().create_tween()
-	tween.tween_property(control_offset, "position", Vector2.ZERO, 0.1)
+	tween.tween_property(control_offset, "position", Vector2.ZERO, card_lerp_time)

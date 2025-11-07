@@ -7,7 +7,7 @@ class_name PlayerControlsComponent
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	print(selection.is_selecting)
+	#print(selection.is_selecting)
 	if selection.is_selecting: return
 	if event.is_action_pressed("selection"):
 		var mouse_grid_coords: Vector2i = Room.local_to_map(get_global_mouse_position())

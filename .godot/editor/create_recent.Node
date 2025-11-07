@@ -1,6 +1,9 @@
 TextureRect
-Sprite2D
+Label
 CenterContainer
+HBoxContainer
+VBoxContainer
+Sprite2D
 ParticlesComponent
 Node2D
 GPUParticles2D
@@ -8,7 +11,4 @@ PlayerSelectionComponent
 BaddieSelectionComponent
 SelectionComponent
 Control
-Label
 ProgressBar
-HandDisplay
-CanvasLayer

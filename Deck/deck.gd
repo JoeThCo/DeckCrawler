@@ -2,6 +2,7 @@ extends Control
 class_name Deck
 
 
+signal action_played(action_display: ActionDisplay)
 signal action_added(action: Action)
 signal action_removed(action: Action)
 
@@ -26,13 +27,13 @@ func _ready() -> void:
 
 
 func hand_init() -> void:
-	add_action("Heal_Other")
-	add_action("Heal_Self")
-	add_action("Bolt_Other")
-	add_action("Damage_Self")
-	add_action("Damage_Other")
-	add_action("Damage_Other")
-	add_action("Damage_Other")
+	add_action("Heal")
+	add_action("Heal")
+	add_action("Bolt")
+	add_action("Damage")
+	add_action("Damage")
+	add_action("Damage")
+	add_action("Damage")
 
 
 func add_action(action_name: String) -> void:
@@ -51,9 +52,11 @@ func remove_action(action: Action) -> void:
 
 
 func play_action(action_display: ActionDisplay, other_tile_object: TileObjectComponent) -> void:
-	var action: Action = action_display.action
-	remove_action(action)
-	await action_display.action.execute(other_tile_object)
+	var temp_ad: ActionDisplay = action_display
+	remove_action(action_display.action)
+	await temp_ad.action.execute(other_tile_object)
+	print(temp_ad == null)
+	action_played.emit(temp_ad)
 
 
 func print_hand() -> void:

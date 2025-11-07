@@ -15,9 +15,6 @@ signal action_complete
 @export var icon: CompressedTexture2D
 @export var particle_to_spawn: String
 
-@export_category("Types")
-@export var selection: SelectionComponent.Selection
-
 
 var owner_object: TileObjectComponent
 
@@ -27,9 +24,9 @@ func set_up(_to: TileObjectComponent) -> void:
 
 
 func execute(other_tile_object: TileObjectComponent) -> void:
-	if selection == SelectionComponent.Selection.SELF:
+	if other_tile_object == owner_object:
 		do_action(owner_object)
-	elif selection == SelectionComponent.Selection.OTHER:
+	else:
 		await display_particles(owner_object, other_tile_object)
 		do_action(other_tile_object)
 	action_complete.emit()
