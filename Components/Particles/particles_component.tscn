@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://erlfrxjj20ab" path="res://Action/Particles/SpawnableParticles/healing.tscn" id="3_bg7af"]
 
 [node name="ParticlesComponent" type="Node2D" node_paths=PackedStringArray("damage", "healing")]
+scale = Vector2(8, 8)
 script = ExtResource("1_an4nu")
 damage = NodePath("DamageParticles")
 healing = NodePath("Healing")

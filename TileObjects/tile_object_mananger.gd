@@ -32,7 +32,7 @@ static func player_move() -> void:
 	await do_non_player_actions()
 
 
-static func action_played(_action_display: ActionDisplay) -> void:
+static func action_played() -> void:
 	await do_non_player_actions()
 
 

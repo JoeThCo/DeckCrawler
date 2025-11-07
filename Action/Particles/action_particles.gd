@@ -7,9 +7,7 @@ class_name ActionParticles
 
 func set_up(tile_object: TileObjectComponent) -> void:
 	global_position = tile_object.center.global_position
-	finished.connect(on_finished)
+	var timer: SceneTreeTimer = get_tree().create_timer(total_time)
 	restart()
-
-
-func on_finished() -> void:
+	await timer.timeout
 	queue_free()

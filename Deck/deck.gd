@@ -2,7 +2,7 @@ extends Control
 class_name Deck
 
 
-signal action_played(action_display: ActionDisplay)
+signal action_played
 signal action_added(action: Action)
 signal action_removed(action: Action)
 
@@ -51,10 +51,9 @@ func remove_action(action: Action) -> void:
 
 
 func play_action(action_display: ActionDisplay, other_tile_object: TileObjectComponent) -> void:
-	#action_display.visible = false #HACK Check for side effects
-	await action_display.action.execute(other_tile_object)
 	remove_action(action_display.action)
-	action_played.emit(action_display)
+	await action_display.action.execute(other_tile_object)
+	action_played.emit()
 
 
 func print_hand() -> void:
