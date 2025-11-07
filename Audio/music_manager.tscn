@@ -7,8 +7,9 @@
 
 [node name="MusicManager" type="Node" node_paths=PackedStringArray("audio_stream_player")]
 script = ExtResource("1_l2aqf")
+min_volume = -50
 audio_stream_player = NodePath("AudioStreamPlayer")
 all_songs = Array[AudioStream]([ExtResource("2_hef1n"), ExtResource("3_oubgs"), ExtResource("4_sxgk8")])
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-volume_db = -10.0
+volume_db = 10.0

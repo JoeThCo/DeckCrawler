@@ -11,3 +11,7 @@ func _ready() -> void:
 
 func _on_button_button_down() -> void:
 	get_tree().change_scene_to_file("res://Game/game.tscn")
+
+
+func _on_settings_button_down() -> void:
+	get_tree().change_scene_to_file("res://Menus/Settings/settings.tscn")

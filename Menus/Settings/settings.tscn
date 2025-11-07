@@ -1,0 +1,77 @@
+[gd_scene load_steps=3 format=3 uid="uid://bok0hbqfnyt4u"]
+
+[ext_resource type="Script" uid="uid://gu2wlpnrhgr7" path="res://Menus/Settings/settings.gd" id="1_8gauj"]
+[ext_resource type="PackedScene" uid="uid://c2xus6f2vk2sa" path="res://Menus/Settings/setting_slider.tscn" id="3_xmiuu"]
+
+[node name="Settings" type="Control" node_paths=PackedStringArray("master_volume", "music_volume", "sfx_volume")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8gauj")
+master_volume = NodePath("VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer/MasterVolume")
+music_volume = NodePath("VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer/Music Volume")
+sfx_volume = NodePath("VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer/SFX Volume")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 150
+theme_override_constants/margin_right = 150
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Volume"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MasterVolume" parent="VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("3_xmiuu")]
+layout_mode = 2
+slider_name = "Master"
+
+[node name="Music Volume" parent="VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("3_xmiuu")]
+layout_mode = 2
+slider_name = "Music"
+
+[node name="SFX Volume" parent="VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("3_xmiuu")]
+layout_mode = 2
+slider_name = "SFX"
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Main Menu" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Main Menu"
+
+[connection signal="setting_slider_value_changed" from="VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer/MasterVolume" to="." method="_on_master_volume_setting_slider_value_changed"]
+[connection signal="setting_slider_value_changed" from="VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer/Music Volume" to="." method="_on_music_volume_setting_slider_value_changed"]
+[connection signal="setting_slider_value_changed" from="VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer/SFX Volume" to="." method="_on_sfx_volume_setting_slider_value_changed"]
+[connection signal="button_down" from="VBoxContainer/Main Menu" to="." method="_on_main_menu_button_down"]

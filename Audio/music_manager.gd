@@ -1,21 +1,23 @@
 extends Node
 
 
+@export var min_volume: int
+
+
 @export_category("Nodes")
 @export var audio_stream_player: AudioStreamPlayer
 
 
 @export_category("Songs")
 @export var all_songs: Array[AudioStream] = []
+
 var song_queue: Array[AudioStream] = []
-
 var current_song: AudioStream = null
-
 var play_time: float = 0
 var resume_time: float = 0
 
-signal on_song_end
 
+signal on_song_end
 signal on_play
 signal on_pause
 signal on_song_skipped
@@ -25,7 +27,13 @@ func _ready() -> void:
 	song_queue.append_array(all_songs) 
 	song_queue.shuffle()
 	play()
-	
+	SettingsManager.on_setting_updated.connect(setting_updated)
+
+
+func setting_updated(key: String, value) -> void:
+	if key != SettingsManager.MUSIC_VOLUME_KEY: return
+	audio_stream_player.volume_db = lerp(min_volume, 0, value)
+
 
 func play() -> void:
 	if current_song == null:

@@ -19,6 +19,7 @@ config/features=PackedStringArray("4.5", "GL Compatibility")
 
 SignalBus="*res://SignalBus.gd"
 MusicManager="*res://Audio/music_manager.tscn"
+SettingsManager="*res://Menus/Settings/settings_manager.gd"
 
 [editor_plugins]
 

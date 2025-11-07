@@ -1,15 +1,14 @@
-MarginContainer
+HSeparator
 Label
+Button
+CenterContainer
+VBoxContainer
+MarginContainer
+HBoxContainer
+HSlider
+ScrollContainer
 AudioStreamPlayer
 Node
-HSeparator
-Button
 Node2D
 AudioStreamPlayer2D      - Matches the "sfx" keyword.
-CenterContainer
 Sprite2D
-TextureRect
-HBoxContainer
-VBoxContainer
-ParticlesComponent
-GPUParticles2D
