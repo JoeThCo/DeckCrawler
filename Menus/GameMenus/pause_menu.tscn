@@ -40,6 +40,13 @@ text = "Resume"
 [node name="HSeparator" type="HSeparator" parent="Panel/VBoxContainer"]
 layout_mode = 2
 
+[node name="Settings" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Settings"
+
+[node name="HSeparator2" type="HSeparator" parent="Panel/VBoxContainer"]
+layout_mode = 2
+
 [node name="Restart" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
 text = "Restart"
@@ -49,5 +56,6 @@ layout_mode = 2
 text = "Quit"
 
 [connection signal="button_down" from="Panel/VBoxContainer/Resume" to="." method="_on_resume_button_down"]
+[connection signal="button_down" from="Panel/VBoxContainer/Settings" to="." method="_on_settings_button_down"]
 [connection signal="button_down" from="Panel/VBoxContainer/Restart" to="." method="_on_restart_button_down"]
 [connection signal="button_down" from="Panel/VBoxContainer/Quit" to="." method="_on_quit_button_down"]

@@ -1,6 +1,7 @@
 extends Control
 class_name Settings
 
+@export var is_game_menu: bool = false
 
 @export var master_volume: SettingSlider
 @export var music_volume: SettingSlider
@@ -18,7 +19,10 @@ func _ready() -> void:
 
 
 func _on_main_menu_button_down() -> void:
-	get_tree().change_scene_to_file("res://Menus/MainMenu/main_menu.tscn")
+	if not is_game_menu:
+		get_tree().change_scene_to_file("res://Menus/MainMenu/main_menu.tscn")
+	else:
+		MenuManager.display_menu("Pause") #FIXME I dont like this
 
 
 func _on_master_volume_setting_slider_value_changed(value: float) -> void:

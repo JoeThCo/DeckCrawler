@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://b3yw06f8rrsvl"]
+
+[ext_resource type="PackedScene" uid="uid://bok0hbqfnyt4u" path="res://Menus/Settings/settings.tscn" id="1_winh2"]
+
+[node name="Settings" type="CanvasLayer"]
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Settings" parent="Panel" instance=ExtResource("1_winh2")]
+layout_mode = 1
+is_game_menu = true

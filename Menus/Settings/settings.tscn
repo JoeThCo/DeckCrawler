@@ -69,7 +69,7 @@ layout_mode = 2
 [node name="Main Menu" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Main Menu"
+text = "Back"
 
 [connection signal="setting_slider_value_changed" from="VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer/MasterVolume" to="." method="_on_master_volume_setting_slider_value_changed"]
 [connection signal="setting_slider_value_changed" from="VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer/Music Volume" to="." method="_on_music_volume_setting_slider_value_changed"]

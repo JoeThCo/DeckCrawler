@@ -1,6 +1,9 @@
+Panel
+Settings
+CanvasLayer
+Button
 HSeparator
 Label
-Button
 CenterContainer
 VBoxContainer
 MarginContainer
@@ -10,5 +13,3 @@ ScrollContainer
 AudioStreamPlayer
 Node
 Node2D
-AudioStreamPlayer2D      - Matches the "sfx" keyword.
-Sprite2D
