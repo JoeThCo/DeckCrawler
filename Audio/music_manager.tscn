@@ -1,0 +1,15 @@
+[gd_scene load_steps=5 format=3 uid="uid://dsitkpo31ww8l"]
+
+[ext_resource type="Script" uid="uid://dy86yi4cwxebd" path="res://Audio/music_manager.gd" id="1_l2aqf"]
+[ext_resource type="AudioStream" uid="uid://c7vm88sd2j7bf" path="res://Audio/Songs/16-bits-musica-294099.mp3" id="2_hef1n"]
+[ext_resource type="AudioStream" uid="uid://bdneb7dh5wbtk" path="res://Audio/Songs/kim-lightyear-angel-eyes-chiptune-edit-110226.mp3" id="3_oubgs"]
+[ext_resource type="AudioStream" uid="uid://5fdikdcqru2s" path="res://Audio/Songs/kim-lightyear-legends-109307.mp3" id="4_sxgk8"]
+
+[node name="MusicManager" type="Node" node_paths=PackedStringArray("audio_stream_player")]
+script = ExtResource("1_l2aqf")
+min_volume = -50
+audio_stream_player = NodePath("AudioStreamPlayer")
+all_songs = Array[AudioStream]([ExtResource("2_hef1n"), ExtResource("3_oubgs"), ExtResource("4_sxgk8")])
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = 10.0

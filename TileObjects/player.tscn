@@ -1,0 +1,145 @@
+[gd_scene load_steps=13 format=3 uid="uid://0qmp0h786iwm"]
+
+[ext_resource type="Script" uid="uid://biohw8s55yt5y" path="res://TileObjects/player.gd" id="1_40tdi"]
+[ext_resource type="PackedScene" uid="uid://dcxi8aofcw138" path="res://Components/Particles/particles_component.tscn" id="2_laux1"]
+[ext_resource type="Script" uid="uid://bu83mmuls6yp6" path="res://Components/movement.gd" id="2_qxeio"]
+[ext_resource type="Texture2D" uid="uid://dreafome0aldj" path="res://Art/Player.png" id="2_r1hj6"]
+[ext_resource type="Script" uid="uid://n7b3t6dajop4" path="res://Components/Health/health.gd" id="3_ggg8h"]
+[ext_resource type="Script" uid="uid://bhh7v05qnluna" path="res://Components/team_component.gd" id="4_laux1"]
+[ext_resource type="Script" uid="uid://dgmrbc8k0s6ax" path="res://Components/Player/player_controls.gd" id="5_r1hj6"]
+[ext_resource type="Script" uid="uid://4demsh0trrm2" path="res://Components/Player/player_selection.gd" id="6_ggg8h"]
+[ext_resource type="Script" uid="uid://cy71jjp5d2opr" path="res://Deck/deck.gd" id="6_qic5a"]
+[ext_resource type="Script" uid="uid://orjp73y7x1v1" path="res://Deck/hand_display.gd" id="7_xpkma"]
+[ext_resource type="PackedScene" uid="uid://d2vmn0718sbga" path="res://Components/Health/health_bar.tscn" id="9_laux1"]
+[ext_resource type="Texture2D" uid="uid://hcf7e6h08u2" path="res://Art/Mana.png" id="9_qic5a"]
+
+[node name="PlayerThree" type="Node2D" node_paths=PackedStringArray("deck", "health", "movement", "team", "selection")]
+script = ExtResource("1_40tdi")
+deck = NodePath("CanvasLayer/VBoxContainer/Deck")
+health = NodePath("HealthComponent")
+movement = NodePath("MovementComponent")
+team = NodePath("TeamComponent")
+selection = NodePath("PlayerSelectionComponent")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(0.43634516, 0.86127543, 0.99999994, 1)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("2_r1hj6")
+centered = false
+
+[node name="Center" type="Node2D" parent="Sprite2D"]
+position = Vector2(64, 64)
+
+[node name="ParticlesComponent" parent="Sprite2D/Center" node_paths=PackedStringArray("health") instance=ExtResource("2_laux1")]
+health = NodePath("../../../HealthComponent")
+
+[node name="MovementComponent" type="Node2D" parent="." node_paths=PackedStringArray("base_node")]
+script = ExtResource("2_qxeio")
+base_node = NodePath("..")
+metadata/_custom_type_script = "uid://bu83mmuls6yp6"
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("3_ggg8h")
+metadata/_custom_type_script = "uid://n7b3t6dajop4"
+
+[node name="TeamComponent" type="Node" parent="."]
+script = ExtResource("4_laux1")
+team = 1
+metadata/_custom_type_script = "uid://bhh7v05qnluna"
+
+[node name="PlayerControlsComponent" type="Node2D" parent="." node_paths=PackedStringArray("selection", "movement")]
+script = ExtResource("5_r1hj6")
+selection = NodePath("../PlayerSelectionComponent")
+movement = NodePath("../MovementComponent")
+metadata/_custom_type_script = "uid://dgmrbc8k0s6ax"
+
+[node name="PlayerSelectionComponent" type="Node2D" parent="." node_paths=PackedStringArray("deck", "tile_object")]
+script = ExtResource("6_ggg8h")
+deck = NodePath("../CanvasLayer/VBoxContainer/Deck")
+tile_object = NodePath("..")
+metadata/_custom_type_script = "uid://4demsh0trrm2"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -147.0
+offset_bottom = 107.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="ManaCenter" type="CenterContainer" parent="CanvasLayer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/VBoxContainer/ManaCenter"]
+visible = false
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/VBoxContainer/ManaCenter/HBoxContainer"]
+modulate = Color(0.47991794, 0.8658608, 0.99731654, 1)
+custom_minimum_size = Vector2(0, 35.005)
+layout_mode = 2
+texture = ExtResource("9_qic5a")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer/ManaCenter/HBoxContainer"]
+layout_mode = 2
+text = "Mana"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Deck" type="CenterContainer" parent="CanvasLayer/VBoxContainer" node_paths=PackedStringArray("tile_object", "hand_display")]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+script = ExtResource("6_qic5a")
+tile_object = NodePath("../../..")
+hand_display = NodePath("HandDisplay")
+
+[node name="HandDisplay" type="HBoxContainer" parent="CanvasLayer/VBoxContainer/Deck" node_paths=PackedStringArray("tile_object")]
+layout_mode = 2
+theme_override_constants/separation = -50
+script = ExtResource("7_xpkma")
+tile_object = NodePath("../../../..")
+metadata/_custom_type_script = "uid://orjp73y7x1v1"
+
+[node name="LocalUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Offset" type="Control" parent="LocalUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = -24.0
+offset_right = 8.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ProgressBar" parent="LocalUI/Offset" node_paths=PackedStringArray("health") instance=ExtResource("9_laux1")]
+layout_mode = 1
+offset_left = -37.5
+offset_top = -13.5
+offset_right = 37.5
+offset_bottom = 13.5
+mouse_filter = 2
+health = NodePath("../../../HealthComponent")

@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmd8flrs3golb"]
+
+[ext_resource type="Texture2D" uid="uid://c0eswmlyovjqe" path="res://Art/Skull.png" id="1_dhra8"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7gi1t"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 8.0
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = 9.999997
+linear_accel_max = 9.999997
+radial_accel_min = 14.999997
+radial_accel_max = 14.999997
+scale_min = 0.049999997
+scale_max = 0.049999997
+color = Color(0.85882354, 0, 0, 1)
+
+[node name="DamageParticles" type="GPUParticles2D"]
+emitting = false
+texture = ExtResource("1_dhra8")
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_7gi1t")

@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2xus6f2vk2sa"]
+
+[ext_resource type="Script" uid="uid://vu8dcbqfco16" path="res://Menus/Settings/setting_slider.gd" id="1_1ghee"]
+
+[node name="SettingSlider" type="HBoxContainer" node_paths=PackedStringArray("hslider", "name_label", "value_label")]
+custom_minimum_size = Vector2(0, 50)
+script = ExtResource("1_1ghee")
+hslider = NodePath("HSlider")
+name_label = NodePath("Name")
+value_label = NodePath("Value")
+
+[node name="Name" type="Label" parent="."]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "Slider Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.01
+scrollable = false
+tick_count = 5
+ticks_on_borders = true
+ticks_position = 3
+
+[node name="Value" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Value"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="value_changed" from="HSlider" to="." method="_on_h_slider_value_changed"]

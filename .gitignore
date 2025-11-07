@@ -2,3 +2,6 @@
 /.godot/exported
 /.godot
 *.uid
+/.godot/editor
+/.godot
+.godot/editor/script_editor_cache.cfg

@@ -1,0 +1,43 @@
+extends Node
+class_name Helper
+
+
+static func get_all_in_folder(path):
+	var items = []
+	var dir = DirAccess.open(path)
+	if not dir:
+		push_error("Invalid dir: " + path)
+		return items  # Return an empty list if the directory is invalid
+
+	# print("Opening directory: ", path)
+	dir.list_dir_begin()
+	var file_name = dir.get_next()
+	while file_name != "":
+		# print("Found file: ", file_name)
+		if !file_name.begins_with(".") and !file_name.ends_with(".import"):
+			var full_path = path + "/" + file_name
+			# Remove .remap extension if present
+			if full_path.ends_with(".remap"):
+				full_path = full_path.substr(0, full_path.length() - 6)
+			# print("Checking path: ", full_path)
+			if ResourceLoader.exists(full_path):
+				# print("Path exists: ", full_path)
+				var res = ResourceLoader.load(full_path)
+				if res:
+					# print("Loaded resource: ", full_path)
+					items.append(res)
+				else:
+					push_error("Failed to load resource: ", full_path)
+			else:
+				push_error("Resource does not exist: ", full_path)
+		file_name = dir.get_next()
+	dir.list_dir_end()
+	return items
+
+
+static func get_resource_name(resource: Resource) -> String:
+	return resource.resource_path.get_file().trim_suffix('.tres')
+
+
+static func enum_to_proper_string(enum_string: String) -> String:
+	return enum_string.to_lower().capitalize()
