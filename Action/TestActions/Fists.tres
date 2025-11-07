@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="DamageAction" load_steps=3 format=3 uid="uid://dnnqy0mvsu2eq"]
+
+[ext_resource type="Texture2D" uid="uid://bidjm8el4cs6s" path="res://Art/Fists.png" id="1_80g72"]
+[ext_resource type="Script" uid="uid://dkiixetjb5pd2" path="res://Action/damage_action.gd" id="1_fxp2h"]
+
+[resource]
+script = ExtResource("1_fxp2h")
+damage_amount = 2
+action_name = "Fists"
+icon = ExtResource("1_80g72")
+particle_color = Color(1, 0.8560023, 0.68170613, 1)
+metadata/_custom_type_script = "uid://dkiixetjb5pd2"

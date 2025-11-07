@@ -27,22 +27,25 @@ func _ready() -> void:
 
 
 func hand_init() -> void:
-	add_action("Heal")
-	add_action("Heal")
-	add_action("Bolt")
-	add_action("Fireball")
-	add_action("Damage")
-	add_action("Damage")
+	try_add_action_multiple("Heal", 2)
+	try_add_action_multiple("Bolt", 2)
+	try_add_action_multiple("Fists", 2)
+	try_add_action_multiple("Fireball", 2)
 
 
-func add_action(action_name: String) -> void:
+func try_add_action_multiple(action_name: String, count: int = 1) -> void:
+	for i in range(count):
+		try_add_action(action_name)
+
+
+func try_add_action(action_name: String) -> void:
 	for action: Action in all_actions:
 		if Helper.get_resource_name(action) == action_name:
 			action.set_up(tile_object)
 			hand.append(action)
 			action_added.emit(action)
 			return
-	assert(action_name, " was not found!")
+	assert(action_name, " is not a valid action name!")
 
 
 func remove_action(action: Action) -> void:

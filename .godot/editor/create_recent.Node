@@ -1,9 +1,9 @@
+Sprite2D
 TextureRect
 Label
 CenterContainer
 HBoxContainer
 VBoxContainer
-Sprite2D
 ParticlesComponent
 Node2D
 GPUParticles2D
