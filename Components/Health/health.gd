@@ -9,21 +9,23 @@ signal on_dead
 
 
 var is_dead: bool:
-	get: return health <= 0
+	get: return current_health <= 0
 
 
-@export var health: int
+@export var starting_health: int = 10
+var current_health: int
 var max_health: int
 
 
 func _ready() -> void:
-	max_health = health
+	current_health = starting_health
+	max_health = starting_health
 	health_changed.emit()
 
 
 func take_damage(action: DamageAction) -> void:
 	if action.damage_amount <= 0: return
-	health -= action.damage_amount
+	current_health -= action.damage_amount
 	damaged.emit()
 	health_changed.emit()
 	if is_dead:
@@ -32,7 +34,7 @@ func take_damage(action: DamageAction) -> void:
 
 func heal_health(action: HealAction) -> void:
 	if action.heal_amount <= 0: return
-	health += action.heal_amount
-	health = clamp(health, 0, max_health)
+	current_health += action.heal_amount
+	current_health = clamp(current_health, 0, max_health)
 	healed.emit()
 	health_changed.emit()

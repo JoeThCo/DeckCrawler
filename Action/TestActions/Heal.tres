@@ -7,6 +7,9 @@
 script = ExtResource("2_hi3du")
 heal_amount = 4
 action_name = "Heal"
+description = "Call for medic
+and
+Heal 4 damage."
 icon = ExtResource("1_yfuea")
 particle_color = Color(0, 0.8784314, 0.5372549, 1)
 metadata/_custom_type_script = "uid://m7cn0dsgbhg1"

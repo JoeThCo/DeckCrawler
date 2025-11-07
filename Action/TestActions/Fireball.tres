@@ -7,6 +7,8 @@
 script = ExtResource("1_d6dxu")
 damage_amount = 8
 action_name = "Fireball"
+description = "Deal 8 Damage.
+Fireball!"
 icon = ExtResource("1_c05jv")
 particle_color = Color(0.9999996, 0.45173818, 0.1355221, 1)
 metadata/_custom_type_script = "uid://dkiixetjb5pd2"

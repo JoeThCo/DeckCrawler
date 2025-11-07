@@ -7,7 +7,9 @@
 script = ExtResource("2_h61pn")
 damage_amount = 5
 action_name = "Bolt"
-description = "Deal 5 Damage"
+description = "Fork in outlet
+and
+Deal 5 Damage."
 icon = ExtResource("1_hwulm")
 particle_color = Color(0.94855493, 0.8131305, 3.85046e-07, 1)
 metadata/_custom_type_script = "uid://dkiixetjb5pd2"

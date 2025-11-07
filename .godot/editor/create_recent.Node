@@ -1,7 +1,7 @@
+CenterContainer
 Sprite2D
 TextureRect
 Label
-CenterContainer
 HBoxContainer
 VBoxContainer
 ParticlesComponent

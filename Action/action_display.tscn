@@ -32,7 +32,7 @@ selected_texture = NodePath("Offset/Selected")
 name_label = NodePath("Offset/Background/Name")
 cost_label = NodePath("Offset/Background/Cost")
 target_label = NodePath("Offset/Background/Target")
-description_label = NodePath("Offset/Background/Description")
+description_label = NodePath("Offset/Background/DescriptionCenter/Description")
 
 [node name="Offset" type="Control" parent="."]
 layout_mode = 1
@@ -114,17 +114,23 @@ text = "Target"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Description" type="Label" parent="Offset/Background"]
-custom_minimum_size = Vector2(0, 60)
-layout_mode = 0
-offset_left = 17.5
-offset_top = 136.0
-offset_right = 106.5
-offset_bottom = 196.0
+[node name="DescriptionCenter" type="CenterContainer" parent="Offset/Background"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -60.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Description" type="Label" parent="Offset/Background/DescriptionCenter"]
+custom_minimum_size = Vector2(90, 60)
+layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 12
 text = "Description"
 horizontal_alignment = 1
-vertical_alignment = 1
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

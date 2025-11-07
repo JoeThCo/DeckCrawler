@@ -50,11 +50,13 @@ func un_selected() -> void:
 
 func _on_mouse_entered() -> void:
 	is_mouse_over = true
+	z_index = 1
 	to_mouse_enter()
 
 
 func _on_mouse_exited() -> void:
 	is_mouse_over = false
+	z_index = 0
 	to_mouse_exit()
 
 

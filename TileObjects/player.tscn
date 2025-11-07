@@ -40,7 +40,6 @@ metadata/_custom_type_script = "uid://bu83mmuls6yp6"
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("3_ggg8h")
-health = 10
 metadata/_custom_type_script = "uid://n7b3t6dajop4"
 
 [node name="TeamComponent" type="Node" parent="."]
@@ -105,7 +104,7 @@ hand_display = NodePath("HandDisplay")
 
 [node name="HandDisplay" type="HBoxContainer" parent="CanvasLayer/VBoxContainer/Deck" node_paths=PackedStringArray("tile_object")]
 layout_mode = 2
-theme_override_constants/separation = -25
+theme_override_constants/separation = -50
 script = ExtResource("7_xpkma")
 tile_object = NodePath("../../../..")
 metadata/_custom_type_script = "uid://orjp73y7x1v1"

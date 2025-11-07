@@ -7,6 +7,9 @@
 script = ExtResource("1_fxp2h")
 damage_amount = 2
 action_name = "Fists"
+description = "Slug it out
+and
+Deal 2 Damage."
 icon = ExtResource("1_80g72")
 particle_color = Color(1, 0.8560023, 0.68170613, 1)
 metadata/_custom_type_script = "uid://dkiixetjb5pd2"
