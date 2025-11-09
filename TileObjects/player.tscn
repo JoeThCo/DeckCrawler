@@ -1,15 +1,15 @@
 [gd_scene load_steps=13 format=3 uid="uid://0qmp0h786iwm"]
 
-[ext_resource type="Script" uid="uid://biohw8s55yt5y" path="res://TileObjects/player.gd" id="1_40tdi"]
+[ext_resource type="Script" uid="uid://bvmr7k4hq0ujd" path="res://TileObjects/player.gd" id="1_40tdi"]
 [ext_resource type="PackedScene" uid="uid://dcxi8aofcw138" path="res://Components/Particles/particles_component.tscn" id="2_laux1"]
-[ext_resource type="Script" uid="uid://bu83mmuls6yp6" path="res://Components/movement.gd" id="2_qxeio"]
+[ext_resource type="Script" uid="uid://doxy7kyeohlpq" path="res://Components/movement.gd" id="2_qxeio"]
 [ext_resource type="Texture2D" uid="uid://dreafome0aldj" path="res://Art/Player.png" id="2_r1hj6"]
-[ext_resource type="Script" uid="uid://n7b3t6dajop4" path="res://Components/Health/health.gd" id="3_ggg8h"]
-[ext_resource type="Script" uid="uid://bhh7v05qnluna" path="res://Components/team_component.gd" id="4_laux1"]
-[ext_resource type="Script" uid="uid://dgmrbc8k0s6ax" path="res://Components/Player/player_controls.gd" id="5_r1hj6"]
-[ext_resource type="Script" uid="uid://4demsh0trrm2" path="res://Components/Player/player_selection.gd" id="6_ggg8h"]
-[ext_resource type="Script" uid="uid://cy71jjp5d2opr" path="res://Deck/deck.gd" id="6_qic5a"]
-[ext_resource type="Script" uid="uid://orjp73y7x1v1" path="res://Deck/hand_display.gd" id="7_xpkma"]
+[ext_resource type="Script" uid="uid://c1jayvohv75dt" path="res://Components/Health/health.gd" id="3_ggg8h"]
+[ext_resource type="Script" uid="uid://byaaog7wfq8cf" path="res://Components/team_component.gd" id="4_laux1"]
+[ext_resource type="Script" uid="uid://bfc0yb7pyftox" path="res://Components/Player/player_controls.gd" id="5_r1hj6"]
+[ext_resource type="Script" uid="uid://ruqg4vclpber" path="res://Components/Player/player_selection.gd" id="6_ggg8h"]
+[ext_resource type="Script" uid="uid://cgoe05n7jg2f2" path="res://Deck/deck.gd" id="6_qic5a"]
+[ext_resource type="Script" uid="uid://tjy7x7oflxvq" path="res://Deck/hand_display.gd" id="7_xpkma"]
 [ext_resource type="PackedScene" uid="uid://d2vmn0718sbga" path="res://Components/Health/health_bar.tscn" id="9_laux1"]
 [ext_resource type="Texture2D" uid="uid://hcf7e6h08u2" path="res://Art/Mana.png" id="9_qic5a"]
 
@@ -36,28 +36,23 @@ health = NodePath("../../../HealthComponent")
 [node name="MovementComponent" type="Node2D" parent="." node_paths=PackedStringArray("base_node")]
 script = ExtResource("2_qxeio")
 base_node = NodePath("..")
-metadata/_custom_type_script = "uid://bu83mmuls6yp6"
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("3_ggg8h")
-metadata/_custom_type_script = "uid://n7b3t6dajop4"
 
 [node name="TeamComponent" type="Node" parent="."]
 script = ExtResource("4_laux1")
 team = 1
-metadata/_custom_type_script = "uid://bhh7v05qnluna"
 
 [node name="PlayerControlsComponent" type="Node2D" parent="." node_paths=PackedStringArray("selection", "movement")]
 script = ExtResource("5_r1hj6")
 selection = NodePath("../PlayerSelectionComponent")
 movement = NodePath("../MovementComponent")
-metadata/_custom_type_script = "uid://dgmrbc8k0s6ax"
 
 [node name="PlayerSelectionComponent" type="Node2D" parent="." node_paths=PackedStringArray("deck", "tile_object")]
 script = ExtResource("6_ggg8h")
 deck = NodePath("../CanvasLayer/VBoxContainer/Deck")
 tile_object = NodePath("..")
-metadata/_custom_type_script = "uid://4demsh0trrm2"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -107,7 +102,6 @@ layout_mode = 2
 theme_override_constants/separation = -50
 script = ExtResource("7_xpkma")
 tile_object = NodePath("../../../..")
-metadata/_custom_type_script = "uid://orjp73y7x1v1"
 
 [node name="LocalUI" type="Control" parent="."]
 layout_mode = 3

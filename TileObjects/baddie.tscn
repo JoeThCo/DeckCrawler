@@ -1,14 +1,14 @@
 [gd_scene load_steps=10 format=3 uid="uid://c3sv6rhi6accc"]
 
-[ext_resource type="Script" uid="uid://n7b3t6dajop4" path="res://Components/Health/health.gd" id="1_qatdj"]
-[ext_resource type="Script" uid="uid://oaij66q0svih" path="res://TileObjects/baddie.gd" id="1_r856x"]
+[ext_resource type="Script" uid="uid://c1jayvohv75dt" path="res://Components/Health/health.gd" id="1_qatdj"]
+[ext_resource type="Script" uid="uid://c3bwdbjhdv6jj" path="res://TileObjects/baddie.gd" id="1_r856x"]
 [ext_resource type="PackedScene" uid="uid://dcxi8aofcw138" path="res://Components/Particles/particles_component.tscn" id="2_lvvty"]
-[ext_resource type="Script" uid="uid://bhh7v05qnluna" path="res://Components/team_component.gd" id="2_r856x"]
+[ext_resource type="Script" uid="uid://byaaog7wfq8cf" path="res://Components/team_component.gd" id="2_r856x"]
 [ext_resource type="Texture2D" uid="uid://dcqp6ue5gjeyw" path="res://Art/Slime.png" id="2_u0co4"]
-[ext_resource type="Script" uid="uid://bu83mmuls6yp6" path="res://Components/movement.gd" id="3_7x0fv"]
-[ext_resource type="Script" uid="uid://ckg2pktmm6nmm" path="res://Components/Baddie/baddie_ai.gd" id="4_sktma"]
+[ext_resource type="Script" uid="uid://doxy7kyeohlpq" path="res://Components/movement.gd" id="3_7x0fv"]
+[ext_resource type="Script" uid="uid://cojuqmjks8a3x" path="res://Components/Baddie/baddie_ai.gd" id="4_sktma"]
 [ext_resource type="PackedScene" uid="uid://d2vmn0718sbga" path="res://Components/Health/health_bar.tscn" id="6_idsic"]
-[ext_resource type="Script" uid="uid://dnhv27rllalte" path="res://Components/Baddie/baddie_selection.gd" id="7_txvjt"]
+[ext_resource type="Script" uid="uid://6a4w8rqnaypw" path="res://Components/Baddie/baddie_selection.gd" id="7_txvjt"]
 
 [node name="BaddieThree" type="Node2D" node_paths=PackedStringArray("baddie_ai", "health", "movement", "team", "selection")]
 script = ExtResource("1_r856x")
@@ -32,29 +32,24 @@ health = NodePath("../../../HealthComponent")
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("1_qatdj")
-metadata/_custom_type_script = "uid://n7b3t6dajop4"
 
 [node name="TeamComponent" type="Node" parent="."]
 script = ExtResource("2_r856x")
 team = 4
-metadata/_custom_type_script = "uid://bhh7v05qnluna"
 
 [node name="MovementComponent" type="Node2D" parent="." node_paths=PackedStringArray("base_node")]
 script = ExtResource("3_7x0fv")
 base_node = NodePath("..")
-metadata/_custom_type_script = "uid://bu83mmuls6yp6"
 
 [node name="BaddieAIComponent" type="Node" parent="." node_paths=PackedStringArray("movement")]
 script = ExtResource("4_sktma")
 movement = NodePath("../MovementComponent")
 action_mod = 2
-metadata/_custom_type_script = "uid://ckg2pktmm6nmm"
 
 [node name="BaddieSelectionComponent" type="Node2D" parent="." node_paths=PackedStringArray("baddie_ai", "tile_object")]
 script = ExtResource("7_txvjt")
 baddie_ai = NodePath("../BaddieAIComponent")
 tile_object = NodePath("..")
-metadata/_custom_type_script = "uid://dnhv27rllalte"
 
 [node name="LocalUI" type="Control" parent="."]
 layout_mode = 3

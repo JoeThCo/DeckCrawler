@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bok0hbqfnyt4u"]
 
-[ext_resource type="Script" uid="uid://gu2wlpnrhgr7" path="res://Menus/Settings/settings.gd" id="1_8gauj"]
+[ext_resource type="Script" uid="uid://t6vb8qfmvbje" path="res://Menus/Settings/settings.gd" id="1_8gauj"]
 [ext_resource type="PackedScene" uid="uid://c2xus6f2vk2sa" path="res://Menus/Settings/setting_slider.tscn" id="3_xmiuu"]
 
 [node name="Settings" type="Control" node_paths=PackedStringArray("master_volume", "music_volume", "sfx_volume")]

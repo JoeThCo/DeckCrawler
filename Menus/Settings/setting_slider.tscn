@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c2xus6f2vk2sa"]
 
-[ext_resource type="Script" uid="uid://vu8dcbqfco16" path="res://Menus/Settings/setting_slider.gd" id="1_1ghee"]
+[ext_resource type="Script" uid="uid://t0p0humsxw6s" path="res://Menus/Settings/setting_slider.gd" id="1_1ghee"]
 
 [node name="SettingSlider" type="HBoxContainer" node_paths=PackedStringArray("hslider", "name_label", "value_label")]
 custom_minimum_size = Vector2(0, 50)

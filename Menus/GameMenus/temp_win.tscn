@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bn244vwnx4bvl"]
 
-[ext_resource type="Script" uid="uid://bb84p1w1yoh7o" path="res://Menus/GameMenus/temp_win.gd" id="1_kl8ke"]
+[ext_resource type="Script" uid="uid://c0icnq563tx6h" path="res://Menus/GameMenus/temp_win.gd" id="1_kl8ke"]
 [ext_resource type="PackedScene" uid="uid://d26o6q6t80ghq" path="res://Menus/GameMenus/play_again.tscn" id="1_ue3x6"]
 [ext_resource type="Texture2D" uid="uid://hae48s12mm5d" path="res://Art/YouWin!.png" id="3_l45qf"]
 

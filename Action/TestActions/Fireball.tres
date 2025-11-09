@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="DamageAction" load_steps=3 format=3 uid="uid://bgd0h23c6n1ry"]
 
 [ext_resource type="Texture2D" uid="uid://cn1tys8qqu8j" path="res://Art/fireball.png" id="1_c05jv"]
-[ext_resource type="Script" uid="uid://dkiixetjb5pd2" path="res://Action/damage_action.gd" id="1_d6dxu"]
+[ext_resource type="Script" uid="uid://dp6gluj1adquo" path="res://Action/damage_action.gd" id="1_d6dxu"]
 
 [resource]
 script = ExtResource("1_d6dxu")

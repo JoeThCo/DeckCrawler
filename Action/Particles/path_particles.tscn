@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://g2xe33coesfm"]
 
-[ext_resource type="Script" uid="uid://6csj13gyy540" path="res://Game/path_particles.gd" id="1_8iokr"]
+[ext_resource type="Script" uid="uid://b2n2ehfpxts4u" path="res://Game/path_particles.gd" id="1_8iokr"]
 [ext_resource type="Texture2D" uid="uid://cn1tys8qqu8j" path="res://Art/fireball.png" id="2_qs1a7"]
 
 [sub_resource type="Curve2D" id="Curve2D_7gi1t"]

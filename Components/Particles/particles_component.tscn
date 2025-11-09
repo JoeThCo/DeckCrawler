@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dcxi8aofcw138"]
 
-[ext_resource type="Script" uid="uid://b7lvx4nvr5eeg" path="res://Components/Particles/particles_component.gd" id="1_an4nu"]
+[ext_resource type="Script" uid="uid://cgh1cnhf4nh6h" path="res://Components/Particles/particles_component.gd" id="1_an4nu"]
 [ext_resource type="PackedScene" uid="uid://bmd8flrs3golb" path="res://Action/Particles/damage.tscn" id="2_bg7af"]
 [ext_resource type="PackedScene" uid="uid://erlfrxjj20ab" path="res://Action/Particles/healing.tscn" id="3_bg7af"]
 
@@ -9,7 +9,6 @@ scale = Vector2(8, 8)
 script = ExtResource("1_an4nu")
 damage = NodePath("DamageParticles")
 healing = NodePath("Healing")
-metadata/_custom_type_script = "uid://b7lvx4nvr5eeg"
 
 [node name="DamageParticles" parent="." instance=ExtResource("2_bg7af")]
 
