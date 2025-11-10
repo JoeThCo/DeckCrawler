@@ -3,15 +3,11 @@ class_name BaddieAIComponent
 
 
 @export var movement: MovementComponent
-@export var action_mod: int = 1
-
-
-func can_do_action() -> bool:
-	return Game.turn_count % action_mod == 0
+@export var modulus: TurnModulusComponent
 
 
 func do_best_action() -> void:
-	if not can_do_action(): return
+	if not modulus.is_turn(): return
 	var best_ally: TileObjectComponent = get_best_tile_object()
 	await movement.move(best_ally.movement.grid_coords)
 

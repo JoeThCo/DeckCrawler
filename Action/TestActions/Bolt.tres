@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource("2_h61pn")
 damage_amount = 5
+cost = 3
 action_name = "Bolt"
 description = "Fork in outlet.
 Deal 5 Damage."

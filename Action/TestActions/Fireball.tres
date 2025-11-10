@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource("1_d6dxu")
 damage_amount = 8
+cost = 5
 action_name = "Fireball"
 description = "Deal 8 Damage.
 Fireball!"

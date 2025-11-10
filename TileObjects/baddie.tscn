@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c3sv6rhi6accc"]
+[gd_scene load_steps=11 format=3 uid="uid://c3sv6rhi6accc"]
 
 [ext_resource type="Script" uid="uid://boellaymmhpxu" path="res://Components/Health/health.gd" id="1_qatdj"]
 [ext_resource type="Script" uid="uid://c4uecoph6oneb" path="res://TileObjects/baddie.gd" id="1_r856x"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://6lurmyvay1qj" path="res://Components/movement.gd" id="3_7x0fv"]
 [ext_resource type="Script" uid="uid://26w8u6sn22ur" path="res://Components/Baddie/baddie_ai.gd" id="4_sktma"]
 [ext_resource type="PackedScene" uid="uid://d2vmn0718sbga" path="res://Components/Health/health_bar.tscn" id="6_idsic"]
+[ext_resource type="Script" uid="uid://sfc5moig3bcr" path="res://Components/turn_mod_component.gd" id="7_72me1"]
 [ext_resource type="Script" uid="uid://vb80y87ncvs4" path="res://Components/Baddie/baddie_selection.gd" id="7_txvjt"]
 
 [node name="BaddieThree" type="Node2D" node_paths=PackedStringArray("baddie_ai", "health", "movement", "team", "selection")]
@@ -41,10 +42,15 @@ team = 4
 script = ExtResource("3_7x0fv")
 base_node = NodePath("..")
 
-[node name="BaddieAIComponent" type="Node" parent="." node_paths=PackedStringArray("movement")]
+[node name="BaddieAIComponent" type="Node" parent="." node_paths=PackedStringArray("movement", "modulus")]
 script = ExtResource("4_sktma")
 movement = NodePath("../MovementComponent")
-action_mod = 2
+modulus = NodePath("TurnModulusComponent")
+
+[node name="TurnModulusComponent" type="Node" parent="BaddieAIComponent"]
+script = ExtResource("7_72me1")
+modulus = 2
+metadata/_custom_type_script = "uid://sfc5moig3bcr"
 
 [node name="BaddieSelectionComponent" type="Node2D" parent="." node_paths=PackedStringArray("baddie_ai", "tile_object")]
 script = ExtResource("7_txvjt")

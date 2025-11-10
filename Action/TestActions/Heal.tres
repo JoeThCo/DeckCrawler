@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource("2_hi3du")
 heal_amount = 4
+cost = 2
 action_name = "Heal"
 description = "Call for medic.
 Heal 4 damage."

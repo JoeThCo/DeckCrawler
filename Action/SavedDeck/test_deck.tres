@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="SavedDeck" load_steps=2 format=3 uid="uid://dklg7sroyhqke"]
+
+[ext_resource type="Script" uid="uid://dq4kbwi7nw4fg" path="res://Action/SavedDeck/saved_deck.gd" id="2_l3imx"]
+
+[resource]
+script = ExtResource("2_l3imx")
+deck_actions = Array[String](["Bolt", "Bolt", "Bolt", "Fists", "Fireball"])
+metadata/_custom_type_script = "uid://dq4kbwi7nw4fg"

@@ -34,10 +34,11 @@ func on_selection_cancel(_action_display: ActionDisplay) -> void:
 
 func on_selection_complete(selected_tile_object: TileObjectComponent) -> void:
 	#print("Selection Complete")
-	selected_action_display.un_selected() #HACK not sure why I have to do this
-	SFXManager.play_one_shot_sfx("ActionPlayed")
-	await deck.play_action(selected_action_display, selected_tile_object)
-	is_selecting = false
+	if selected_action_display != null:
+		selected_action_display.un_selected() #HACK not sure why I have to do this
+		SFXManager.play_one_shot_sfx("ActionPlayed")
+		await deck.play_action(selected_action_display, selected_tile_object)
+		is_selecting = false
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -45,6 +46,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		#print("Selection Mouse Down")
 		var temp_to: TileObjectComponent = TileObjectManager.get_tile_object_at_global_coords(get_global_mouse_position())
 		if temp_to != null:
+			if not deck.can_play_action(selected_action_display.action): return
 			selection_complete.emit(temp_to)
 			selected_action_display = null
 

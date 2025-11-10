@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource("1_fxp2h")
 damage_amount = 2
+cost = 1
 action_name = "Fists"
 description = "Slug it out.
 Deal 2 Damage."

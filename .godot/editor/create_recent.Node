@@ -1,3 +1,8 @@
+Control
+ManaComponent
+VBoxContainer
+HBoxContainer
+TurnModulusComponent
 Panel
 Settings
 CanvasLayer
@@ -5,11 +10,6 @@ Button
 HSeparator
 Label
 CenterContainer
-VBoxContainer
 MarginContainer
-HBoxContainer
 HSlider
 ScrollContainer
-AudioStreamPlayer
-Node
-Node2D
