@@ -46,7 +46,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		#print("Selection Mouse Down")
 		var temp_to: TileObjectComponent = TileObjectManager.get_tile_object_at_global_coords(get_global_mouse_position())
 		if temp_to != null:
-			if not deck.can_play_action(selected_action_display.action): return
 			selection_complete.emit(temp_to)
 			selected_action_display = null
 

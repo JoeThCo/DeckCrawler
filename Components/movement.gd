@@ -3,6 +3,7 @@ class_name MovementComponent
 
 
 @export var base_node: Node2D
+
 signal moved
 
 

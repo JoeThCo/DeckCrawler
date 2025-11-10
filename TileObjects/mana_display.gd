@@ -1,4 +1,5 @@
 extends Control
+class_name ManaDisplay
 
 
 @export var mana: ManaComponent

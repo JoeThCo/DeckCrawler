@@ -2,7 +2,7 @@ extends HBoxContainer
 class_name HandDisplay
 
 
-@export var tile_object: TileObjectComponent
+@export var selection: SelectionComponent
 
 
 var action_displays: Array[ActionDisplay] = []
@@ -31,7 +31,7 @@ func on_game_resumed() -> void:
 func action_added(action: Action) -> void:
 	var display_prefab: PackedScene = load("res://Action/action_display.tscn")
 	var action_display: ActionDisplay = display_prefab.instantiate() as ActionDisplay
-	action_display.set_up(action, tile_object)
+	action_display.set_up(action, selection)
 	add_child(action_display)
 	action_displays.append(action_display)
 

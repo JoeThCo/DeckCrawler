@@ -2,28 +2,22 @@ extends Control
 class_name Deck
 
 
-signal action_played
+signal action_played(action_display: ActionDisplay)
 signal action_added(action: Action)
 signal action_removed(action: Action)
 
 @export var deck_to_load: SavedDeck
-
 @export var tile_object: TileObjectComponent
-@export var hand_display: HandDisplay
-@export var mana: ManaComponent
+
 
 const ACTION_PATH: String = "res://Action/TestActions/"
 
-#TODO move somewhere else
-var all_actions: Array[Action] = []
+
 var hand: Array[Action] = []
 
 
-func _ready() -> void:
+func set_up() -> void:
 	hand = []
-	
-	if hand_display != null:
-		hand_display.set_up(self)
 	hand_init()
 	print_hand()
 
@@ -46,15 +40,11 @@ func remove_action(action: Action) -> void:
 	action_removed.emit(action)
 
 
-func can_play_action(action: Action) -> bool:
-	return mana.current_mana >= action.cost
-	
-
 func play_action(action_display: ActionDisplay, other_tile_object: TileObjectComponent) -> void:
-	remove_action(action_display.action)
-	mana.lose_mana(action_display.action.cost)
+	action_display.visible = false
 	await action_display.action.execute(other_tile_object)
-	action_played.emit()
+	remove_action(action_display.action)
+	action_played.emit(action_display)
 
 
 func print_hand() -> void:

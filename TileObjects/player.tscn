@@ -14,15 +14,16 @@
 [ext_resource type="Texture2D" uid="uid://hcf7e6h08u2" path="res://Art/Mana.png" id="9_qic5a"]
 [ext_resource type="Script" uid="uid://cra2f46ba84ne" path="res://TileObjects/mana_display.gd" id="10_pdwth"]
 [ext_resource type="Resource" uid="uid://dklg7sroyhqke" path="res://Action/SavedDeck/test_deck.tres" id="13_14odi"]
-[ext_resource type="Script" uid="uid://d263egvsyfa3w" path="res://Components/Player/mana_component.gd" id="13_xpkma"]
+[ext_resource type="Script" uid="uid://d263egvsyfa3w" path="res://Components/Player/mana.gd" id="13_xpkma"]
 
-[node name="PlayerThree" type="Node2D" node_paths=PackedStringArray("deck", "health", "movement", "team", "selection")]
+[node name="PlayerThree" type="Node2D" node_paths=PackedStringArray("health", "mana", "movement", "deck", "hand_display", "team")]
 script = ExtResource("1_40tdi")
-deck = NodePath("CanvasLayer/HBoxContainer/Deck")
 health = NodePath("HealthComponent")
+mana = NodePath("ManaComponent")
 movement = NodePath("MovementComponent")
+deck = NodePath("CanvasLayer/HBoxContainer/Deck")
+hand_display = NodePath("CanvasLayer/HBoxContainer/Deck/HandDisplay")
 team = NodePath("TeamComponent")
-selection = NodePath("PlayerSelectionComponent")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 self_modulate = Color(0.43634516, 0.86127543, 0.99999994, 1)
@@ -43,10 +44,8 @@ base_node = NodePath("..")
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("3_ggg8h")
 
-[node name="ManaComponent" type="Node" parent="." node_paths=PackedStringArray("deck", "movement")]
+[node name="ManaComponent" type="Node" parent="."]
 script = ExtResource("13_xpkma")
-deck = NodePath("../CanvasLayer/HBoxContainer/Deck")
-movement = NodePath("../MovementComponent")
 metadata/_custom_type_script = "uid://d263egvsyfa3w"
 
 [node name="TeamComponent" type="Node" parent="."]
@@ -111,21 +110,19 @@ text = "10"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Deck" type="CenterContainer" parent="CanvasLayer/HBoxContainer" node_paths=PackedStringArray("tile_object", "hand_display", "mana")]
+[node name="Deck" type="CenterContainer" parent="CanvasLayer/HBoxContainer" node_paths=PackedStringArray("tile_object")]
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("6_qic5a")
 deck_to_load = ExtResource("13_14odi")
 tile_object = NodePath("../../..")
-hand_display = NodePath("HandDisplay")
-mana = NodePath("../../../ManaComponent")
 
-[node name="HandDisplay" type="HBoxContainer" parent="CanvasLayer/HBoxContainer/Deck" node_paths=PackedStringArray("tile_object")]
+[node name="HandDisplay" type="HBoxContainer" parent="CanvasLayer/HBoxContainer/Deck" node_paths=PackedStringArray("selection")]
 layout_mode = 2
 theme_override_constants/separation = -50
 script = ExtResource("7_xpkma")
-tile_object = NodePath("../../../..")
+selection = NodePath("../../../../PlayerSelectionComponent")
 
 [node name="LocalUI" type="Control" parent="."]
 layout_mode = 3

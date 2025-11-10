@@ -11,13 +11,12 @@
 [ext_resource type="Script" uid="uid://sfc5moig3bcr" path="res://Components/turn_mod_component.gd" id="7_72me1"]
 [ext_resource type="Script" uid="uid://vb80y87ncvs4" path="res://Components/Baddie/baddie_selection.gd" id="7_txvjt"]
 
-[node name="BaddieThree" type="Node2D" node_paths=PackedStringArray("baddie_ai", "health", "movement", "team", "selection")]
+[node name="BaddieThree" type="Node2D" node_paths=PackedStringArray("movement", "health", "baddie_ai", "team")]
 script = ExtResource("1_r856x")
-baddie_ai = NodePath("BaddieAIComponent")
-health = NodePath("HealthComponent")
 movement = NodePath("MovementComponent")
+health = NodePath("HealthComponent")
+baddie_ai = NodePath("BaddieAIComponent")
 team = NodePath("TeamComponent")
-selection = NodePath("BaddieSelectionComponent")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 self_modulate = Color(0, 0.79083025, 0.3324338, 1)

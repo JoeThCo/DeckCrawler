@@ -1,7 +1,9 @@
 extends TileObjectComponent
 class_name BaddieThree
 
-
+@export_category("Baddie")
+@export var movement: MovementComponent
+@export var health: HealthComponent
 @export var baddie_ai: BaddieAIComponent
 
 

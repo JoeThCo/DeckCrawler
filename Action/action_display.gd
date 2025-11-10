@@ -21,15 +21,14 @@ class_name ActionDisplay
 @export var target_label: Label
 @export var description_label: Label
 
-
-var tile_object: TileObjectComponent
+var selection: SelectionComponent
 var action: Action
 var is_mouse_over: bool = false
 
 
-func set_up(_a: Action, _to: TileObjectComponent) -> void:
+func set_up(_a: Action, _s: SelectionComponent) -> void:
 	action = _a
-	tile_object = _to
+	selection = _s
 	
 	icon_texture.texture = action.icon
 	icon_texture.self_modulate = action.particle_color
@@ -64,7 +63,7 @@ func _on_mouse_exited() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("selection") and is_mouse_over:
-		tile_object.selection.selection_start.emit(self)
+		selection.selection_start.emit(self)
 
 
 func to_mouse_enter() -> void:

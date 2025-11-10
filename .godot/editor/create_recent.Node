@@ -1,3 +1,4 @@
+GridCoordsComponent
 Control
 ManaComponent
 VBoxContainer
@@ -11,5 +12,3 @@ HSeparator
 Label
 CenterContainer
 MarginContainer
-HSlider
-ScrollContainer

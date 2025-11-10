@@ -22,7 +22,6 @@ static func set_up(_sp: Node2D) -> void:
 	player = spawn_tile_object("Player", Vector2i.ZERO)
 	player.movement.moved.connect(player_move)
 	player.deck.action_played.connect(action_played)
-	#TODO do non player actions when action is played
 	
 	spawn_tile_object("Baddie", Vector2i.ONE * 4)
 	#spawn_tile_object("Door", Vector2i.ONE * -4)
@@ -32,7 +31,7 @@ static func player_move() -> void:
 	await do_non_player_actions()
 
 
-static func action_played() -> void:
+static func action_played(_action_display: ActionDisplay) -> void:
 	await do_non_player_actions()
 
 
@@ -96,11 +95,3 @@ static func get_tile_object_at_global_coords(global: Vector2) -> TileObjectCompo
 		if current.movement.grid_coords == search_grid_coords:
 			return current
 	return null
-#
-#
-#static func try_and_get_overlapping_tile_object(tile_object: TileObject) -> TileObject:
-	#for current in tile_objects:
-		#if current == tile_object: continue
-		#if current.grid_coords == tile_object.grid_coords:
-			#return current
-	#return null

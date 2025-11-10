@@ -2,8 +2,5 @@ extends Node
 class_name TileObjectComponent
 
 
-@export_category("Components")
-@export var health: HealthComponent
-@export var movement: MovementComponent
+@export_category("Tile Object")
 @export var team: TeamComponent
-@export var selection: SelectionComponent
