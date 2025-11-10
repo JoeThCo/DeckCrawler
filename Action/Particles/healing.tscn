@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://erlfrxjj20ab"]
 
 [ext_resource type="Texture2D" uid="uid://plcfpxv3vt6u" path="res://Art/Health.png" id="1_bfnjm"]
-[ext_resource type="Script" uid="uid://c48fvuc8rhacx" path="res://Action/Particles/action_particles.gd" id="2_v2g30"]
+[ext_resource type="Script" uid="uid://bo02pwxgc5pge" path="res://Action/Particles/action_particles.gd" id="2_v2g30"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fsxsm"]
 particle_flag_align_y = true
