@@ -9,8 +9,8 @@ class_name BaddieThree
 
 func  _ready() -> void:
 	health.on_dead.connect(on_baddie_dead)
-	
-	
+
+
 func on_baddie_dead() -> void:
 	TileObjectManager.delete_tile_object(self)
 	SFXManager.play_one_shot_sfx("Death")

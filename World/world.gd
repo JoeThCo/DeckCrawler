@@ -1,25 +1,20 @@
 extends Node2D
 class_name World
 
-
 # Constants for grid dimensions and movement
-const GRID_WIDTH := 10
-const GRID_HEIGHT := 10
-const DIRECTIONS := [10, -10, 1, -1]
+const GRID_WIDTH := 12
+const GRID_HEIGHT := 12
+const DIRECTIONS := [Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1)]
 const MAX_ATTEMPTS = 250
 
 const BASE_ROOMS := 8
 const ROOM_COUNT_MULTIPLIER := 3.0
 
-const HARD_TEN := 10 #FIXME Why is 10 needed for %
+static var rooms: Array[Array] = []  # 2D array of room data or null
+static var end_rooms: Array[Vector2i] = []
+static var room_queue: Array[Vector2i] = []
 
-
-# Room data
-static var rooms: Dictionary = {}  # cell_id -> room_data
-static var end_rooms: Array[int] = []
-static var room_queue: Array[int] = []
-
-static var start_cell: int
+static var start_cell: Vector2i
 static var current_coords: Vector2i
 
 
@@ -34,28 +29,41 @@ static func set_up() -> void:
 
 
 static func generate_world(level: int) -> bool:
-	# Reset state
-	rooms.clear()
+	# Reset state - initialize 2D array
+	rooms = []
+	for y in range(GRID_HEIGHT):
+		var row: Array = []
+		row.resize(GRID_WIDTH)
+		row.fill(null)
+		rooms.append(row)
+	
 	end_rooms.clear()
 	room_queue.clear()
-	start_cell = randi_range(0, (GRID_WIDTH * GRID_HEIGHT) - 1) #HACK figure this out
+	
+	# Random start position (skip x=0 columns)
+	start_cell = Vector2i(randi_range(1, GRID_WIDTH - 1), randi_range(0, GRID_HEIGHT - 1))
 	
 	# Calculate number of rooms needed
 	var room_count := calculate_room_count(level)
 	
-	while true:
 	# Try to generate a valid floorplan (with retries)
-		for attempt in MAX_ATTEMPTS:
-			if _generate_floorplan_attempt(room_count):
-				if _validate_floorplan(room_count):
-					return true
-			# Reset for next attempt
-			rooms.clear()
-			end_rooms.clear()
-			room_queue.clear()
+	for attempt in MAX_ATTEMPTS:
+		if _generate_floorplan_attempt(room_count):
+			if _validate_floorplan(room_count):
+				return true
+		# Reset for next attempt
+		_clear_rooms_array()
+		end_rooms.clear()
+		room_queue.clear()
 			
 	print("Failed to generate valid floorplan after ", MAX_ATTEMPTS, " attempts")
 	return false
+
+
+static func _clear_rooms_array() -> void:
+	for y in range(GRID_HEIGHT):
+		for x in range(GRID_WIDTH):
+			rooms[y][x] = null
 
 
 static func calculate_room_count(level: int) -> int:
@@ -64,7 +72,7 @@ static func calculate_room_count(level: int) -> int:
 
 static func _generate_floorplan_attempt(target_room_count: int) -> bool:
 	# Start with the starting room
-	rooms[start_cell] = {"type": "start", "neighbors": []}
+	rooms[start_cell.y][start_cell.x] = {"type": "start", "neighbors": []}
 	room_queue.append(start_cell)
 	
 	var rooms_added := 1
@@ -87,7 +95,7 @@ static func _generate_floorplan_attempt(target_room_count: int) -> bool:
 			var neighbor_cell = current_cell + direction
 			
 			# Skip if neighbor is invalid or already occupied
-			if not _is_valid_cell(neighbor_cell) or rooms.has(neighbor_cell):
+			if not _is_valid_cell(neighbor_cell) or _has_room(neighbor_cell):
 				continue
 			
 			# Check if neighbor has more than one filled neighbor
@@ -99,20 +107,20 @@ static func _generate_floorplan_attempt(target_room_count: int) -> bool:
 				continue
 			
 			# Add the room
-			rooms[neighbor_cell] = {"type": "normal", "neighbors": []}
+			rooms[neighbor_cell.y][neighbor_cell.x] = {"type": "normal", "neighbors": []}
 			room_queue.append(neighbor_cell)
 			rooms_added += 1
 			
 			# Update neighbor relationships
-			rooms[current_cell].neighbors.append(neighbor_cell)
-			rooms[neighbor_cell].neighbors.append(current_cell)
+			rooms[current_cell.y][current_cell.x].neighbors.append(neighbor_cell)
+			rooms[neighbor_cell.y][neighbor_cell.x].neighbors.append(current_cell)
 		
 		# Reseed if needed for large maps
 		if needs_reseed and room_queue.size() == 0 and rooms_added < target_room_count:
 			# Add some random rooms back to the queue to encourage more growth
-			var room_keys = rooms.keys()
-			room_keys.shuffle()
-			for room in room_keys.slice(0, min(3, room_keys.size())):
+			var filled_rooms = _get_all_filled_rooms()
+			filled_rooms.shuffle()
+			for room in filled_rooms.slice(0, min(3, filled_rooms.size())):
 				if not room_queue.has(room):
 					room_queue.append(room)
 	
@@ -121,39 +129,49 @@ static func _generate_floorplan_attempt(target_room_count: int) -> bool:
 	return rooms_added >= target_room_count
 
 
+static func _get_all_filled_rooms() -> Array[Vector2i]:
+	var filled_rooms: Array[Vector2i] = []
+	for y in range(GRID_HEIGHT):
+		for x in range(GRID_WIDTH):
+			if rooms[y][x] != null:
+				filled_rooms.append(Vector2i(x, y))
+	return filled_rooms
+
+
 static func _identify_dead_ends():
 	end_rooms.clear()
-	for cell in rooms:
-		# True dead ends have exactly one neighbor (they're leaves in the tree)
-		if cell != start_cell and rooms[cell].neighbors.size() == 1:
-			end_rooms.append(cell)
+	for y in range(GRID_HEIGHT):
+		for x in range(GRID_WIDTH):
+			var cell = Vector2i(x, y)
+			if _has_room(cell) and cell != start_cell:
+				var room_data = rooms[y][x]
+				if room_data.neighbors.size() == 1:
+					end_rooms.append(cell)
 
 
-static func _is_valid_cell(cell: int) -> bool:
-	# Extract coordinates
-	var x := cell % HARD_TEN
-	@warning_ignore("integer_division")
-	var y := cell / HARD_TEN
-	
+static func _is_valid_cell(cell: Vector2i) -> bool:
 	# Check bounds and exclude x=0 columns
-	return x >= 1 and x <= GRID_WIDTH and y >= 0 and y < GRID_HEIGHT
+	return cell.x >= 1 and cell.x < GRID_WIDTH and cell.y >= 0 and cell.y < GRID_HEIGHT
 
 
-static func _count_filled_neighbors(cell: int) -> int:
+static func _has_room(cell: Vector2i) -> bool:
+	return rooms[cell.y][cell.x] != null
+
+
+static func _count_filled_neighbors(cell: Vector2i) -> int:
 	var count := 0
 	for direction in DIRECTIONS:
 		var neighbor = cell + direction
-		if rooms.has(neighbor):
+		if _is_valid_cell(neighbor) and _has_room(neighbor):
 			count += 1
 	return count
 
 
 static func _validate_floorplan(room_count: int) -> bool:
 	# Check if we have the right number of rooms
-	if rooms.size() != room_count:
+	if _count_filled_rooms() != room_count:
 		return false
 	
-	# Boss room cannot be adjacent to starting room
 	var boss_room_candidates = end_rooms.duplicate()
 	for candidate in boss_room_candidates:
 		if _is_adjacent_to_start(candidate):
@@ -162,7 +180,16 @@ static func _validate_floorplan(room_count: int) -> bool:
 	return true
 
 
-static func _is_adjacent_to_start(cell: int) -> bool:
+static func _count_filled_rooms() -> int:
+	var count := 0
+	for y in range(GRID_HEIGHT):
+		for x in range(GRID_WIDTH):
+			if rooms[y][x] != null:
+				count += 1
+	return count
+
+
+static func _is_adjacent_to_start(cell: Vector2i) -> bool:
 	for direction in DIRECTIONS:
 		if cell + direction == start_cell:
 			return true
@@ -170,36 +197,36 @@ static func _is_adjacent_to_start(cell: int) -> bool:
 
 
 # Utility functions to get information about the generated floorplan
-static func get_rooms() -> Dictionary:
+static func get_rooms() -> Array[Array]:
 	return rooms.duplicate(true)
 
 
-static func get_end_rooms() -> Array[int]:
+static func get_end_rooms() -> Array[Vector2i]:
 	return end_rooms.duplicate()
 
 
-static func get_room_position(cell: int) -> Vector2:
-	# Convert cell ID to actual coordinates
-	var x := cell % HARD_TEN
-	@warning_ignore("integer_division")
-	var y := cell / HARD_TEN
-	return Vector2(x, y)
+static func get_room_position(cell: Vector2i) -> Vector2:
+	# Convert cell coordinates to actual position
+	return Vector2(cell.x, cell.y)
 
 
 # Debug function to print the floorplan
 static func print_floorplan():
-	print("Floorplan with ", rooms.size(), " rooms:")
+	print("Floorplan with ", _count_filled_rooms(), " rooms:")
 	for y in range(GRID_HEIGHT):
 		var row := ""
-		for x in range(1, GRID_WIDTH + 1):  # Skip x=0 columns
-			var cell := y * HARD_TEN + x
-			if rooms.has(cell):
-				if cell == start_cell:
-					row += "[S]"
-				elif end_rooms.has(cell):
-					row += "[E]"
-				else:
-					row += "[R]"
+		for x in range(GRID_WIDTH):
+			if x == 0:
+				row += " "  # Skip x=0 columns visually
 			else:
-				row += "   "
+				var cell := Vector2i(x, y)
+				if _has_room(cell):
+					if cell == start_cell:
+						row += "[S]"
+					elif end_rooms.has(cell):
+						row += "[E]"
+					else:
+						row += "[R]"
+				else:
+					row += "   "
 		print(row)
