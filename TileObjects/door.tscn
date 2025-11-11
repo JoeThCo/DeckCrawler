@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bre5bv11vcvwj"]
+[gd_scene load_steps=7 format=3 uid="uid://bre5bv11vcvwj"]
 
 [ext_resource type="Script" uid="uid://cf8pdv87oywry" path="res://TileObjects/door.gd" id="1_xjhnp"]
 [ext_resource type="Texture2D" uid="uid://ddd5f0wllh5fb" path="res://Art/Door.png" id="2_0jh54"]
 [ext_resource type="Script" uid="uid://78vuk8oc54ft" path="res://Components/trigger.gd" id="4_okloq"]
+[ext_resource type="Script" uid="uid://cbydvpmm54s3o" path="res://TileObjects/player.gd" id="4_rtfoc"]
 [ext_resource type="Script" uid="uid://6lurmyvay1qj" path="res://Components/movement.gd" id="5_k81bp"]
 [ext_resource type="Script" uid="uid://ubgt4aa44enw" path="res://Components/team.gd" id="5_rtfoc"]
 
@@ -20,6 +21,7 @@ centered = false
 
 [node name="Trigger" type="Node2D" parent="." node_paths=PackedStringArray("tile_object")]
 script = ExtResource("4_okloq")
+scripts = Array[Script]([ExtResource("4_rtfoc")])
 tile_object = NodePath("..")
 metadata/_custom_type_script = "uid://78vuk8oc54ft"
 

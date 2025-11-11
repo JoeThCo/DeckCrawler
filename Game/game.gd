@@ -60,7 +60,7 @@ static func do_non_player_actions() -> void:
 	for baddie: BaddieThree in TileObjectManager._get_tile_objects([BaddieThree]):
 		await baddie.baddie_ai.do_best_action()
 	
-	for current: Static in TileObjectManager._get_tile_objects([Static]):
+	for current: Door in TileObjectManager._get_tile_objects([Door]):
 		current.trigger.update_trigger()
 
 

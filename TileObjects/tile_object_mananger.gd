@@ -36,12 +36,17 @@ static func _get_closest_tile_object_component(grid_coords: Vector2i, _tile_obje
 static func _get_tile_objects(types: Array[Script]) -> Array:
 	var output: Array[TileObjectComponent] = []
 	for current in all_spawned_tile_objects:
-		for type in types:
-			if is_instance_of(current, type):
-				output.append(current)
-				break
+		if is_script_type(current, types):
+			output.append(current)
 	return output
 	
+	
+static func is_script_type(current, types: Array[Script]) -> bool:
+	for type in types:
+		if is_instance_of(current, type):
+			return true
+	return false
+
 
 static func get_closest(grid_coords: Vector2i, scripts: Array[Script]) -> TileObjectComponent:
 	return _get_closest_tile_object_component(grid_coords, _get_tile_objects(scripts))
@@ -69,9 +74,10 @@ static func get_tile_object_at_global_coords(global: Vector2) -> TileObjectCompo
 	return null
 	
 	
-static func get_tile_object_at_grid_coords(tile_object: TileObjectComponent, grid_coords: Vector2i) -> TileObjectComponent:
+static func get_tile_object_at_grid_coords(grid_coords: Vector2i, tile_object: TileObjectComponent, scripts: Array[Script]) -> TileObjectComponent:
 	for current: TileObjectComponent in all_spawned_tile_objects:
 		if current.movement.grid_coords != grid_coords: continue
 		if current == tile_object: continue
+		if not is_script_type(current, scripts): continue
 		return current
 	return null
