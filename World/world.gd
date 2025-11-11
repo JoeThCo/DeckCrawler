@@ -7,8 +7,10 @@ const GRID_HEIGHT := 12
 const DIRECTIONS := [Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1)]
 const MAX_ATTEMPTS = 250
 
+
 const BASE_ROOMS := 8
 const ROOM_COUNT_MULTIPLIER := 3.0
+
 
 static var rooms: Array[Array] = []  # 2D array of room data or null
 static var end_rooms: Array[Vector2i] = []
@@ -155,7 +157,12 @@ static func _is_valid_cell(cell: Vector2i) -> bool:
 
 
 static func _has_room(cell: Vector2i) -> bool:
+	if not _is_valid_cell(cell): return false
 	return rooms[cell.y][cell.x] != null
+
+
+static func is_room(direction: Vector2i) -> bool:
+	return _has_room(current_coords + direction)
 
 
 static func _count_filled_neighbors(cell: Vector2i) -> int:

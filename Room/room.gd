@@ -50,10 +50,17 @@ static func border_init() -> void:
 	for y in range(start_y + 1, end_y):
 		tile_map.set_cell(Vector2i(end_x, y), 0, WALL_COORDS)
 	
-	tile_map.set_cell(Vector2i(start_x + half_x, start_y + 1), 0, TEMP_DOOR_COORDS)
-	tile_map.set_cell(Vector2i(start_x + half_x, end_y - 1), 0, TEMP_DOOR_COORDS)
-	tile_map.set_cell(Vector2i(start_x + 1, start_y + half_y), 0, TEMP_DOOR_COORDS)
-	tile_map.set_cell(Vector2i(end_x - 1 , start_y + half_y), 0, TEMP_DOOR_COORDS)
+	if World.is_room(Vector2i.UP):
+		TileObjectManager.spawn_tile_object("Door", Vector2i(start_x + half_x, start_y + 1))
+		
+	if World.is_room(Vector2i.DOWN):
+		TileObjectManager.spawn_tile_object("Door", Vector2i(start_x + half_x, end_y - 1))
+	
+	if World.is_room(Vector2i.LEFT):
+		TileObjectManager.spawn_tile_object("Door", Vector2i(start_x + 1, start_y + half_y))
+	
+	if World.is_room(Vector2i.RIGHT):
+		TileObjectManager.spawn_tile_object("Door", Vector2i(end_x - 1 , start_y + half_y))
 
 
 static func _a_star_init() -> void:

@@ -8,15 +8,18 @@ static var spawn_parent: Node2D
 static var spawn_dict = {
 	"Player" : "res://TileObjects/player.tscn",
 	"Baddie" : "res://TileObjects/baddie.tscn",
-	"Door" : "res://TileObject/Static/door.tscn"
+	"Door" : "res://TileObjects/door.tscn"
 }
 
 static var player: PlayerThree
 static var all_spawned_tile_objects: Array[TileObjectComponent] = []
 
 
-static func set_up(_sp: Node2D) -> void:
+static func init(_sp: Node2D) -> void:
 	spawn_parent = _sp
+	
+
+static func set_up() -> void:
 	all_spawned_tile_objects = []
 	
 	player = spawn_tile_object("Player", Vector2i.ZERO)

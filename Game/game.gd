@@ -26,13 +26,14 @@ func _ready() -> void:
 	game_root = _game_root
 	
 	World.set_up()
+	TileObjectManager.init(tile_objects_parent)
+	
 	Room.set_up(room)
+	TileObjectManager.set_up()
 	
 	MenuManager.set_up(all_menus)
 	Display.set_up(display)
 	MouseHighlight.set_up(mouse_highlight)
-	
-	TileObjectManager.set_up(tile_objects_parent)
 	
 	is_paused = false
 	is_playing = true
