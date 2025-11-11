@@ -15,6 +15,16 @@ const ACTION_PATH: String = "res://Action/TestActions/"
 
 var hand: Array[Action] = []
 
+# discard
+# hand
+# pile
+
+# draw: pile -> hand
+# play: hand -> discard
+
+# get a action every x turns
+# how to reshuffle cards?
+# Room change? 
 
 func set_up() -> void:
 	hand = []

@@ -6,18 +6,54 @@ static var astar: AStarGrid2D
 static var tile_map: TileMapLayer
 
 
+const ROOM_SIZE: Vector2i = Vector2i(30, 20)
+const WALL_COORDS: Vector2i = Vector2i(39, 15)
+const TEMP_DOOR_COORDS: Vector2i = Vector2i(17, 20)
+
+
 static func set_up(_tm) -> void:
 	tile_map = _tm
+	tile_map.clear()
 	astar = AStarGrid2D.new()
+	room_init()
 	_a_star_init()
 
+		
+static func room_init() -> void:
+	border_init()
 
-static func local_to_map(local_position: Vector2) -> Vector2i:
-	return tile_map.local_to_map(local_position)
 
-
-static func map_to_global(map_position: Vector2i) -> Vector2:
-	return tile_map.tile_set.tile_size * map_position
+static func border_init() -> void:
+	@warning_ignore("integer_division")
+	var half_y: int = ROOM_SIZE.y / 2
+	@warning_ignore("integer_division")
+	var half_x: int = ROOM_SIZE.x / 2
+	
+	var start_y: int = -half_y
+	var start_x: int = -half_x
+	var end_y: int = start_y + ROOM_SIZE.y - 1
+	var end_x: int = start_x + ROOM_SIZE.x - 1
+	
+	# Top border
+	for x in range(start_x, end_x + 1):
+		tile_map.set_cell(Vector2i(x, start_y), 0, WALL_COORDS)
+	
+	# Bottom border
+	for x in range(start_x, end_x + 1):
+		tile_map.set_cell(Vector2i(x, end_y), 0, WALL_COORDS)
+	
+	# Left border (excluding corners already done)
+	for y in range(start_y + 1, end_y):
+		tile_map.set_cell(Vector2i(start_x, y), 0, WALL_COORDS)
+	
+	# Right border (excluding corners already done)
+	for y in range(start_y + 1, end_y):
+		tile_map.set_cell(Vector2i(end_x, y), 0, WALL_COORDS)
+	
+	tile_map.set_cell(Vector2i(start_x + half_x, start_y + 1), 0, TEMP_DOOR_COORDS)
+	tile_map.set_cell(Vector2i(start_x + half_x, end_y - 1), 0, TEMP_DOOR_COORDS)
+	tile_map.set_cell(Vector2i(start_x + 1, start_y + half_y), 0, TEMP_DOOR_COORDS)
+	tile_map.set_cell(Vector2i(end_x - 1 , start_y + half_y), 0, TEMP_DOOR_COORDS)
 
 
 static func _a_star_init() -> void:
@@ -28,6 +64,14 @@ static func _a_star_init() -> void:
 	
 	for cell: Vector2i in tile_map.get_used_cells():
 		astar.set_point_solid(cell, true)
+
+
+static func local_to_map(local_position: Vector2) -> Vector2i:
+	return tile_map.local_to_map(local_position)
+
+
+static func map_to_global(map_position: Vector2i) -> Vector2:
+	return tile_map.tile_set.tile_size * map_position
 
 
 #FIXME something about this doesnt sit right, click on same tile returns 1

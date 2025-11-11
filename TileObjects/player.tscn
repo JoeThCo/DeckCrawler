@@ -63,6 +63,7 @@ deck = NodePath("../CanvasLayer/HBoxContainer/Deck")
 tile_object = NodePath("..")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
 custom_minimum_size = Vector2(0, 200)

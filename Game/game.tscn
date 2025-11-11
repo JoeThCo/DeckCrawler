@@ -53,6 +53,7 @@ grow_vertical = 2
 script = ExtResource("6_oomkl")
 
 [node name="Game" parent="MenuManager" instance=ExtResource("7_buohc")]
+visible = false
 
 [node name="Pause" parent="MenuManager" instance=ExtResource("8_kul4i")]
 visible = false
@@ -64,3 +65,7 @@ visible = false
 visible = false
 
 [node name="Settings" parent="MenuManager" instance=ExtResource("11_fsxsm")]
+visible = false
+
+[editable path="MenuManager/GameOver"]
+[editable path="MenuManager/GameOver/Panel/PlayAgain"]
