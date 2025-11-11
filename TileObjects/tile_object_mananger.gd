@@ -33,17 +33,18 @@ static func _get_closest_tile_object_component(grid_coords: Vector2i, _tile_obje
 	return shortest_tile_object
 
 
-static func _get_tile_objects(team: TeamComponent.Team) -> Array:
+static func _get_tile_objects(types: Array[Script]) -> Array:
 	var output: Array[TileObjectComponent] = []
-	var wanted_int: int = int(team)
 	for current in all_spawned_tile_objects:
-		if current.team.team & wanted_int:
-			output.append(current)
+		for type in types:
+			if is_instance_of(current, type):
+				output.append(current)
+				break
 	return output
+	
 
-
-static func get_closest(grid_coords: Vector2i, team: TeamComponent.Team) -> TileObjectComponent:
-	return _get_closest_tile_object_component(grid_coords, _get_tile_objects(team))
+static func get_closest(grid_coords: Vector2i, scripts: Array[Script]) -> TileObjectComponent:
+	return _get_closest_tile_object_component(grid_coords, _get_tile_objects(scripts))
 
 
 static func spawn_tile_object(spawn_name: String, coords: Vector2i):
@@ -65,4 +66,12 @@ static func get_tile_object_at_global_coords(global: Vector2) -> TileObjectCompo
 	for current: TileObjectComponent in all_spawned_tile_objects:
 		if current.movement.grid_coords == search_grid_coords:
 			return current
+	return null
+	
+	
+static func get_tile_object_at_grid_coords(tile_object: TileObjectComponent, grid_coords: Vector2i) -> TileObjectComponent:
+	for current: TileObjectComponent in all_spawned_tile_objects:
+		if current.movement.grid_coords != grid_coords: continue
+		if current == tile_object: continue
+		return current
 	return null

@@ -13,4 +13,4 @@ func do_best_action() -> void:
 
 
 func get_best_tile_object() -> TileObjectComponent:
-	return TileObjectManager.get_closest(movement.grid_coords, TeamComponent.Team.ALLY)
+	return TileObjectManager.get_closest(movement.grid_coords, [PlayerThree])

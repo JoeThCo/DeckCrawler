@@ -18,9 +18,9 @@ scale = Vector2(0.125, 0.125)
 texture = ExtResource("2_0jh54")
 centered = false
 
-[node name="Trigger" type="Node2D" parent="." node_paths=PackedStringArray("movement")]
+[node name="Trigger" type="Node2D" parent="." node_paths=PackedStringArray("tile_object")]
 script = ExtResource("4_okloq")
-movement = NodePath("../MovementComponent")
+tile_object = NodePath("..")
 metadata/_custom_type_script = "uid://78vuk8oc54ft"
 
 [node name="MovementComponent" type="Node2D" parent="." node_paths=PackedStringArray("base_node")]

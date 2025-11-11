@@ -1,12 +1,24 @@
 extends Node2D
 class_name TriggerComponent
 
-@export var team: TeamComponent.Team
-@export var movement: MovementComponent
+signal trigger_enter
+signal trigger_exit
 
-var tile_object: TileObjectComponent
+
+@export var tile_object: TileObjectComponent
+
+
+var trigger_object: TileObjectComponent
+
 
 func update_trigger() -> void:
-	var trigger_to: TileObjectComponent = TileObjectManager.get_closest(movement.grid_coords, team)
-	if tile_object != null:
-		tile_object = trigger_to
+	var update_to: TileObjectComponent = TileObjectManager.get_tile_object_at_grid_coords(tile_object, tile_object.movement.grid_coords)
+	if update_to != null and trigger_object == null:
+		trigger_object = update_to
+		trigger_enter.emit()
+		print("Enter!")
+	
+	if update_to == null and trigger_object != null:
+		trigger_object = null
+		trigger_exit.emit()
+		print("Exit!")

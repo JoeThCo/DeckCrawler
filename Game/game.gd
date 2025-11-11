@@ -57,11 +57,11 @@ static func action_played(_action_display: ActionDisplay) -> void:
 static func do_non_player_actions() -> void:
 	Game.player_turn()
 	
-	for baddie: TileObjectComponent in TileObjectManager._get_tile_objects(TeamComponent.Team.BADDIE):
+	for baddie: BaddieThree in TileObjectManager._get_tile_objects([BaddieThree]):
 		await baddie.baddie_ai.do_best_action()
 	
-	for current: TileObjectComponent in TileObjectManager._get_tile_objects(TeamComponent.Team.STATIC):
-		print(current.trigger.update_trigger())
+	for current: Static in TileObjectManager._get_tile_objects([Static]):
+		current.trigger.update_trigger()
 
 
 static func player_turn() -> void:
