@@ -4,7 +4,6 @@ class_name PlayerThree
 @export_category("Player")
 @export var health: HealthComponent
 @export var mana: ManaComponent
-@export var movement: MovementComponent
 
 @export var deck: Deck
 @export var hand_display: HandDisplay
@@ -30,5 +29,4 @@ func on_player_moved() -> void:
 
 
 func on_action_played(action_display: ActionDisplay) -> void:
-	print(action_display == null)
 	mana.lose_mana(action_display.action.cost)

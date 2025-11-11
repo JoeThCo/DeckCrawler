@@ -1,4 +1,5 @@
 TeamComponent
+MovementComponent
 Sprite2D
 Control
 ManaComponent
@@ -11,5 +12,3 @@ CanvasLayer
 Button
 HSeparator
 Label
-CenterContainer
-MarginContainer

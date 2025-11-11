@@ -16,6 +16,8 @@ class_name Game
 @export var all_menus: Control
 
 static var game_root: Node2D
+static var player: PlayerThree
+
 
 static var is_playing: bool = true
 static var is_paused: bool = false
@@ -26,11 +28,15 @@ func _ready() -> void:
 	game_root = _game_root
 	
 	World.set_up()
-	TileObjectManager.init(tile_objects_parent)
-	
 	Room.set_up(room)
-	TileObjectManager.set_up()
+	TileObjectManager.set_up(tile_objects_parent)
+	Room.spawn_doors()
 	
+	player = TileObjectManager.spawn_tile_object("Player", Vector2i.ZERO)
+	player.movement.moved.connect(player_move)
+	player.deck.action_played.connect(action_played)
+	
+	TileObjectManager.spawn_tile_object("Baddie", Vector2i.ONE * 5)
 	MenuManager.set_up(all_menus)
 	Display.set_up(display)
 	MouseHighlight.set_up(mouse_highlight)
@@ -40,9 +46,27 @@ func _ready() -> void:
 	turn_count = 0
 
 
+static func player_move() -> void:
+	await do_non_player_actions()
+
+
+static func action_played(_action_display: ActionDisplay) -> void:
+	await do_non_player_actions()
+
+
+static func do_non_player_actions() -> void:
+	Game.player_turn()
+	
+	for baddie: TileObjectComponent in TileObjectManager._get_tile_objects(TeamComponent.Team.BADDIE):
+		await baddie.baddie_ai.do_best_action()
+	
+	for current: TileObjectComponent in TileObjectManager._get_tile_objects(TeamComponent.Team.STATIC):
+		print(current.trigger.update_trigger())
+
+
 static func player_turn() -> void:
 	turn_count += 1
-	print("Turn #", turn_count)
+	#print("Turn #", turn_count)
 
 
 static func pause_game() -> void:

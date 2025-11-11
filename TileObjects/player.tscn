@@ -5,7 +5,6 @@
 [ext_resource type="Script" uid="uid://6lurmyvay1qj" path="res://Components/movement.gd" id="2_qxeio"]
 [ext_resource type="Texture2D" uid="uid://dreafome0aldj" path="res://Art/Player.png" id="2_r1hj6"]
 [ext_resource type="Script" uid="uid://boellaymmhpxu" path="res://Components/Health/health.gd" id="3_ggg8h"]
-[ext_resource type="Script" uid="uid://blput4dmc8qpb" path="res://Components/team_component.gd" id="4_laux1"]
 [ext_resource type="Script" uid="uid://dh2cn42dfh7bj" path="res://Components/Player/player_controls.gd" id="5_r1hj6"]
 [ext_resource type="Script" uid="uid://bq6mrws8d7w6v" path="res://Components/Player/player_selection.gd" id="6_ggg8h"]
 [ext_resource type="Script" uid="uid://bv1fteql8s0xj" path="res://Components/Deck/deck.gd" id="6_qic5a"]
@@ -15,14 +14,15 @@
 [ext_resource type="Script" uid="uid://cra2f46ba84ne" path="res://Components/mana_display.gd" id="10_pdwth"]
 [ext_resource type="Resource" uid="uid://dklg7sroyhqke" path="res://Action/SavedDeck/test_deck.tres" id="13_14odi"]
 [ext_resource type="Script" uid="uid://d263egvsyfa3w" path="res://Components/Player/mana.gd" id="13_xpkma"]
+[ext_resource type="Script" uid="uid://ubgt4aa44enw" path="res://Components/team.gd" id="15_14odi"]
 
-[node name="PlayerThree" type="Node2D" node_paths=PackedStringArray("health", "mana", "movement", "deck", "hand_display", "team")]
+[node name="PlayerThree" type="Node2D" node_paths=PackedStringArray("health", "mana", "deck", "hand_display", "movement", "team")]
 script = ExtResource("1_40tdi")
 health = NodePath("HealthComponent")
 mana = NodePath("ManaComponent")
-movement = NodePath("MovementComponent")
 deck = NodePath("CanvasLayer/HBoxContainer/Deck")
 hand_display = NodePath("CanvasLayer/HBoxContainer/Deck/HandDisplay")
+movement = NodePath("MovementComponent")
 team = NodePath("TeamComponent")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -37,6 +37,11 @@ position = Vector2(64, 64)
 [node name="ParticlesComponent" parent="Sprite2D/Center" node_paths=PackedStringArray("health") instance=ExtResource("2_laux1")]
 health = NodePath("../../../HealthComponent")
 
+[node name="TeamComponent" type="Node" parent="."]
+script = ExtResource("15_14odi")
+team = 1
+metadata/_custom_type_script = "uid://ubgt4aa44enw"
+
 [node name="MovementComponent" type="Node2D" parent="." node_paths=PackedStringArray("base_node")]
 script = ExtResource("2_qxeio")
 base_node = NodePath("..")
@@ -47,10 +52,6 @@ script = ExtResource("3_ggg8h")
 [node name="ManaComponent" type="Node" parent="."]
 script = ExtResource("13_xpkma")
 metadata/_custom_type_script = "uid://d263egvsyfa3w"
-
-[node name="TeamComponent" type="Node" parent="."]
-script = ExtResource("4_laux1")
-team = 1
 
 [node name="PlayerControlsComponent" type="Node2D" parent="." node_paths=PackedStringArray("selection", "movement")]
 script = ExtResource("5_r1hj6")

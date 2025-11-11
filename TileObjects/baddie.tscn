@@ -3,19 +3,19 @@
 [ext_resource type="Script" uid="uid://boellaymmhpxu" path="res://Components/Health/health.gd" id="1_qatdj"]
 [ext_resource type="Script" uid="uid://c4uecoph6oneb" path="res://TileObjects/baddie.gd" id="1_r856x"]
 [ext_resource type="PackedScene" uid="uid://dcxi8aofcw138" path="res://Components/Particles/particles_component.tscn" id="2_lvvty"]
-[ext_resource type="Script" uid="uid://blput4dmc8qpb" path="res://Components/team_component.gd" id="2_r856x"]
 [ext_resource type="Texture2D" uid="uid://dcqp6ue5gjeyw" path="res://Art/Slime.png" id="2_u0co4"]
 [ext_resource type="Script" uid="uid://6lurmyvay1qj" path="res://Components/movement.gd" id="3_7x0fv"]
 [ext_resource type="Script" uid="uid://26w8u6sn22ur" path="res://Components/Baddie/baddie_ai.gd" id="4_sktma"]
 [ext_resource type="PackedScene" uid="uid://d2vmn0718sbga" path="res://Components/Health/health_bar.tscn" id="6_idsic"]
 [ext_resource type="Script" uid="uid://sfc5moig3bcr" path="res://Components/turn_mod_component.gd" id="7_72me1"]
 [ext_resource type="Script" uid="uid://vb80y87ncvs4" path="res://Components/Baddie/baddie_selection.gd" id="7_txvjt"]
+[ext_resource type="Script" uid="uid://ubgt4aa44enw" path="res://Components/team.gd" id="10_72me1"]
 
-[node name="BaddieThree" type="Node2D" node_paths=PackedStringArray("movement", "health", "baddie_ai", "team")]
+[node name="BaddieThree" type="Node2D" node_paths=PackedStringArray("health", "baddie_ai", "movement", "team")]
 script = ExtResource("1_r856x")
-movement = NodePath("MovementComponent")
 health = NodePath("HealthComponent")
 baddie_ai = NodePath("BaddieAIComponent")
+movement = NodePath("MovementComponent")
 team = NodePath("TeamComponent")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -32,10 +32,6 @@ health = NodePath("../../../HealthComponent")
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("1_qatdj")
-
-[node name="TeamComponent" type="Node" parent="."]
-script = ExtResource("2_r856x")
-team = 4
 
 [node name="MovementComponent" type="Node2D" parent="." node_paths=PackedStringArray("base_node")]
 script = ExtResource("3_7x0fv")
@@ -90,3 +86,8 @@ offset_right = 37.5
 offset_bottom = 13.5
 mouse_filter = 2
 health = NodePath("../../../HealthComponent")
+
+[node name="TeamComponent" type="Node" parent="."]
+script = ExtResource("10_72me1")
+team = 4
+metadata/_custom_type_script = "uid://ubgt4aa44enw"

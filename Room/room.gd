@@ -7,6 +7,16 @@ static var tile_map: TileMapLayer
 
 
 const ROOM_SIZE: Vector2i = Vector2i(30, 20)
+@warning_ignore("integer_division")
+const HALF_SIZE: Vector2 = Vector2(ROOM_SIZE.x / 2, ROOM_SIZE.y / 2)
+const START_COORDS: Vector2i = Vector2i(-HALF_SIZE.x, -HALF_SIZE.y)
+const END_COORDS: Vector2i = Vector2i(START_COORDS.x + ROOM_SIZE.x - 1, START_COORDS.y + ROOM_SIZE.y - 1)
+
+const UP_DOOR_COORDS: Vector2i = Vector2i(START_COORDS.x + HALF_SIZE.x, START_COORDS.y + 1)
+const DOWN_DOOR_COORDS: Vector2i = Vector2i(START_COORDS.x + HALF_SIZE.x, END_COORDS.y - 1)
+const LEFT_DOOR_COORDS: Vector2i = Vector2i(START_COORDS.x + 1, START_COORDS.y + HALF_SIZE.y)
+const RIGHT_DOOR_COORDS: Vector2i = Vector2i(END_COORDS.x - 1 , START_COORDS.y + HALF_SIZE.y)
+
 const WALL_COORDS: Vector2i = Vector2i(39, 15)
 const TEMP_DOOR_COORDS: Vector2i = Vector2i(17, 20)
 
@@ -15,53 +25,27 @@ static func set_up(_tm) -> void:
 	tile_map = _tm
 	tile_map.clear()
 	astar = AStarGrid2D.new()
-	room_init()
-	_a_star_init()
-
-		
-static func room_init() -> void:
 	border_init()
+	_a_star_init()
 
 
 static func border_init() -> void:
-	@warning_ignore("integer_division")
-	var half_y: int = ROOM_SIZE.y / 2
-	@warning_ignore("integer_division")
-	var half_x: int = ROOM_SIZE.x / 2
-	
-	var start_y: int = -half_y
-	var start_x: int = -half_x
-	var end_y: int = start_y + ROOM_SIZE.y - 1
-	var end_x: int = start_x + ROOM_SIZE.x - 1
-	
 	# Top border
-	for x in range(start_x, end_x + 1):
-		tile_map.set_cell(Vector2i(x, start_y), 0, WALL_COORDS)
+	for x in range(START_COORDS.x, END_COORDS.x + 1):
+		tile_map.set_cell(Vector2i(x, START_COORDS.y), 0, WALL_COORDS)
 	
 	# Bottom border
-	for x in range(start_x, end_x + 1):
-		tile_map.set_cell(Vector2i(x, end_y), 0, WALL_COORDS)
+	for x in range(START_COORDS.x, END_COORDS.x + 1):
+		tile_map.set_cell(Vector2i(x, END_COORDS.y), 0, WALL_COORDS)
 	
 	# Left border (excluding corners already done)
-	for y in range(start_y + 1, end_y):
-		tile_map.set_cell(Vector2i(start_x, y), 0, WALL_COORDS)
+	for y in range(START_COORDS.y + 1, END_COORDS.y):
+		tile_map.set_cell(Vector2i(START_COORDS.x, y), 0, WALL_COORDS)
 	
 	# Right border (excluding corners already done)
-	for y in range(start_y + 1, end_y):
-		tile_map.set_cell(Vector2i(end_x, y), 0, WALL_COORDS)
+	for y in range(START_COORDS.y + 1, END_COORDS.y):
+		tile_map.set_cell(Vector2i(END_COORDS.x, y), 0, WALL_COORDS)
 	
-	if World.is_room(Vector2i.UP):
-		TileObjectManager.spawn_tile_object("Door", Vector2i(start_x + half_x, start_y + 1))
-		
-	if World.is_room(Vector2i.DOWN):
-		TileObjectManager.spawn_tile_object("Door", Vector2i(start_x + half_x, end_y - 1))
-	
-	if World.is_room(Vector2i.LEFT):
-		TileObjectManager.spawn_tile_object("Door", Vector2i(start_x + 1, start_y + half_y))
-	
-	if World.is_room(Vector2i.RIGHT):
-		TileObjectManager.spawn_tile_object("Door", Vector2i(end_x - 1 , start_y + half_y))
-
 
 static func _a_star_init() -> void:
 	astar.region = tile_map.get_used_rect()
@@ -71,6 +55,20 @@ static func _a_star_init() -> void:
 	
 	for cell: Vector2i in tile_map.get_used_cells():
 		astar.set_point_solid(cell, true)
+
+
+static func spawn_doors() -> void:
+	if World.is_room(Vector2i.UP):
+		TileObjectManager.spawn_tile_object("Door", UP_DOOR_COORDS)
+		
+	if World.is_room(Vector2i.DOWN):
+		TileObjectManager.spawn_tile_object("Door", DOWN_DOOR_COORDS)
+		
+	if World.is_room(Vector2i.RIGHT):
+		TileObjectManager.spawn_tile_object("Door", RIGHT_DOOR_COORDS)
+		
+	if World.is_room(Vector2i.LEFT):
+		TileObjectManager.spawn_tile_object("Door", LEFT_DOOR_COORDS)
 
 
 static func local_to_map(local_position: Vector2) -> Vector2i:

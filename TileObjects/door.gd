@@ -1,6 +1,2 @@
-extends TileObjectComponent
+extends Static
 class_name Door
-
-
-func _ready() -> void:
-	pass

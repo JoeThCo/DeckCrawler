@@ -1,20 +1,8 @@
 extends Node
 
 
-signal selection_init(action: Action)
-signal tile_object_selection(tile_object: TileObjectComponent)
-
-
 signal game_paused
 signal game_resumed
-
-
-func emit_selection_init(action: Action) -> void:
-	selection_init.emit(action)
-
-
-func emit_tile_object_selection(tile_object: TileObjectComponent) -> void:
-	tile_object_selection.emit(tile_object)
 
 
 func emit_game_paused() -> void:

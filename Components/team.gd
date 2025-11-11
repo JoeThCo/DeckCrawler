@@ -9,7 +9,8 @@ enum Team
 	BADDIE = 4,
 	NPC = 8,
 	STATIC = 16,
-	ALLY = PLAYER | FRIEND
+	ALLY = PLAYER | FRIEND,
+	NON_NPC = PLAYER | FRIEND | BADDIE
 }
 
 @export var team: Team
